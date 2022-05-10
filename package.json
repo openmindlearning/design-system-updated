@@ -19,6 +19,10 @@
     "test:coverage": "vitest run --coverage",
     "test:ci": "vitest run"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/openmindlearning/design-system.git"
+  },
   "dependencies": {
     "classnames": "^2.3.1",
     "dompurify": "^2.3.6",
