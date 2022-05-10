@@ -1,6 +1,6 @@
 import React from "react";
 import { DocsContainer } from "@storybook/addon-docs/blocks";
-import { ThemeProvider } from "@studio/design-system";
+import { ThemeProvider } from "../src/themes/theme-provider";
 
 export const parameters = {
   viewMode: "docs",
