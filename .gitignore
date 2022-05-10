@@ -1,0 +1,22 @@
+node_modules/
+**/.DS_Store
+
+.netlify
+
+/storybook-static/*
+
+# Webstorm settings
+.idea
+**/.idea/workspace.xml
+**/.idea/tasks.xml
+
+coverage
+report.json
+test_results.txt
+
+# Cypress Testing Media
+cypress/screenshots
+cypress/videos
+cypress/fixtures
+
+dist/

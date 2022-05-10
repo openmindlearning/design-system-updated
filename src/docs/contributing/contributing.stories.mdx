@@ -1,0 +1,189 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Contribution Guidelines" />
+
+# Contributing to Studio's Design System
+
+Contributions to the design system are welcome and encouraged! Here are some basic guidelines to get you started.
+
+## Component Contributions
+
+### Introduction
+
+If you are contemplating whether or not a component you are thinking of building should go in the design system, take a look at the Component Philosophy documentation (coming soon). As a rule of thumb, if a component is not in the Desktop Components Figma, then it probably does not belong in the design system, or should be justified with documentation.
+
+_TL;DR:_ In general, less is more when it comes to a component library. We want to include components that are clearly building blocks that we would regularly need. Components should be created with the intention of [composability](https://en.wikipedia.org/wiki/Composability#:~:text=Composability%20is%20a%20system%20design,to%20satisfy%20specific%20user%20requirements.)- meaning they should be atomic pieces that can come together in many different ways to build something bigger.
+
+If you can think of at least 3 instances in which you would need to build nearly the same UI elements in **different** areas of the code base it may be worth adding this component to the design system, but it is still recommended that you speak to the [design system band](https://studio-company.slack.com/archives/C030XQ6GV0W) and the design team for confirmation. A review from a design system band member is required for merging in changes to the design system.
+An important rule of thumb to keep in mind, is that product specific components, and business logic should **not** go into the design system component library. Components that are expected to be reused but are scoped to a specific set of features or a specific page of the application should **not** be added to the design system. Rather they should be created within the scope of the feature being created.
+
+### Getting Started
+
+**Note** Within the design system we must use relative imports in order to prevent circular dependency related build errors. This means that **within** the design system package when referencing other members of the design system, imports should look like the following:
+
+```ts
+// in MyExampleComponent.tsx
+
+// Good Imports
+import { Button } from "../Button"; //✅
+import { theme } from "../../themes"; //✅
+
+// Bad Imports
+import { Button, themes } from "@studio/design-system"; //❌
+```
+
+When creating a new component for the component library there are a few necessities to ensure that you component can be used as expected by consumers of the design system. Additionally, remember that components in the design system must be for general use, as they could be used anywhere within the consumer's codebase. Accordingly, please ensure that the component you are creating does not contain business logic.
+
+1. Create a folder for your component in `design-system/components`.
+   For example, if you were creating a new Text component you would create a folder called `Text` in `./Text`
+
+2. Create your main component file i.e. `Text.tsx`. You file path would look like this `design-system/components/Text/Text.tsx`
+   Within your component, your props interface should simply be called Props to maintain consistency with our code style guides. Additionally, please keep accessibility in mind when developing your component - using semantic HTML tags is always preferred over using non semantic tags.
+
+```ts
+import { React } from "react";
+
+interface Props {
+  children: React.ReactNode;
+  // all other props you may need for this component
+}
+export function Text({ children }: Props) {
+  return <p> {children} </p>;
+}
+```
+
+3. Create an index.ts in your folder to export your component. This ensures that your component can be accessed without a user having to import a specific file.
+   The contents of the file would look like:
+
+   ```ts
+   // in design-system/components/Text/index.tsx
+   export * from ./Text
+   ```
+
+4. Export your component in `design-system/components/index.ts`. This will look similar to the previous step and ensures ease of imports for consumers.
+
+   ```ts
+   // in design-system/components/index.ts
+   ...
+   export * from ./Text
+   ...
+   ```
+
+### Styling your Component
+
+To add styles to your component create a `.css.ts` file with the same name as your component
+i.e. `Text.css.ts`
+When styling your component, ensure that styling tokens from the theme are being used to ensure that your styles are consistent with other components.
+In your `.css.ts` file, you can access the theme and css related utility functions by importing it directly from the `themes` directory
+
+```ts
+// in Text.css.ts
+
+   import { theme } from ../themes
+```
+
+If your component has variations for its styles (i.e. size or color) it is recommended that you create a [style variants](https://vanilla-extract.style/documentation/styling-api/#stylevariants) to provide future users of your component with a set of built in style options. You should also ensure that these style variants are applicable to your component via props.
+
+```ts
+// in Text.css.ts
+...
+import { style, styleVariants } from "@vanilla-extract/css";
+
+export const base = style([
+  theme.text.body.medium,
+  {
+    color: theme.colors.content.primary,
+  },
+]);
+
+export const sizeVariant = styleVariant({
+  small: [theme.text.body.small],
+  medium: [theme.text.body.medium]
+  large: [theme.text.bodylarge],
+});
+
+export const colorVariant = styleVariant({
+  red: {
+    color: theme.colors.content.danger,
+  },
+  green: {
+    color: theme.colors.content.success,
+  },
+});
+```
+
+```ts
+//in Text.tsx
+...
+import * as styles from "./Text.css";
+import classnames from "classnames";
+
+interface Props {
+   size?: Size
+   color?: "red" | "green"
+   children: "string"
+}
+
+enum Size {
+   Small = "small"
+   Medium = "medium"
+   Large = "large"
+}
+
+export function Text({size, color, children}: Props) {
+   <p className={classnames(styles.base, styles.sizeVariant[size], styles.colorVariant[color])}>
+   {children
+   </p>
+}
+
+```
+
+### Writing Tests
+
+- [Vitest](https://vitest.dev/api/)
+- [Jest Testing](https://www.notion.so/studioteam/Jest-f3b68fa98c0b4135ad62ac4a3883b539)
+
+### Writing Stories
+
+Create stories for your component so others can view it in Storybook and easily see the variations of your component, and the props that it accepts.
+Our recommended syntax for creating stories is the [Args (aka Template) syntax](https://storybook.js.org/docs/react/writing-stories/args) which allows for stories to be interactive such that a user can modify the values passed to the props of a component.
+
+To create a story for your component, start with creating a `.stories.tsx` file with the same name as your component, in your component folder.
+
+```ts
+//Text.stories.tsx
+
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+
+import { Text } from "./Text";
+
+export default {
+  title: "Design System / Text",
+  component: Text,
+} as ComponentMeta<typeof Text>;
+
+const Template: ComponentStory<typeof Text> = (args) =>  Text {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  children: "Test Text",
+};
+```
+
+### Reviewing
+
+Having completed the steps above, this is a summary of the changes you should expect when having created a component for the design system:
+
+Your folder structure should look similar to the following:
+
+```bash
+components/YourComponent
+├── index.ts                        # used to export your component
+├── YourComponent.tsx               # your main component file
+├── YourComponent.css.ts            # styles for your component
+├── YourComponent.test.tsx          # tests for your component
+└── YourComponent.stories.tsx       # component stories
+
+```
+
+## Hook & Utility Contributions

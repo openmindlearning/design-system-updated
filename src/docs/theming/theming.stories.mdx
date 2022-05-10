@@ -1,0 +1,20 @@
+import { Meta } from "@storybook/addon-docs";
+import { ThemingExample } from "./theming-example";
+
+<Meta title="Themeing" />
+
+# Themes
+
+_description of our themes, etc_
+
+## Implicit Theme
+
+Theme is inherited from the `<ThemeProvider>` context, at the root of the component hierarchy.
+
+## Override theme
+
+Override themes via creating another `<ThemeProvider>`
+
+Note: explicitly overriding theme via `className` does not update the theme context, so prefer using `ThemeProvider` instead.
+
+<ThemingExample />
