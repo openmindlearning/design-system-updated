@@ -24,7 +24,8 @@
     "dompurify": "^2.3.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-linkify": "1.0.0-alpha"
+    "react-linkify": "1.0.0-alpha",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
@@ -48,6 +49,7 @@
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
     "@vanilla-extract/css": "1.7.0",
+    "@vanilla-extract/dynamic": "^2.0.2",
     "@vanilla-extract/vite-plugin": "3.1.4",
     "@vitejs/plugin-react": "^1.0.7",
     "@vitest/ui": "0.10.0",
