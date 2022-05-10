@@ -2,9 +2,16 @@
   "name": "@studio/design-system",
   "private": true,
   "version": "1.0.0",
+  "files": [
+    "src"
+  ],
+  "main": "./dist/design-system.es.js",
+  "module": "./dist/design-system.es.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:watch": "vite build --watch",
     "preview": "vite preview",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
@@ -17,7 +24,8 @@
   "dependencies": {
     "classnames": "^2.3.1",
     "dompurify": "2.3.6",
-    "react-linkify": "1.0.0-alpha"
+    "react-linkify": "1.0.0-alpha",
+    "vite-plugin-dts": "^1.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
@@ -48,9 +56,5 @@
     "vite": "2.9.5",
     "vite-tsconfig-paths": "3.4.1",
     "vitest": "0.10.2"
-  },
-  "main": "index.ts",
-  "installConfig": {
-    "hoistingLimits": "workspaces"
   }
 }

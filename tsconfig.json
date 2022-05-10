@@ -19,5 +19,9 @@
     "types": ["vitest", "vite/client", "vitest/globals"]
   },
   "include": ["src", "types"],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
