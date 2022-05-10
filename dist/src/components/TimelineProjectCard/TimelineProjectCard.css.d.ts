@@ -1,0 +1,15 @@
+export declare const outerContainer: string;
+export declare const innerContainer: string;
+export declare const contentContainer: string;
+export declare const mediaSlot: string;
+export declare const titleLabelContainer: string;
+export declare const type: string;
+export declare const labelContainer: string;
+export declare const label: string;
+export declare const titleDescriptionContainer: string;
+export declare const title: string;
+export declare const description: string;
+export declare const attentionContainer: string;
+export declare const reactionIcon: string;
+export declare const dotSeparator: string;
+export declare const reactionsCommentsContainer: string;

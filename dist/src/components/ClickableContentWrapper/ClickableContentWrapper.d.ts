@@ -1,0 +1,22 @@
+import React, { CSSProperties, MouseEvent, KeyboardEvent } from "react";
+declare type Props = {
+    children?: React.ReactNode;
+    className?: string;
+    cypressId?: string;
+    dataTestId?: string;
+    disabled?: boolean;
+    id?: string;
+    onClick?: () => void;
+    onMouseDown?: (e: MouseEvent) => void;
+    onMouseEnter?: (e: MouseEvent) => void;
+    onMouseLeave?: (e: MouseEvent) => void;
+    onFocus?: () => void;
+    onBlur?: () => void;
+    onKeyDown?: (e: KeyboardEvent<HTMLButtonElement>) => void;
+    role?: string;
+    style?: CSSProperties;
+    useAutoBlur?: boolean;
+    useDefaultFocus?: boolean;
+};
+export declare const ClickableContentWrapper: React.ForwardRefExoticComponent<Props & React.RefAttributes<HTMLButtonElement>>;
+export {};
