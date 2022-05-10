@@ -1,5 +1,4 @@
 import React from "react";
-import "@testing-library/jest-dom";
 import { pluralize } from "./text-utils";
 import { describe, it, expect } from "vitest";
 
