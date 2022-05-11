@@ -1,4 +1,5 @@
 import React from "react";
+import "@testing-library/jest-dom";
 import { screen, render } from "@testing-library/react";
 import { ACCESSIBILITY_LABELS, TermsAndPrivacyDisclaimer } from "./TermsAndPrivacyDisclaimer";
 import { describe, it, expect } from "vitest";

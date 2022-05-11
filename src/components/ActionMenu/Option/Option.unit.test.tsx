@@ -1,4 +1,5 @@
 import React from "react";
+import "@testing-library/jest-dom";
 import { screen, render } from "@testing-library/react";
 import { Option } from "./Option";
 import { describe, it, expect, vi } from "vitest";
