@@ -1,4 +1,5 @@
 import { style, styleVariants } from "@vanilla-extract/css";
+import { atTabletBreakpoint } from "../../util";
 import { theme, FontWeight } from "../../themes";
 
 export const base = style([
@@ -11,6 +12,12 @@ export const base = style([
     justifyContent: "center",
     padding: "2px 8px",
     width: "max-content",
+    "@media": {
+      ...atTabletBreakpoint({
+        ...theme.text.body.xxsmall,
+        fontWeight: FontWeight.normal,
+      }),
+    },
   },
 ]);
 

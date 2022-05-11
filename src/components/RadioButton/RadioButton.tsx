@@ -1,23 +1,25 @@
 import * as styles from "./RadioButton.css";
 
-import React, { ReactElement } from "react";
+import React, { ChangeEventHandler, ReactElement } from "react";
 import classNames from "classnames";
 
 interface Props {
+  children?: React.ReactNode;
   className?: string;
-  onClick?: () => void;
+  onClick?: () => void | ChangeEventHandler;
   isSelected: boolean;
-  variant?: "small" | "medium";
+  variant?: RadioButtonVariant;
 }
 
 export const RadioButton = ({
+  children,
   className,
   onClick,
   isSelected,
   variant = "small",
 }: Props): ReactElement => {
   return (
-    <div
+    <span
       className={classNames(
         styles.baseRadioButton,
         styles.radioButtonVariant[variant],
@@ -26,7 +28,10 @@ export const RadioButton = ({
       )}
       onClick={onClick}
     >
-      <div className={styles.radioButtonWhiteCircle} />
-    </div>
+      <span className={styles.radioButtonWhiteCircle} />
+      {children}
+    </span>
   );
 };
+
+export type RadioButtonVariant = "small" | "medium";

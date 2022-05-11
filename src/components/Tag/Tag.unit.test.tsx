@@ -1,4 +1,5 @@
 import React from "react";
+import "@testing-library/jest-dom";
 import { screen, render } from "@testing-library/react";
 import { Tag } from "./Tag";
 import { describe, it, expect } from "vitest";

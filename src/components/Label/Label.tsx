@@ -5,11 +5,12 @@ import * as styles from "./Label.css";
 
 import { LockIcon } from "../../icons";
 
+export type LabelVariantColors = "grey" | "green" | "yellow" | "red";
 interface Props {
   children?: ReactNode;
   dataTestId?: string;
   showLock?: boolean;
-  variant?: "grey" | "green" | "yellow" | "red";
+  variant?: LabelVariantColors;
 }
 
 export function Label({
@@ -19,9 +20,9 @@ export function Label({
   variant = "grey",
 }: Props): React.ReactElement {
   return (
-    <div className={classnames(styles.base, styles.variant[variant])} data-testid={dataTestId}>
+    <span className={classnames(styles.base, styles.variant[variant])} data-testid={dataTestId}>
       {showLock && <LockIcon height={12} width={12} className={styles.icon} fill="currentColor" />}
       {children}
-    </div>
+    </span>
   );
 }

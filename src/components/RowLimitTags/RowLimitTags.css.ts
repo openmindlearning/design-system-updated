@@ -10,3 +10,7 @@ export const boundingContainer = style({
   display: "flex",
   flexWrap: "wrap",
 });
+
+export const tag = style({
+  margin: "5px",
+});

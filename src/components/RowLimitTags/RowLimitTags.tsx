@@ -129,17 +129,19 @@ export const RowLimitTags = ({ tags, rowLimit }: Props): ReactElement => {
 
   return (
     <>
-      {/* This tag is completely hidden to the user, but used by the 
-        calculateTagDisplay function to determine how much space a tag, given 
-        the supplied text and all of its global styles, will take up on the 
-        screen. By having a concrete (though hidden) tag to render to, our 
+      {/* This tag is completely hidden to the user, but used by the
+        calculateTagDisplay function to determine how much space a tag, given
+        the supplied text and all of its global styles, will take up on the
+        screen. By having a concrete (though hidden) tag to render to, our
         calculateTagDisplay function doesn't have to perform any guesswork. */}
       <div className={styles.hiddenRender}>
         <Tag ref={hiddenTagRef} />
       </div>
       <div ref={boundingContainerRef} className={styles.boundingContainer}>
         {displayedTags?.map((tag, idx) => (
-          <Tag key={idx}>{tag}</Tag>
+          <Tag className={styles.tag} key={idx}>
+            {tag}
+          </Tag>
         ))}
       </div>
     </>

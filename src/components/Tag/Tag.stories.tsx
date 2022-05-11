@@ -13,3 +13,9 @@ export const Default = Template.bind({});
 Default.args = {
   children: "Music Production",
 };
+
+export const Selected = Template.bind({});
+Selected.args = {
+  variant: "selected",
+  children: "Swimming",
+};

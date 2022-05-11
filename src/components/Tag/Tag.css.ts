@@ -1,17 +1,14 @@
-import { style } from "@vanilla-extract/css";
+import { style, styleVariants } from "@vanilla-extract/css";
 
 import { FontWeight, theme } from "../../themes";
 
-export const tag = style([
+export const baseTag = style([
   theme.text.body.small,
   {
-    color: theme.colors.content.secondary,
     fontWeight: FontWeight.semibold,
-    border: `1px solid ${theme.colors.border.default}`,
     borderRadius: "100px",
     width: "max-content",
-    padding: "5px 10px",
-    margin: "5px",
+    padding: `${theme.spacing["2x"]} ${theme.spacing["4x"]}`,
     selectors: {
       "&:hover": {
         cursor: "pointer",
@@ -19,3 +16,21 @@ export const tag = style([
     },
   },
 ]);
+
+export const tag = styleVariants({
+  selected: [
+    baseTag,
+    {
+      color: theme.colors.content.light,
+      backgroundColor: theme.colors.platinum["200"],
+      border: `1px solid ${theme.colors.platinum["200"]}`,
+    },
+  ],
+  default: [
+    baseTag,
+    {
+      color: theme.colors.content.secondary,
+      border: `1px solid ${theme.colors.border.default}`,
+    },
+  ],
+});

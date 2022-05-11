@@ -5,6 +5,8 @@ import { ClickableContentWrapper } from "../ClickableContentWrapper";
 import { ClickOuterWrapper } from "../ClickOuterWrapper";
 import { ThreeDotsHorizontalGray } from "../../icons/base/ThreeDotHorizontalGray";
 import { useIsOnScreen } from "../../hooks/useIntersectionObserver";
+import { ThemeProvider } from "../../themes";
+import { Portal } from "react-portal";
 
 interface Props {
   children: React.ReactNode;
@@ -44,24 +46,28 @@ export const ActionMenu = ({
         <span ref={openButtonRef}>{openMenuDisplayElement}</span>
       </ClickableContentWrapper>
       {isMenuOpen && (
-        <ClickOuterWrapper
-          isOpen={true}
-          onOutsideClick={() => setIsMenuOpen(false)}
-          exceptions={[openButtonRef]}
-        >
-          <div
-            className={styles.dropdown}
-            style={{
-              position: "fixed",
-              top: position.y + (refElementHeight || 0),
-              left: position.x,
-            }}
-            onClick={() => setIsMenuOpen(false)}
-            data-testid={ACTION_MENU_OPEN_LABEL}
-          >
-            {children}
-          </div>
-        </ClickOuterWrapper>
+        <Portal>
+          <ThemeProvider>
+            <ClickOuterWrapper
+              isOpen={true}
+              onOutsideClick={() => setIsMenuOpen(false)}
+              exceptions={[openButtonRef]}
+            >
+              <div
+                className={styles.dropdown}
+                style={{
+                  position: "fixed",
+                  top: position.y + (refElementHeight || 0),
+                  left: position.x,
+                }}
+                onClick={() => setIsMenuOpen(false)}
+                data-testid={ACTION_MENU_OPEN_LABEL}
+              >
+                {children}
+              </div>
+            </ClickOuterWrapper>
+          </ThemeProvider>
+        </Portal>
       )}
     </>
   );

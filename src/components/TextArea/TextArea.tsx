@@ -31,6 +31,7 @@ interface Props extends React.HTMLProps<HTMLTextAreaElement> {
  - Inherits props from HTML `textarea` element.
  */
 export const TextArea = ({
+  value,
   className,
   label,
   rows,
@@ -39,12 +40,13 @@ export const TextArea = ({
   onChange,
   ...cleanProps
 }: Props): React.ReactElement => {
-  const [characterCount, setCharacterCount] = useState<number>(0);
+  const [characterCount, setCharacterCount] = useState<number>(value.length);
 
   return (
     <div className={styles.textAreaContainer}>
       {label && <label className={styles.label}>{label}</label>}
       <textarea
+        value={value}
         className={classNames(
           styles.textArea,
           errorMessage && characterCount === 0 && styles.errorContainer,
