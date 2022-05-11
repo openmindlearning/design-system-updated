@@ -27,40 +27,48 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
 }
 
-export const Button = ({
-  variant = "primary",
-  buttonSize = "medium",
-  isLoading = false,
-  disabled = false,
-  children,
-  onClick = () => ({}),
-  className,
-  accessibilityLabel,
-  ...htmlButtonProps
-}: Props): ReactElement => {
-  return (
-    <button
-      type="button"
-      className={classnames([
-        styles.baseButton,
-        styles.buttonTextSize[buttonSize],
-        styles.buttonVariant[variant],
-        styles.label,
-        className,
-      ])}
-      onClick={onClick}
-      aria-label={accessibilityLabel}
-      disabled={disabled || isLoading}
-      {...htmlButtonProps}
-    >
-      {isLoading ? (
-        <>
-          <AnimatedSpinner className={styles.buttonSpinner}></AnimatedSpinner>
-          <span className={styles.loadingState}>{children}</span>
-        </>
-      ) : (
-        children
-      )}
-    </button>
-  );
-};
+export const Button = React.forwardRef<HTMLButtonElement, Props>(
+  (
+    {
+      variant = "primary",
+      buttonSize = "medium",
+      isLoading = false,
+      disabled = false,
+      children,
+      onClick = () => ({}),
+      className,
+      accessibilityLabel,
+      ...htmlButtonProps
+    }: Props,
+    ref: React.LegacyRef<HTMLButtonElement>,
+  ): ReactElement => {
+    return (
+      <button
+        type="button"
+        className={classnames([
+          styles.baseButton,
+          styles.buttonTextSize[buttonSize],
+          styles.buttonVariant[variant],
+          styles.label,
+          className,
+        ])}
+        onClick={onClick}
+        aria-label={accessibilityLabel}
+        disabled={disabled || isLoading}
+        {...{ ref }}
+        {...htmlButtonProps}
+      >
+        {isLoading ? (
+          <>
+            <AnimatedSpinner className={styles.buttonSpinner}></AnimatedSpinner>
+            <span className={styles.loadingState}>{children}</span>
+          </>
+        ) : (
+          children
+        )}
+      </button>
+    );
+  },
+);
+
+Button.displayName = "Button";

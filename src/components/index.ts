@@ -17,6 +17,7 @@ export * from "./LargeInput";
 export * from "./Link";
 export * from "./LogCard";
 export * from "./Logo";
+export * from "./Popover";
 export * from "./RadioButton";
 export * from "./RadioGroup";
 export * from "./RadioItem";

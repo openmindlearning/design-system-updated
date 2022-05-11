@@ -13,9 +13,10 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
-    "test": "vitest run",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
     "test:watch": "vitest --watchAll",
-    "test:coverage": "vitest run --coverage",
+    "test:coverage": "vitest --coverage",
     "test:ci": "vitest run",
     "typescript": "tsc"
   },

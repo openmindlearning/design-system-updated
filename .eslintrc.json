@@ -24,8 +24,10 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": ["error"]
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/ban-ts-comment": "warn",
+    "@typescript-eslint/no-unused-vars": ["error"],
+    "react/jsx-curly-brace-presence": ["warn", "never"]
   },
   "ignorePatterns": ["*.stories.tsx"]
 }
