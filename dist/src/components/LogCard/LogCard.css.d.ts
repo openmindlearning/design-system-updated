@@ -1,0 +1,10 @@
+export declare const container: string;
+export declare const innerContainer: string;
+export declare const labelAndText: string;
+export declare const title: string;
+export declare const titleAndLabelRow: string;
+export declare const body: string;
+export declare const media: string;
+export declare const reflectionsTextContainer: string;
+export declare const richTextContainer: string;
+export declare const dropdown: string;

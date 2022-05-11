@@ -26,5 +26,5 @@ interface Props extends React.HTMLProps<HTMLTextAreaElement> {
 
  - Inherits props from HTML `textarea` element.
  */
-export declare const TextArea: ({ className, label, rows, errorMessage, characterLimit, onChange, ...cleanProps }: Props) => React.ReactElement;
+export declare const TextArea: ({ value, className, label, rows, errorMessage, characterLimit, onChange, ...cleanProps }: Props) => React.ReactElement;
 export {};

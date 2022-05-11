@@ -30,17 +30,18 @@ var __objRest = (source, exclude) => {
   return target;
 };
 import React$2, { createContext, useState, useCallback, useRef, useEffect, forwardRef, Children, useMemo } from "react";
-var designSystem_vanilla$o = "";
-var designSystem_vanilla$n = "";
+import ReactDOM from "react-dom";
+var designSystem_vanilla$s = "";
+var designSystem_vanilla$r = "";
 var Breakpoint$1 = { Mobile: "400px", Small: "600px", Tablet: "834px", Desktop: "1120px", Large: "1200px" };
 var FontStyle = { normal: "normal", italic: "italic" };
 var FontWeight = { normal: "400", semibold: "600", bold: "700" };
 var ThemeType = { light: "light", dark: "dark" };
-var darkThemeClass = "_1vhlme75g";
+var darkThemeClass = "_12s451a5g";
 var darkThemeRawValues = { spacing: { "1x": "4px", "2x": "8px", "3x": "12px", "4x": "16px", "5x": "24px", "6x": "32px", "7x": "40px", "8x": "48px", "9x": "56px", "10x": "64px" }, screenSizes: { mobile: "400px", tablet: "834px", desktop: "1120px" }, text: { display: { xxlarge: { fontFamily: "Tusker Grotesk, Sans-Serif", fontWeight: "600", fontStyle: "normal", fontSize: "52px", lineHeight: "64px" }, xlarge: { fontFamily: "Tusker Grotesk, Sans-Serif", fontWeight: "600", fontStyle: "normal", fontSize: "44px", lineHeight: "60px" }, large: { fontFamily: "Tusker Grotesk, Sans-Serif", fontWeight: "600", fontStyle: "normal", fontSize: "40px", lineHeight: "52px" }, medium: { fontFamily: "Tusker Grotesk, Sans-Serif", fontWeight: "600", fontStyle: "normal", fontSize: "32px", lineHeight: "44px" }, small: { fontFamily: "Tusker Grotesk, Sans-Serif", fontWeight: "600", fontStyle: "normal", fontSize: "24px", lineHeight: "32px" }, xsmall: { fontFamily: "Tusker Grotesk, Sans-Serif", fontWeight: "600", fontStyle: "normal", fontSize: "16px", lineHeight: "24px" } }, header: { xxlarge: { fontFamily: "Maison Neue, Sans-Serif", fontWeight: "400", fontStyle: "normal", fontSize: "40px", lineHeight: "52px" }, xlarge: { fontFamily: "Maison Neue, Sans-Serif", fontWeight: "400", fontStyle: "normal", fontSize: "36px", lineHeight: "48px" }, large: { fontFamily: "Maison Neue, Sans-Serif", fontWeight: "400", fontStyle: "normal", fontSize: "32px", lineHeight: "40px" }, medium: { fontFamily: "Maison Neue, Sans-Serif", fontWeight: "400", fontStyle: "normal", fontSize: "28px", lineHeight: "36px" }, small: { fontFamily: "Maison Neue, Sans-Serif", fontWeight: "400", fontStyle: "normal", fontSize: "24px", lineHeight: "32px" }, xsmall: { fontFamily: "Maison Neue, Sans-Serif", fontWeight: "400", fontStyle: "normal", fontSize: "20px", lineHeight: "28px" } }, label: { xxlarge: { fontFamily: "Maison Neue Mono, monospace", fontWeight: "400", fontStyle: "normal", fontSize: "28px", lineHeight: "36px" }, large: { fontFamily: "Maison Neue Mono, monospace", fontWeight: "400", fontStyle: "normal", fontSize: "28px", lineHeight: "36px" }, small: { fontFamily: "Maison Neue Mono, monospace", fontWeight: "400", fontStyle: "normal", fontSize: "18px", lineHeight: "24px" }, xsmall: { fontFamily: "Maison Neue Mono, monospace", fontWeight: "400", fontStyle: "normal", fontSize: "12px", lineHeight: "16px" } }, body: { large: { fontFamily: "Maison Neue, Sans-Serif", fontWeight: "400", fontStyle: "normal", fontSize: "18px", lineHeight: "28px" }, medium: { fontFamily: "Maison Neue, Sans-Serif", fontWeight: "400", fontStyle: "normal", fontSize: "16px", lineHeight: "24px" }, small: { fontFamily: "Maison Neue, Sans-Serif", fontWeight: "400", fontStyle: "normal", fontSize: "14px", lineHeight: "20px" }, xsmall: { fontFamily: "Maison Neue, Sans-Serif", fontWeight: "400", fontStyle: "normal", fontSize: "12px", lineHeight: "16px" }, xxsmall: { fontFamily: "Maison Neue, Sans-Serif", fontWeight: "400", fontStyle: "normal", fontSize: "10px", lineHeight: "16px" } } }, boxShadows: { depth: { "1": "0px 1px 2px rgba(0,0,0, 0.05), 0px 1px 4px rgba(0,0,0, 0.05)", "2": "0px 1px 4px rgba(0,0,0, 0.05), 0px 4px 12px rgba(0,0,0, 0.10)", "3": "0px 4px 4px rgba(0,0,0, 0.10), 0px 8px 12px rgba(0,0,0, 0.20)" } }, textShadows: { header: "0px 1px 4px rgba(0,0,0, 0.50)", paragraph: "0px 1px 2px rgba(0,0,0, 0.50)" }, colors: { grey: { "50": "#F6F6F6", "100": "#EEEEEE", "200": "#E2E2E2", "300": "#CBCBCB", "400": "#AFAFAF", "500": "#757575", "600": "#545454", "700": "#333333", "800": "#1f1f1f", "900": "#141414" }, platinum: { "0": "#171A1F", "25": "#1F2229", "50": "#272B34", "75": "#2F343E", "100": "#373D49", "150": "#474F5D", "200": "#576171", "300": "#778396", "400": "#96A2B4", "500": "#B3BDCC", "600": "#CDD4DE" }, red: { "50": "#FDEEEE", "100": "#FBDDDD", "200": "#F7BCBC", "300": "#F39A9A", "400": "#EF7979", "500": "#EB5757", "600": "#BC4646", "700": "#8D3434" }, yellow: { "50": "#FFF6DF", "200": "#F2E3BB", "500": "#DFB854", "800": "#594A22" }, green: { "100": "#E3FBE7", "200": "#D6F3DB", "300": "#A6E9BE", "400": "#87D3AB", "500": "#5FB791", "600": "#459D80", "700": "#2F8370", "800": "#1E6A60", "900": "#125755" }, primary: { black: "#000000", white: "#FFFFFF", background: "#FBFBFB", darkBlue: "#1C1C25", red: "#EB5757", green: "#2F8370", yellow: "#FAE26A" }, content: { primary: "#FFFFFF", secondary: "#CDD4DE", tertiary: "#96A2B4", muted: "#576171", light: "#171A1F", accentPrimary: "#FAE26A", accentSecondary: "#FFFFFF", success: "#2F8370", danger: "#EB5757", warning: "#594A22" }, background: { primary: "#171A1F", secondary: "#1F2229", tertiary: "#2F343E", marketing: "#F9F9FB", success: "#E3FBE7", danger: "#FDEEEE", warning: "#FFF6DF" }, border: { opaque: "#2F343E", "default": "#474F5D", selected: "#CDD4DE", success: "#D6F3DB", danger: "#EB5757", warning: "#FAE26A" } } };
 var lightThemeRawValues = { spacing: { "1x": "4px", "2x": "8px", "3x": "12px", "4x": "16px", "5x": "24px", "6x": "32px", "7x": "40px", "8x": "48px", "9x": "56px", "10x": "64px" }, screenSizes: { mobile: "400px", tablet: "834px", desktop: "1120px" }, text: { display: { xxlarge: { fontFamily: "Tusker Grotesk, Sans-Serif", fontWeight: "600", fontStyle: "normal", fontSize: "52px", lineHeight: "64px" }, xlarge: { fontFamily: "Tusker Grotesk, Sans-Serif", fontWeight: "600", fontStyle: "normal", fontSize: "44px", lineHeight: "60px" }, large: { fontFamily: "Tusker Grotesk, Sans-Serif", fontWeight: "600", fontStyle: "normal", fontSize: "40px", lineHeight: "52px" }, medium: { fontFamily: "Tusker Grotesk, Sans-Serif", fontWeight: "600", fontStyle: "normal", fontSize: "32px", lineHeight: "44px" }, small: { fontFamily: "Tusker Grotesk, Sans-Serif", fontWeight: "600", fontStyle: "normal", fontSize: "24px", lineHeight: "32px" }, xsmall: { fontFamily: "Tusker Grotesk, Sans-Serif", fontWeight: "600", fontStyle: "normal", fontSize: "16px", lineHeight: "24px" } }, header: { xxlarge: { fontFamily: "Maison Neue, Sans-Serif", fontWeight: "400", fontStyle: "normal", fontSize: "40px", lineHeight: "52px" }, xlarge: { fontFamily: "Maison Neue, Sans-Serif", fontWeight: "400", fontStyle: "normal", fontSize: "36px", lineHeight: "48px" }, large: { fontFamily: "Maison Neue, Sans-Serif", fontWeight: "400", fontStyle: "normal", fontSize: "32px", lineHeight: "40px" }, medium: { fontFamily: "Maison Neue, Sans-Serif", fontWeight: "400", fontStyle: "normal", fontSize: "28px", lineHeight: "36px" }, small: { fontFamily: "Maison Neue, Sans-Serif", fontWeight: "400", fontStyle: "normal", fontSize: "24px", lineHeight: "32px" }, xsmall: { fontFamily: "Maison Neue, Sans-Serif", fontWeight: "400", fontStyle: "normal", fontSize: "20px", lineHeight: "28px" } }, label: { xxlarge: { fontFamily: "Maison Neue Mono, monospace", fontWeight: "400", fontStyle: "normal", fontSize: "28px", lineHeight: "36px" }, large: { fontFamily: "Maison Neue Mono, monospace", fontWeight: "400", fontStyle: "normal", fontSize: "28px", lineHeight: "36px" }, small: { fontFamily: "Maison Neue Mono, monospace", fontWeight: "400", fontStyle: "normal", fontSize: "18px", lineHeight: "24px" }, xsmall: { fontFamily: "Maison Neue Mono, monospace", fontWeight: "400", fontStyle: "normal", fontSize: "12px", lineHeight: "16px" } }, body: { large: { fontFamily: "Maison Neue, Sans-Serif", fontWeight: "400", fontStyle: "normal", fontSize: "18px", lineHeight: "28px" }, medium: { fontFamily: "Maison Neue, Sans-Serif", fontWeight: "400", fontStyle: "normal", fontSize: "16px", lineHeight: "24px" }, small: { fontFamily: "Maison Neue, Sans-Serif", fontWeight: "400", fontStyle: "normal", fontSize: "14px", lineHeight: "20px" }, xsmall: { fontFamily: "Maison Neue, Sans-Serif", fontWeight: "400", fontStyle: "normal", fontSize: "12px", lineHeight: "16px" }, xxsmall: { fontFamily: "Maison Neue, Sans-Serif", fontWeight: "400", fontStyle: "normal", fontSize: "10px", lineHeight: "16px" } } }, boxShadows: { depth: { "1": "0px 1px 2px rgba(0,0,0, 0.05), 0px 1px 4px rgba(0,0,0, 0.05)", "2": "0px 1px 4px rgba(0,0,0, 0.05), 0px 4px 12px rgba(0,0,0, 0.10)", "3": "0px 4px 4px rgba(0,0,0, 0.10), 0px 8px 12px rgba(0,0,0, 0.20)" } }, textShadows: { header: "0px 1px 4px rgba(0,0,0, 0.50)", paragraph: "0px 1px 2px rgba(0,0,0, 0.50)" }, colors: { grey: { "50": "#F6F6F6", "100": "#EEEEEE", "200": "#E2E2E2", "300": "#CBCBCB", "400": "#AFAFAF", "500": "#757575", "600": "#545454", "700": "#333333", "800": "#1f1f1f", "900": "#141414" }, platinum: { "0": "#171A1F", "25": "#1F2229", "50": "#272B34", "75": "#2F343E", "100": "#373D49", "150": "#474F5D", "200": "#576171", "300": "#778396", "400": "#96A2B4", "500": "#B3BDCC", "600": "#CDD4DE" }, red: { "50": "#FDEEEE", "100": "#FBDDDD", "200": "#F7BCBC", "300": "#F39A9A", "400": "#EF7979", "500": "#EB5757", "600": "#BC4646", "700": "#8D3434" }, yellow: { "50": "#FFF6DF", "200": "#F2E3BB", "500": "#DFB854", "800": "#594A22" }, green: { "100": "#E3FBE7", "200": "#D6F3DB", "300": "#A6E9BE", "400": "#87D3AB", "500": "#5FB791", "600": "#459D80", "700": "#2F8370", "800": "#1E6A60", "900": "#125755" }, primary: { black: "#000000", white: "#FFFFFF", background: "#FBFBFB", darkBlue: "#1C1C25", red: "#EB5757", green: "#2F8370", yellow: "#FAE26A" }, content: { primary: "#000000", secondary: "#545454", tertiary: "#757575", muted: "#AFAFAF", light: "#FFFFFF", accentPrimary: "#FAE26A", accentSecondary: "#1C1C25", success: "#2F8370", danger: "#EB5757", warning: "#594A22" }, background: { primary: "#FBFBFB", secondary: "#FFFFFF", tertiary: "#F6F6F6", marketing: "#F9F9FB", success: "#E3FBE7", danger: "#FDEEEE", warning: "#FFF6DF" }, border: { opaque: "#E7E7E7", "default": "#CBCBCB", selected: "#000000", success: "#D6F3DB", danger: "#EB5757", warning: "#FAE26A" } } };
-var theme = { spacing: { "1x": "var(--_1vhlme71)", "2x": "var(--_1vhlme72)", "3x": "var(--_1vhlme73)", "4x": "var(--_1vhlme74)", "5x": "var(--_1vhlme75)", "6x": "var(--_1vhlme76)", "7x": "var(--_1vhlme77)", "8x": "var(--_1vhlme78)", "9x": "var(--_1vhlme79)", "10x": "var(--_1vhlme7a)" }, screenSizes: { mobile: "var(--_1vhlme7b)", tablet: "var(--_1vhlme7c)", desktop: "var(--_1vhlme7d)" }, text: { display: { xxlarge: { fontFamily: "var(--_1vhlme7e)", fontWeight: "var(--_1vhlme7f)", fontStyle: "var(--_1vhlme7g)", fontSize: "var(--_1vhlme7h)", lineHeight: "var(--_1vhlme7i)" }, xlarge: { fontFamily: "var(--_1vhlme7j)", fontWeight: "var(--_1vhlme7k)", fontStyle: "var(--_1vhlme7l)", fontSize: "var(--_1vhlme7m)", lineHeight: "var(--_1vhlme7n)" }, large: { fontFamily: "var(--_1vhlme7o)", fontWeight: "var(--_1vhlme7p)", fontStyle: "var(--_1vhlme7q)", fontSize: "var(--_1vhlme7r)", lineHeight: "var(--_1vhlme7s)" }, medium: { fontFamily: "var(--_1vhlme7t)", fontWeight: "var(--_1vhlme7u)", fontStyle: "var(--_1vhlme7v)", fontSize: "var(--_1vhlme7w)", lineHeight: "var(--_1vhlme7x)" }, small: { fontFamily: "var(--_1vhlme7y)", fontWeight: "var(--_1vhlme7z)", fontStyle: "var(--_1vhlme710)", fontSize: "var(--_1vhlme711)", lineHeight: "var(--_1vhlme712)" }, xsmall: { fontFamily: "var(--_1vhlme713)", fontWeight: "var(--_1vhlme714)", fontStyle: "var(--_1vhlme715)", fontSize: "var(--_1vhlme716)", lineHeight: "var(--_1vhlme717)" } }, header: { xxlarge: { fontFamily: "var(--_1vhlme718)", fontWeight: "var(--_1vhlme719)", fontStyle: "var(--_1vhlme71a)", fontSize: "var(--_1vhlme71b)", lineHeight: "var(--_1vhlme71c)" }, xlarge: { fontFamily: "var(--_1vhlme71d)", fontWeight: "var(--_1vhlme71e)", fontStyle: "var(--_1vhlme71f)", fontSize: "var(--_1vhlme71g)", lineHeight: "var(--_1vhlme71h)" }, large: { fontFamily: "var(--_1vhlme71i)", fontWeight: "var(--_1vhlme71j)", fontStyle: "var(--_1vhlme71k)", fontSize: "var(--_1vhlme71l)", lineHeight: "var(--_1vhlme71m)" }, medium: { fontFamily: "var(--_1vhlme71n)", fontWeight: "var(--_1vhlme71o)", fontStyle: "var(--_1vhlme71p)", fontSize: "var(--_1vhlme71q)", lineHeight: "var(--_1vhlme71r)" }, small: { fontFamily: "var(--_1vhlme71s)", fontWeight: "var(--_1vhlme71t)", fontStyle: "var(--_1vhlme71u)", fontSize: "var(--_1vhlme71v)", lineHeight: "var(--_1vhlme71w)" }, xsmall: { fontFamily: "var(--_1vhlme71x)", fontWeight: "var(--_1vhlme71y)", fontStyle: "var(--_1vhlme71z)", fontSize: "var(--_1vhlme720)", lineHeight: "var(--_1vhlme721)" } }, label: { xxlarge: { fontFamily: "var(--_1vhlme722)", fontWeight: "var(--_1vhlme723)", fontStyle: "var(--_1vhlme724)", fontSize: "var(--_1vhlme725)", lineHeight: "var(--_1vhlme726)" }, large: { fontFamily: "var(--_1vhlme727)", fontWeight: "var(--_1vhlme728)", fontStyle: "var(--_1vhlme729)", fontSize: "var(--_1vhlme72a)", lineHeight: "var(--_1vhlme72b)" }, small: { fontFamily: "var(--_1vhlme72c)", fontWeight: "var(--_1vhlme72d)", fontStyle: "var(--_1vhlme72e)", fontSize: "var(--_1vhlme72f)", lineHeight: "var(--_1vhlme72g)" }, xsmall: { fontFamily: "var(--_1vhlme72h)", fontWeight: "var(--_1vhlme72i)", fontStyle: "var(--_1vhlme72j)", fontSize: "var(--_1vhlme72k)", lineHeight: "var(--_1vhlme72l)" } }, body: { large: { fontFamily: "var(--_1vhlme72m)", fontWeight: "var(--_1vhlme72n)", fontStyle: "var(--_1vhlme72o)", fontSize: "var(--_1vhlme72p)", lineHeight: "var(--_1vhlme72q)" }, medium: { fontFamily: "var(--_1vhlme72r)", fontWeight: "var(--_1vhlme72s)", fontStyle: "var(--_1vhlme72t)", fontSize: "var(--_1vhlme72u)", lineHeight: "var(--_1vhlme72v)" }, small: { fontFamily: "var(--_1vhlme72w)", fontWeight: "var(--_1vhlme72x)", fontStyle: "var(--_1vhlme72y)", fontSize: "var(--_1vhlme72z)", lineHeight: "var(--_1vhlme730)" }, xsmall: { fontFamily: "var(--_1vhlme731)", fontWeight: "var(--_1vhlme732)", fontStyle: "var(--_1vhlme733)", fontSize: "var(--_1vhlme734)", lineHeight: "var(--_1vhlme735)" }, xxsmall: { fontFamily: "var(--_1vhlme736)", fontWeight: "var(--_1vhlme737)", fontStyle: "var(--_1vhlme738)", fontSize: "var(--_1vhlme739)", lineHeight: "var(--_1vhlme73a)" } } }, boxShadows: { depth: { "1": "var(--_1vhlme73b)", "2": "var(--_1vhlme73c)", "3": "var(--_1vhlme73d)" } }, textShadows: { header: "var(--_1vhlme73e)", paragraph: "var(--_1vhlme73f)" }, colors: { grey: { "50": "var(--_1vhlme73g)", "100": "var(--_1vhlme73h)", "200": "var(--_1vhlme73i)", "300": "var(--_1vhlme73j)", "400": "var(--_1vhlme73k)", "500": "var(--_1vhlme73l)", "600": "var(--_1vhlme73m)", "700": "var(--_1vhlme73n)", "800": "var(--_1vhlme73o)", "900": "var(--_1vhlme73p)" }, platinum: { "0": "var(--_1vhlme73q)", "25": "var(--_1vhlme73r)", "50": "var(--_1vhlme73s)", "75": "var(--_1vhlme73t)", "100": "var(--_1vhlme73u)", "150": "var(--_1vhlme73v)", "200": "var(--_1vhlme73w)", "300": "var(--_1vhlme73x)", "400": "var(--_1vhlme73y)", "500": "var(--_1vhlme73z)", "600": "var(--_1vhlme740)" }, red: { "50": "var(--_1vhlme741)", "100": "var(--_1vhlme742)", "200": "var(--_1vhlme743)", "300": "var(--_1vhlme744)", "400": "var(--_1vhlme745)", "500": "var(--_1vhlme746)", "600": "var(--_1vhlme747)", "700": "var(--_1vhlme748)" }, yellow: { "50": "var(--_1vhlme749)", "200": "var(--_1vhlme74a)", "500": "var(--_1vhlme74b)", "800": "var(--_1vhlme74c)" }, green: { "100": "var(--_1vhlme74d)", "200": "var(--_1vhlme74e)", "300": "var(--_1vhlme74f)", "400": "var(--_1vhlme74g)", "500": "var(--_1vhlme74h)", "600": "var(--_1vhlme74i)", "700": "var(--_1vhlme74j)", "800": "var(--_1vhlme74k)", "900": "var(--_1vhlme74l)" }, primary: { black: "var(--_1vhlme74m)", white: "var(--_1vhlme74n)", background: "var(--_1vhlme74o)", darkBlue: "var(--_1vhlme74p)", red: "var(--_1vhlme74q)", green: "var(--_1vhlme74r)", yellow: "var(--_1vhlme74s)" }, content: { primary: "var(--_1vhlme74t)", secondary: "var(--_1vhlme74u)", tertiary: "var(--_1vhlme74v)", muted: "var(--_1vhlme74w)", light: "var(--_1vhlme74x)", accentPrimary: "var(--_1vhlme74y)", accentSecondary: "var(--_1vhlme74z)", success: "var(--_1vhlme750)", danger: "var(--_1vhlme751)", warning: "var(--_1vhlme752)" }, background: { primary: "var(--_1vhlme753)", secondary: "var(--_1vhlme754)", tertiary: "var(--_1vhlme755)", marketing: "var(--_1vhlme756)", success: "var(--_1vhlme757)", danger: "var(--_1vhlme758)", warning: "var(--_1vhlme759)" }, border: { opaque: "var(--_1vhlme75a)", "default": "var(--_1vhlme75b)", selected: "var(--_1vhlme75c)", success: "var(--_1vhlme75d)", danger: "var(--_1vhlme75e)", warning: "var(--_1vhlme75f)" } } };
-var themeClass = "_1vhlme70";
+var theme = { spacing: { "1x": "var(--_12s451a1)", "2x": "var(--_12s451a2)", "3x": "var(--_12s451a3)", "4x": "var(--_12s451a4)", "5x": "var(--_12s451a5)", "6x": "var(--_12s451a6)", "7x": "var(--_12s451a7)", "8x": "var(--_12s451a8)", "9x": "var(--_12s451a9)", "10x": "var(--_12s451aa)" }, screenSizes: { mobile: "var(--_12s451ab)", tablet: "var(--_12s451ac)", desktop: "var(--_12s451ad)" }, text: { display: { xxlarge: { fontFamily: "var(--_12s451ae)", fontWeight: "var(--_12s451af)", fontStyle: "var(--_12s451ag)", fontSize: "var(--_12s451ah)", lineHeight: "var(--_12s451ai)" }, xlarge: { fontFamily: "var(--_12s451aj)", fontWeight: "var(--_12s451ak)", fontStyle: "var(--_12s451al)", fontSize: "var(--_12s451am)", lineHeight: "var(--_12s451an)" }, large: { fontFamily: "var(--_12s451ao)", fontWeight: "var(--_12s451ap)", fontStyle: "var(--_12s451aq)", fontSize: "var(--_12s451ar)", lineHeight: "var(--_12s451as)" }, medium: { fontFamily: "var(--_12s451at)", fontWeight: "var(--_12s451au)", fontStyle: "var(--_12s451av)", fontSize: "var(--_12s451aw)", lineHeight: "var(--_12s451ax)" }, small: { fontFamily: "var(--_12s451ay)", fontWeight: "var(--_12s451az)", fontStyle: "var(--_12s451a10)", fontSize: "var(--_12s451a11)", lineHeight: "var(--_12s451a12)" }, xsmall: { fontFamily: "var(--_12s451a13)", fontWeight: "var(--_12s451a14)", fontStyle: "var(--_12s451a15)", fontSize: "var(--_12s451a16)", lineHeight: "var(--_12s451a17)" } }, header: { xxlarge: { fontFamily: "var(--_12s451a18)", fontWeight: "var(--_12s451a19)", fontStyle: "var(--_12s451a1a)", fontSize: "var(--_12s451a1b)", lineHeight: "var(--_12s451a1c)" }, xlarge: { fontFamily: "var(--_12s451a1d)", fontWeight: "var(--_12s451a1e)", fontStyle: "var(--_12s451a1f)", fontSize: "var(--_12s451a1g)", lineHeight: "var(--_12s451a1h)" }, large: { fontFamily: "var(--_12s451a1i)", fontWeight: "var(--_12s451a1j)", fontStyle: "var(--_12s451a1k)", fontSize: "var(--_12s451a1l)", lineHeight: "var(--_12s451a1m)" }, medium: { fontFamily: "var(--_12s451a1n)", fontWeight: "var(--_12s451a1o)", fontStyle: "var(--_12s451a1p)", fontSize: "var(--_12s451a1q)", lineHeight: "var(--_12s451a1r)" }, small: { fontFamily: "var(--_12s451a1s)", fontWeight: "var(--_12s451a1t)", fontStyle: "var(--_12s451a1u)", fontSize: "var(--_12s451a1v)", lineHeight: "var(--_12s451a1w)" }, xsmall: { fontFamily: "var(--_12s451a1x)", fontWeight: "var(--_12s451a1y)", fontStyle: "var(--_12s451a1z)", fontSize: "var(--_12s451a20)", lineHeight: "var(--_12s451a21)" } }, label: { xxlarge: { fontFamily: "var(--_12s451a22)", fontWeight: "var(--_12s451a23)", fontStyle: "var(--_12s451a24)", fontSize: "var(--_12s451a25)", lineHeight: "var(--_12s451a26)" }, large: { fontFamily: "var(--_12s451a27)", fontWeight: "var(--_12s451a28)", fontStyle: "var(--_12s451a29)", fontSize: "var(--_12s451a2a)", lineHeight: "var(--_12s451a2b)" }, small: { fontFamily: "var(--_12s451a2c)", fontWeight: "var(--_12s451a2d)", fontStyle: "var(--_12s451a2e)", fontSize: "var(--_12s451a2f)", lineHeight: "var(--_12s451a2g)" }, xsmall: { fontFamily: "var(--_12s451a2h)", fontWeight: "var(--_12s451a2i)", fontStyle: "var(--_12s451a2j)", fontSize: "var(--_12s451a2k)", lineHeight: "var(--_12s451a2l)" } }, body: { large: { fontFamily: "var(--_12s451a2m)", fontWeight: "var(--_12s451a2n)", fontStyle: "var(--_12s451a2o)", fontSize: "var(--_12s451a2p)", lineHeight: "var(--_12s451a2q)" }, medium: { fontFamily: "var(--_12s451a2r)", fontWeight: "var(--_12s451a2s)", fontStyle: "var(--_12s451a2t)", fontSize: "var(--_12s451a2u)", lineHeight: "var(--_12s451a2v)" }, small: { fontFamily: "var(--_12s451a2w)", fontWeight: "var(--_12s451a2x)", fontStyle: "var(--_12s451a2y)", fontSize: "var(--_12s451a2z)", lineHeight: "var(--_12s451a30)" }, xsmall: { fontFamily: "var(--_12s451a31)", fontWeight: "var(--_12s451a32)", fontStyle: "var(--_12s451a33)", fontSize: "var(--_12s451a34)", lineHeight: "var(--_12s451a35)" }, xxsmall: { fontFamily: "var(--_12s451a36)", fontWeight: "var(--_12s451a37)", fontStyle: "var(--_12s451a38)", fontSize: "var(--_12s451a39)", lineHeight: "var(--_12s451a3a)" } } }, boxShadows: { depth: { "1": "var(--_12s451a3b)", "2": "var(--_12s451a3c)", "3": "var(--_12s451a3d)" } }, textShadows: { header: "var(--_12s451a3e)", paragraph: "var(--_12s451a3f)" }, colors: { grey: { "50": "var(--_12s451a3g)", "100": "var(--_12s451a3h)", "200": "var(--_12s451a3i)", "300": "var(--_12s451a3j)", "400": "var(--_12s451a3k)", "500": "var(--_12s451a3l)", "600": "var(--_12s451a3m)", "700": "var(--_12s451a3n)", "800": "var(--_12s451a3o)", "900": "var(--_12s451a3p)" }, platinum: { "0": "var(--_12s451a3q)", "25": "var(--_12s451a3r)", "50": "var(--_12s451a3s)", "75": "var(--_12s451a3t)", "100": "var(--_12s451a3u)", "150": "var(--_12s451a3v)", "200": "var(--_12s451a3w)", "300": "var(--_12s451a3x)", "400": "var(--_12s451a3y)", "500": "var(--_12s451a3z)", "600": "var(--_12s451a40)" }, red: { "50": "var(--_12s451a41)", "100": "var(--_12s451a42)", "200": "var(--_12s451a43)", "300": "var(--_12s451a44)", "400": "var(--_12s451a45)", "500": "var(--_12s451a46)", "600": "var(--_12s451a47)", "700": "var(--_12s451a48)" }, yellow: { "50": "var(--_12s451a49)", "200": "var(--_12s451a4a)", "500": "var(--_12s451a4b)", "800": "var(--_12s451a4c)" }, green: { "100": "var(--_12s451a4d)", "200": "var(--_12s451a4e)", "300": "var(--_12s451a4f)", "400": "var(--_12s451a4g)", "500": "var(--_12s451a4h)", "600": "var(--_12s451a4i)", "700": "var(--_12s451a4j)", "800": "var(--_12s451a4k)", "900": "var(--_12s451a4l)" }, primary: { black: "var(--_12s451a4m)", white: "var(--_12s451a4n)", background: "var(--_12s451a4o)", darkBlue: "var(--_12s451a4p)", red: "var(--_12s451a4q)", green: "var(--_12s451a4r)", yellow: "var(--_12s451a4s)" }, content: { primary: "var(--_12s451a4t)", secondary: "var(--_12s451a4u)", tertiary: "var(--_12s451a4v)", muted: "var(--_12s451a4w)", light: "var(--_12s451a4x)", accentPrimary: "var(--_12s451a4y)", accentSecondary: "var(--_12s451a4z)", success: "var(--_12s451a50)", danger: "var(--_12s451a51)", warning: "var(--_12s451a52)" }, background: { primary: "var(--_12s451a53)", secondary: "var(--_12s451a54)", tertiary: "var(--_12s451a55)", marketing: "var(--_12s451a56)", success: "var(--_12s451a57)", danger: "var(--_12s451a58)", warning: "var(--_12s451a59)" }, border: { opaque: "var(--_12s451a5a)", "default": "var(--_12s451a5b)", selected: "var(--_12s451a5c)", success: "var(--_12s451a5d)", danger: "var(--_12s451a5e)", warning: "var(--_12s451a5f)" } } };
+var themeClass = "_12s451a0";
 var jsxRuntime = { exports: {} };
 var reactJsxRuntime_production_min = {};
 /*
@@ -262,8 +263,8 @@ function AnimatedSpinner({
     })
   });
 }
-var designSystem_vanilla$m = "";
-var blurredBox$1 = "_5p0c0q0";
+var designSystem_vanilla$q = "";
+var blurredBox$1 = "tq120j0";
 const BlurredBox = ({
   className,
   children
@@ -273,12 +274,12 @@ const BlurredBox = ({
     children
   });
 };
-var designSystem_vanilla$l = "";
-var container$4 = "_1baoega0";
-var designSystem_vanilla$k = "";
-var breadcrumb = "_1eby1zp3";
-var labelVariants = { primary: "_1eby1zp5 _1eby1zp4", secondary: "_1eby1zp6 _1eby1zp4" };
-var numberVariants = { inactive: "_1eby1zp1 _1eby1zp0", active: "_1eby1zp2 _1eby1zp0" };
+var designSystem_vanilla$p = "";
+var container$5 = "_1ubxbkf0";
+var designSystem_vanilla$o = "";
+var breadcrumb = "k7yss73";
+var labelVariants = { primary: "k7yss75 k7yss74", secondary: "k7yss76 k7yss74" };
+var numberVariants = { inactive: "k7yss71 k7yss70", active: "k7yss72 k7yss70" };
 const DEFAULT_ICON = {
   WIDTH: 24,
   HEIGHT: 24
@@ -1380,7 +1381,8 @@ const SidebarIcon = ({
 };
 const StudioIcon = ({
   width = DEFAULT_ICON.WIDTH,
-  height: height2 = DEFAULT_ICON.HEIGHT
+  height: height2 = DEFAULT_ICON.HEIGHT,
+  fill = theme.colors.grey[600]
 }) => {
   return /* @__PURE__ */ jsx("svg", {
     width,
@@ -1390,7 +1392,7 @@ const StudioIcon = ({
     xmlnsXlink: "http://www.w3.org/1999/xlink",
     children: /* @__PURE__ */ jsx("path", {
       d: "M21.7433 12.8359L17.1958 10.9731L15.3017 6.501C15.1717 6.19532 14.6617 6.19532 14.5317 6.501L12.6375 10.9731L8.09 12.8359C7.93417 12.8998 7.83333 13.049 7.83333 13.2145C7.83333 13.3801 7.93417 13.5292 8.09 13.5932L12.6375 15.4559L14.5317 19.9281C14.5967 20.0813 14.7483 20.1805 14.9167 20.1805C15.085 20.1805 15.2367 20.0813 15.3017 19.9281L17.1958 15.4559L21.7433 13.5932C21.8992 13.5292 22 13.3801 22 13.2145C22 13.049 21.8992 12.8998 21.7433 12.8359ZM10.8817 7.0886L7.955 6.12894L6.97917 3.25077C6.865 2.91641 6.30167 2.91641 6.18833 3.25077L5.21167 6.12894L2.285 7.0886C2.115 7.14515 2 7.30167 2 7.47787C2 7.65407 2.115 7.8106 2.285 7.86715L5.2125 8.82681L6.18833 11.7058C6.245 11.8722 6.40417 11.9852 6.58333 11.9852C6.7625 11.9852 6.92167 11.8722 6.97917 11.705L7.955 8.82599L10.8825 7.86633C11.0517 7.8106 11.1667 7.65407 11.1667 7.47787C11.1667 7.30167 11.0517 7.14515 10.8817 7.0886ZM9.215 17.7424L7.5375 17.1925L6.97833 15.5428C6.86417 15.2084 6.30083 15.2084 6.1875 15.5428L5.62833 17.1925L3.95083 17.7424C3.78167 17.7989 3.66667 17.9555 3.66667 18.1317C3.66667 18.3079 3.78167 18.4644 3.95167 18.5209L5.62917 19.0708L6.18833 20.7205C6.245 20.8869 6.40417 21 6.58333 21C6.7625 21 6.92167 20.8869 6.97917 20.7197L7.53833 19.07L9.21583 18.5201C9.385 18.4644 9.5 18.3079 9.5 18.1317C9.5 17.9555 9.385 17.7989 9.215 17.7424Z",
-      fill: "#545454"
+      fill
     })
   });
 };
@@ -2310,7 +2312,7 @@ const BreadCrumbs = ({
   activeIndex
 }) => {
   return /* @__PURE__ */ jsx("div", {
-    className: container$4,
+    className: container$5,
     children: breadCrumbs.map((label2, index) => /* @__PURE__ */ jsx(BreadCrumb, {
       index,
       label: label2,
@@ -2318,13 +2320,13 @@ const BreadCrumbs = ({
     }, index))
   });
 };
-var designSystem_vanilla$j = "";
-var baseButton = "_14w3wt80";
-var buttonSpinner = "_14w3wt89";
-var buttonTextSize = { large: "_14w3wt85", medium: "_14w3wt86", small: "_14w3wt87" };
-var buttonVariant = { primary: "_14w3wt81", secondary: "_14w3wt82", destructive: "_14w3wt83", transparent: "_14w3wt84" };
-var label$3 = "_14w3wt8a";
-var loadingState = "_14w3wt88";
+var designSystem_vanilla$n = "";
+var baseButton = "_1gq7dw0";
+var buttonSpinner = "_1gq7dw9";
+var buttonTextSize = { large: "_1gq7dw5", medium: "_1gq7dw6", small: "_1gq7dw7" };
+var buttonVariant = { primary: "_1gq7dw1", secondary: "_1gq7dw2", destructive: "_1gq7dw3", transparent: "_1gq7dw4" };
+var label$4 = "_1gq7dwa";
+var loadingState = "_1gq7dw8";
 const Button = (_a) => {
   var _b = _a, {
     variant: variant2 = "primary",
@@ -2347,7 +2349,7 @@ const Button = (_a) => {
   ]);
   return /* @__PURE__ */ jsx("button", __spreadProps(__spreadValues({
     type: "button",
-    className: classNames([baseButton, buttonTextSize[buttonSize], buttonVariant[variant2], label$3, className]),
+    className: classNames([baseButton, buttonTextSize[buttonSize], buttonVariant[variant2], label$4, className]),
     onClick,
     "aria-label": accessibilityLabel,
     disabled: disabled || isLoading
@@ -2362,9 +2364,9 @@ const Button = (_a) => {
     }) : children
   }));
 };
-var designSystem_vanilla$i = "";
-var clickableContentWrapperButton = "_16il40h1 _16il40h0";
-var emptyButtonStyle = "_16il40h0";
+var designSystem_vanilla$m = "";
+var clickableContentWrapperButton = "_9urr8t1 _9urr8t0";
+var emptyButtonStyle = "_9urr8t0";
 const ClickableContentWrapper = React$2.forwardRef((_c, ref) => {
   var _d = _c, {
     useDefaultFocus = false,
@@ -2422,18 +2424,18 @@ const ClickableContentWrapper = React$2.forwardRef((_c, ref) => {
   }, otherProps));
 });
 ClickableContentWrapper.displayName = "ClickableContentWrapper";
-var designSystem_vanilla$h = "";
-var container$3 = "_1yxqyh30";
+var designSystem_vanilla$l = "";
+var container$4 = "_15qdaa70";
 const Footer = ({
   children
 }) => {
   return /* @__PURE__ */ jsx("footer", {
-    className: container$3,
+    className: container$4,
     children
   });
 };
-var designSystem_vanilla$g = "";
-var header = "fgnzqp0";
+var designSystem_vanilla$k = "";
+var header = "_1uurv9s0";
 const Header = ({
   children,
   logoComponent,
@@ -2446,12 +2448,12 @@ const Header = ({
     children: [logoComponent, children]
   });
 };
-var designSystem_vanilla$f = "";
-var container$2 = "amw6p50";
-var contentContainer$1 = "amw6p54";
-var image = "amw6p53";
-var mediaContainer = "amw6p51";
-var video = "amw6p52";
+var designSystem_vanilla$j = "";
+var container$3 = "_1he1v4e0";
+var contentContainer$1 = "_1he1v4e4";
+var image = "_1he1v4e3";
+var mediaContainer = "_1he1v4e1";
+var video = "_1he1v4e2";
 const Image = (_e) => {
   var _f = _e, {
     crossOrigin
@@ -2494,7 +2496,7 @@ const Hero = ({
 }) => {
   const prefersReducedMotion = usePrefersReducedMotion();
   return /* @__PURE__ */ jsxs("div", {
-    className: classNames(container$2, className),
+    className: classNames(container$3, className),
     children: [/* @__PURE__ */ jsx("div", {
       className: mediaContainer,
       children: imageSrc && prefersReducedMotion || imageSrc && !videoSrc ? /* @__PURE__ */ jsx(Image, {
@@ -2524,12 +2526,12 @@ const Hero = ({
     })]
   });
 };
-var designSystem_vanilla$e = "";
-var height = "var(--_1pw2rhd0)";
-var imageBannerContainer = "_1pw2rhd3";
-var imageBannerImage = "_1pw2rhd4";
-var mobileHeight = "var(--_1pw2rhd2)";
-var tabletHeight = "var(--_1pw2rhd1)";
+var designSystem_vanilla$i = "";
+var height = "var(--_1dk6juu0)";
+var imageBannerContainer = "_1dk6juu3";
+var imageBannerImage = "_1dk6juu4";
+var mobileHeight = "var(--_1dk6juu2)";
+var tabletHeight = "var(--_1dk6juu1)";
 function getVarName(variable) {
   var matches = variable.match(/^var\((.*)\)$/);
   if (matches) {
@@ -2607,8 +2609,8 @@ const ImageBanner = ({
     }), children]
   });
 };
-var designSystem_vanilla$d = "";
-var blurredBox = "_1yjoso50";
+var designSystem_vanilla$h = "";
+var blurredBox = "k13pxs0";
 const ImageBannerWithBlurredBox = ({
   src,
   alt,
@@ -2630,9 +2632,9 @@ const ImageBannerWithBlurredBox = ({
     })
   });
 };
-var designSystem_vanilla$c = "";
-var inputField = "b1n67y0";
-var inputFieldError = "b1n67y1";
+var designSystem_vanilla$g = "";
+var inputField = "ojm87y0";
+var inputFieldError = "ojm87y1";
 const InputField = (_g) => {
   var _h = _g, {
     hasError = false
@@ -2643,15 +2645,15 @@ const InputField = (_g) => {
     className: classNames(inputField, hasError && inputFieldError)
   }, inputProps));
 };
-var designSystem_vanilla$b = "";
-var container$1 = "_1dsytcd0";
-var errorText = "_1dsytcd6";
-var icon$1 = "_1dsytcd5";
-var innerContainer$1 = "_1dsytcd1";
-var input = { "default": "_1dsytcd9", withIcon: "_1dsytcdd _1dsytcd9" };
-var inputBorder = { "default": "_1dsytcda", error: "_1dsytcdb" };
-var label$2 = { primary: "_1dsytcd3 _1dsytcd2", error: "_1dsytcd4 _1dsytcd2" };
-var text$1 = { muted: "_1dsytcd7", "default": "_1dsytcd8" };
+var designSystem_vanilla$f = "";
+var container$2 = "o3nugn0";
+var errorText = "o3nugn6";
+var icon$1 = "o3nugn5";
+var innerContainer$2 = "o3nugn1";
+var input$1 = { "default": "o3nugn9", withIcon: "o3nugnd o3nugn9" };
+var inputBorder = { "default": "o3nugna", error: "o3nugnb" };
+var label$3 = { primary: "o3nugn3 o3nugn2", error: "o3nugn4 o3nugn2" };
+var text$1 = { muted: "o3nugn7", "default": "o3nugn8" };
 const InputFieldSmall = (_i) => {
   var _j = _i, {
     icon: icon2,
@@ -2680,19 +2682,19 @@ const InputFieldSmall = (_i) => {
   ]);
   const [characterCount, setCharacterCount] = useState(0);
   return /* @__PURE__ */ jsxs("div", {
-    className: container$1,
+    className: container$2,
     children: [label2 && /* @__PURE__ */ jsx("label", {
-      className: characterCount === 0 && (errorMessage2 || showErrorOutline) ? label$2["error"] : label$2["primary"],
+      className: characterCount === 0 && (errorMessage2 || showErrorOutline) ? label$3["error"] : label$3["primary"],
       htmlFor: inputId,
       children: label2
     }), /* @__PURE__ */ jsxs("div", {
-      className: innerContainer$1,
+      className: innerContainer$2,
       children: [icon2 && /* @__PURE__ */ jsx("div", {
         className: icon$1,
         children: icon2
       }), /* @__PURE__ */ jsx("input", __spreadValues({
         "data-testid": dataTestId,
-        className: classNames(className, icon2 ? input["withIcon"] : input["default"], characterCount === 0 && (errorMessage2 || showErrorOutline) ? inputBorder["error"] : inputBorder["default"], text$1[textType]),
+        className: classNames(className, icon2 ? input$1["withIcon"] : input$1["default"], characterCount === 0 && (errorMessage2 || showErrorOutline) ? inputBorder["error"] : inputBorder["default"], text$1[textType]),
         id: inputId,
         maxLength,
         autoComplete,
@@ -2708,17 +2710,17 @@ const InputFieldSmall = (_i) => {
     })]
   });
 };
-var designSystem_vanilla$a = "";
-var base = "_1rvail30";
-var icon = "_1rvail35";
-var variant = { grey: "_1rvail31", green: "_1rvail32", yellow: "_1rvail33", red: "_1rvail34" };
+var designSystem_vanilla$e = "";
+var base = "_1t3cxaa0";
+var icon = "_1t3cxaa5";
+var variant = { grey: "_1t3cxaa1", green: "_1t3cxaa2", yellow: "_1t3cxaa3", red: "_1t3cxaa4" };
 function Label({
   children,
   dataTestId,
   showLock = false,
   variant: variant$1 = "grey"
 }) {
-  return /* @__PURE__ */ jsxs("div", {
+  return /* @__PURE__ */ jsxs("span", {
     className: classNames(base, variant[variant$1]),
     "data-testid": dataTestId,
     children: [showLock && /* @__PURE__ */ jsx(LockIcon, {
@@ -2729,16 +2731,16 @@ function Label({
     }), children]
   });
 }
-var designSystem_vanilla$9 = "";
-var container = "s0vr8l0";
-var inputContainer = "s0vr8l1";
-var inputVariant = { "default": "s0vr8l3 s0vr8l2", error: "s0vr8l4 s0vr8l2" };
-var messageVariant = { error: "s0vr8lg s0vr8lf", info: "s0vr8lh s0vr8lf" };
-var placeholderActiveFocusedVariant = { "default": "s0vr8lb", error: "s0vr8lc" };
-var placeholderActiveVariant = { "default": "s0vr8l9 s0vr8l8", error: "s0vr8la s0vr8l8" };
-var placeholderVariant = { "default": "s0vr8l5", error: "s0vr8l7 s0vr8l5" };
-var showPasswordIcon = "s0vr8le";
-var showPasswordIconContainer = "s0vr8ld";
+var designSystem_vanilla$d = "";
+var container$1 = "_1gvtr0y0";
+var inputContainer = "_1gvtr0y1";
+var inputVariant = { "default": "_1gvtr0y3 _1gvtr0y2", error: "_1gvtr0y4 _1gvtr0y2" };
+var messageVariant = { error: "_1gvtr0yg _1gvtr0yf", info: "_1gvtr0yh _1gvtr0yf" };
+var placeholderActiveFocusedVariant = { "default": "_1gvtr0yb", error: "_1gvtr0yc" };
+var placeholderActiveVariant = { "default": "_1gvtr0y9 _1gvtr0y8", error: "_1gvtr0ya _1gvtr0y8" };
+var placeholderVariant = { "default": "_1gvtr0y5", error: "_1gvtr0y7 _1gvtr0y5" };
+var showPasswordIcon = "_1gvtr0ye";
+var showPasswordIconContainer = "_1gvtr0yd";
 var dist = {};
 var Linkify$1 = {};
 var defaultComponentDecorator = {};
@@ -4644,7 +4646,7 @@ defaultTextDecorator.default = function(text2) {
 Object.defineProperty(Linkify$1, "__esModule", {
   value: true
 });
-var _createClass = function() {
+var _createClass$2 = function() {
   function defineProperties(target, props) {
     for (var i = 0; i < props.length; i++) {
       var descriptor = props[i];
@@ -4691,18 +4693,18 @@ function _interopRequireWildcard(obj) {
     return newObj;
   }
 }
-function _classCallCheck(instance, Constructor) {
+function _classCallCheck$2(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
 }
-function _possibleConstructorReturn(self, call) {
+function _possibleConstructorReturn$2(self, call) {
   if (!self) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
   return call && (typeof call === "object" || typeof call === "function") ? call : self;
 }
-function _inherits(subClass, superClass) {
+function _inherits$2(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
     throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
   }
@@ -4711,12 +4713,12 @@ function _inherits(subClass, superClass) {
     Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 var Linkify = function(_React$Component) {
-  _inherits(Linkify2, _React$Component);
+  _inherits$2(Linkify2, _React$Component);
   function Linkify2() {
-    _classCallCheck(this, Linkify2);
-    return _possibleConstructorReturn(this, (Linkify2.__proto__ || Object.getPrototypeOf(Linkify2)).apply(this, arguments));
+    _classCallCheck$2(this, Linkify2);
+    return _possibleConstructorReturn$2(this, (Linkify2.__proto__ || Object.getPrototypeOf(Linkify2)).apply(this, arguments));
   }
-  _createClass(Linkify2, [{
+  _createClass$2(Linkify2, [{
     key: "parseString",
     value: function parseString(string) {
       var _this2 = this;
@@ -4834,7 +4836,7 @@ const LargeInput = ({
   };
   const inputId = id ? id : placeholder.replace(" ", "-");
   return /* @__PURE__ */ jsxs("div", {
-    className: classNames(container, className),
+    className: classNames(container$1, className),
     style,
     children: [/* @__PURE__ */ jsx("label", {
       className: classNames(placeholderVariant[variant2], (isFocused || value) && placeholderActiveVariant[variant2], isFocused && placeholderActiveFocusedVariant[variant2]),
@@ -4884,9 +4886,9 @@ const LargeInput = ({
     })]
   });
 };
-var designSystem_vanilla$8 = "";
-var baseLink = "_3mqqul0";
-var linkVariant = { underline: "_3mqqul1", noUnderline: "_3mqqul2" };
+var designSystem_vanilla$c = "";
+var baseLink = "zfg0f80";
+var linkVariant = { underline: "zfg0f81", noUnderline: "zfg0f82" };
 function UnstyledLink({
   url,
   external = false,
@@ -4926,6 +4928,73 @@ function Link({
     url,
     accessibilityLabel,
     children
+  });
+}
+var designSystem_vanilla$b = "";
+var body = "_1ve3w4z5";
+var container = "_1ve3w4z0";
+var dropdown$1 = "_1ve3w4z9";
+var innerContainer$1 = "_1ve3w4z1";
+var labelAndText = "_1ve3w4z2";
+var media = "_1ve3w4z6";
+var reflectionsTextContainer = "_1ve3w4z7";
+var richTextContainer = "_1ve3w4z8";
+var title$1 = "_1ve3w4z3";
+var titleAndLabelRow = "_1ve3w4z4";
+const LOG_CARD_TEXT = "log-card-text";
+const LOG_CARD_LABEL = "log-card-label";
+const LOG_CARD = "log-card";
+const LOG_CARD_REFLECTIONS = "log-card-reflections";
+const LOG_MEDIA = "log-card-media";
+const LOG_DROPDOWN = "log-card-dropdown";
+function LogCard({
+  actionDropdownElement,
+  labelText,
+  labelVariant = "green",
+  mediaElement,
+  reflectionsElement,
+  text: text2,
+  title: title2
+}) {
+  return /* @__PURE__ */ jsxs("article", {
+    className: container,
+    "data-testid": LOG_CARD,
+    children: [/* @__PURE__ */ jsxs("div", {
+      className: innerContainer$1,
+      children: [/* @__PURE__ */ jsxs("div", {
+        className: labelAndText,
+        children: [/* @__PURE__ */ jsxs("div", {
+          className: titleAndLabelRow,
+          children: [/* @__PURE__ */ jsx("span", {
+            className: title$1,
+            children: title2
+          }), labelText && /* @__PURE__ */ jsx(Label, {
+            variant: labelVariant,
+            dataTestId: LOG_CARD_LABEL,
+            children: labelText
+          }), actionDropdownElement && /* @__PURE__ */ jsx("div", {
+            className: dropdown$1,
+            "data-testid": LOG_DROPDOWN,
+            children: actionDropdownElement
+          })]
+        }), /* @__PURE__ */ jsx("div", {
+          className: body,
+          "data-testid": LOG_CARD_TEXT,
+          children: text2
+        })]
+      }), mediaElement && /* @__PURE__ */ jsx("span", {
+        className: media,
+        "data-testid": LOG_MEDIA,
+        children: mediaElement
+      })]
+    }), reflectionsElement && /* @__PURE__ */ jsx("div", {
+      "data-testid": LOG_CARD_REFLECTIONS,
+      className: reflectionsTextContainer,
+      children: /* @__PURE__ */ jsx("div", {
+        className: richTextContainer,
+        children: reflectionsElement
+      })
+    })]
   });
 }
 const LogoLightMode = (props) => {
@@ -5012,35 +5081,95 @@ const Logo = ({
     return /* @__PURE__ */ jsx(LogoLightMode, __spreadValues({}, sizeValues[size]));
   }
 };
-var designSystem_vanilla$7 = "";
-var baseRadioButton = "_2cww4l0";
-var radioButtonSelected = "_2cww4l3";
-var radioButtonVariant = { small: "_2cww4l1", medium: "_2cww4l2" };
-var radioButtonWhiteCircle = "_2cww4l4";
+var designSystem_vanilla$a = "";
+var baseRadioButton = "vydgev0";
+var radioButtonSelected = "vydgev3";
+var radioButtonVariant = { small: "vydgev1", medium: "vydgev2" };
+var radioButtonWhiteCircle = "vydgev4";
 const RadioButton = ({
+  children,
   className,
   onClick,
   isSelected,
   variant: variant2 = "small"
 }) => {
-  return /* @__PURE__ */ jsx("div", {
+  return /* @__PURE__ */ jsxs("span", {
     className: classNames(baseRadioButton, radioButtonVariant[variant2], isSelected && radioButtonSelected, className),
     onClick,
-    children: /* @__PURE__ */ jsx("div", {
+    children: [/* @__PURE__ */ jsx("span", {
       className: radioButtonWhiteCircle
-    })
+    }), children]
   });
 };
-var designSystem_vanilla$6 = "";
-var boundingContainer = "_1dmcc2e1";
-var hiddenRender = "_1dmcc2e0";
-var designSystem_vanilla$5 = "";
-var tag = "_36msrc0";
+var designSystem_vanilla$9 = "";
+var input = "_18okja20";
+var label$2 = "_18okja22";
+var radioItem = "_18okja21";
+function RadioItem({
+  children,
+  value,
+  isSelected,
+  onChange,
+  sizeVariant = "medium"
+}) {
+  function handleChange(currentTarget) {
+    onChange && onChange(currentTarget);
+  }
+  return /* @__PURE__ */ jsxs("label", {
+    className: radioItem,
+    htmlFor: value,
+    children: [/* @__PURE__ */ jsx(RadioButton, {
+      isSelected,
+      variant: sizeVariant,
+      children: /* @__PURE__ */ jsx("input", {
+        type: "radio",
+        name: value,
+        value,
+        id: value,
+        className: input,
+        onChange: handleChange,
+        checked: isSelected
+      })
+    }), /* @__PURE__ */ jsx("span", {
+      className: label$2,
+      children
+    })]
+  });
+}
+function RadioGroup({
+  items,
+  className
+}) {
+  const [value, setValue] = useState();
+  const handleChange = useCallback((event) => {
+    setValue(event.target.value);
+  }, []);
+  return /* @__PURE__ */ jsx("div", {
+    className,
+    "data-testid": "design-system-radio-group",
+    children: items.map((item, i) => {
+      return /* @__PURE__ */ jsx(RadioItem, {
+        onChange: handleChange,
+        isSelected: item.value === value,
+        value: item.value,
+        children: item.label
+      }, i);
+    })
+  });
+}
+var designSystem_vanilla$8 = "";
+var boundingContainer = "_1y1hxgq1";
+var hiddenRender = "_1y1hxgq0";
+var tag$1 = "_1y1hxgq2";
+var designSystem_vanilla$7 = "";
+var tag = { selected: "a2fael1 a2fael0", "default": "a2fael2 a2fael0" };
 const Tag = forwardRef(({
-  children
+  children,
+  className,
+  variant: variant2 = "default"
 }, ref) => /* @__PURE__ */ jsx("div", {
   ref,
-  className: tag,
+  className: classNames(className, tag[variant2]),
   children
 }));
 Tag.displayName = "Tag";
@@ -5106,14 +5235,15 @@ const RowLimitTags = ({
       ref: boundingContainerRef,
       className: boundingContainer,
       children: displayedTags == null ? void 0 : displayedTags.map((tag2, idx) => /* @__PURE__ */ jsx(Tag, {
+        className: tag$1,
         children: tag2
       }, idx))
     })]
   });
 };
-var designSystem_vanilla$4 = "";
-var disclaimer = "_1izhgxd0";
-var link = "_1izhgxd1";
+var designSystem_vanilla$6 = "";
+var disclaimer = "_1aphoi0";
+var link = "_1aphoi1";
 const ACCESSIBILITY_LABELS = {
   TERMS: "Studio Terms",
   PRIVACY: "Studio Privacy Policy"
@@ -5136,17 +5266,18 @@ const TermsAndPrivacyDisclaimer = ({
     children: "Privacy Policy"
   })]
 });
-var designSystem_vanilla$3 = "";
-var characterLimit = { primary: "sb7krr8 sb7krr7", error: "sb7krr9 sb7krr7" };
-var errorContainer = "sb7krr1";
-var errorMessage = "sb7krr2";
-var label$1 = "sb7krr4";
-var multiTextContainer = "sb7krr5";
-var singleTextContainer = "sb7krr6";
-var textArea = "sb7krr0";
-var textAreaContainer = "sb7krr3";
+var designSystem_vanilla$5 = "";
+var characterLimit = { primary: "_17k8kwh8 _17k8kwh7", error: "_17k8kwh9 _17k8kwh7" };
+var errorContainer = "_17k8kwh1";
+var errorMessage = "_17k8kwh2";
+var label$1 = "_17k8kwh4";
+var multiTextContainer = "_17k8kwh5";
+var singleTextContainer = "_17k8kwh6";
+var textArea = "_17k8kwh0";
+var textAreaContainer = "_17k8kwh3";
 const TextArea = (_k) => {
   var _l = _k, {
+    value,
     className,
     label: label2,
     rows,
@@ -5154,6 +5285,7 @@ const TextArea = (_k) => {
     characterLimit: characterLimit$1,
     onChange
   } = _l, cleanProps = __objRest(_l, [
+    "value",
     "className",
     "label",
     "rows",
@@ -5161,13 +5293,14 @@ const TextArea = (_k) => {
     "characterLimit",
     "onChange"
   ]);
-  const [characterCount, setCharacterCount] = useState(0);
+  const [characterCount, setCharacterCount] = useState(value.length);
   return /* @__PURE__ */ jsxs("div", {
     className: textAreaContainer,
     children: [label2 && /* @__PURE__ */ jsx("label", {
       className: label$1,
       children: label2
     }), /* @__PURE__ */ jsx("textarea", __spreadValues({
+      value,
       className: classNames(textArea, errorMessage$1 && characterCount === 0 && errorContainer, className && className),
       rows: rows || 3,
       onChange: (e) => {
@@ -5186,10 +5319,10 @@ const TextArea = (_k) => {
     })]
   });
 };
-var designSystem_vanilla$2 = "";
-var backgroundHighlight = "k8ar4p2";
-var inheritedText = "k8ar4p1";
-var textColorHighlight = "k8ar4p3";
+var designSystem_vanilla$4 = "";
+var backgroundHighlight = "_1e7e6l52";
+var inheritedText = "_1e7e6l51";
+var textColorHighlight = "_1e7e6l53";
 /*! @license DOMPurify 2.3.6 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/2.3.6/LICENSE */
 function _toConsumableArray(arr) {
   if (Array.isArray(arr)) {
@@ -5675,14 +5808,14 @@ function createDOMPurify() {
       } catch (_) {
       }
     }
-    var body = doc.body || doc.documentElement;
+    var body2 = doc.body || doc.documentElement;
     if (dirty && leadingWhitespace) {
-      body.insertBefore(document2.createTextNode(leadingWhitespace), body.childNodes[0] || null);
+      body2.insertBefore(document2.createTextNode(leadingWhitespace), body2.childNodes[0] || null);
     }
     if (NAMESPACE === HTML_NAMESPACE) {
       return getElementsByTagName.call(doc, WHOLE_DOCUMENT ? "html" : "body")[0];
     }
-    return WHOLE_DOCUMENT ? doc.documentElement : body;
+    return WHOLE_DOCUMENT ? doc.documentElement : body2;
   };
   var _createIterator = function _createIterator2(root) {
     return createNodeIterator.call(root.ownerDocument || root, root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_TEXT, null, false);
@@ -5873,7 +6006,7 @@ function createDOMPurify() {
     _executeHook("afterSanitizeShadowDOM", fragment, null);
   };
   DOMPurify.sanitize = function(dirty, cfg) {
-    var body = void 0;
+    var body2 = void 0;
     var importedNode = void 0;
     var currentNode = void 0;
     var oldNode = void 0;
@@ -5918,28 +6051,28 @@ function createDOMPurify() {
         }
       }
     } else if (dirty instanceof Node) {
-      body = _initDocument("<!---->");
-      importedNode = body.ownerDocument.importNode(dirty, true);
+      body2 = _initDocument("<!---->");
+      importedNode = body2.ownerDocument.importNode(dirty, true);
       if (importedNode.nodeType === 1 && importedNode.nodeName === "BODY") {
-        body = importedNode;
+        body2 = importedNode;
       } else if (importedNode.nodeName === "HTML") {
-        body = importedNode;
+        body2 = importedNode;
       } else {
-        body.appendChild(importedNode);
+        body2.appendChild(importedNode);
       }
     } else {
       if (!RETURN_DOM && !SAFE_FOR_TEMPLATES && !WHOLE_DOCUMENT && dirty.indexOf("<") === -1) {
         return trustedTypesPolicy && RETURN_TRUSTED_TYPE ? trustedTypesPolicy.createHTML(dirty) : dirty;
       }
-      body = _initDocument(dirty);
-      if (!body) {
+      body2 = _initDocument(dirty);
+      if (!body2) {
         return RETURN_DOM ? null : RETURN_TRUSTED_TYPE ? emptyHTML : "";
       }
     }
-    if (body && FORCE_BODY) {
-      _forceRemove(body.firstChild);
+    if (body2 && FORCE_BODY) {
+      _forceRemove(body2.firstChild);
     }
-    var nodeIterator = _createIterator(IN_PLACE ? dirty : body);
+    var nodeIterator = _createIterator(IN_PLACE ? dirty : body2);
     while (currentNode = nodeIterator.nextNode()) {
       if (currentNode.nodeType === 3 && currentNode === oldNode) {
         continue;
@@ -5959,21 +6092,21 @@ function createDOMPurify() {
     }
     if (RETURN_DOM) {
       if (RETURN_DOM_FRAGMENT) {
-        returnNode = createDocumentFragment.call(body.ownerDocument);
-        while (body.firstChild) {
-          returnNode.appendChild(body.firstChild);
+        returnNode = createDocumentFragment.call(body2.ownerDocument);
+        while (body2.firstChild) {
+          returnNode.appendChild(body2.firstChild);
         }
       } else {
-        returnNode = body;
+        returnNode = body2;
       }
       if (ALLOWED_ATTR.shadowroot) {
         returnNode = importNode.call(originalDocument, returnNode, true);
       }
       return returnNode;
     }
-    var serializedHTML = WHOLE_DOCUMENT ? body.outerHTML : body.innerHTML;
-    if (WHOLE_DOCUMENT && ALLOWED_TAGS["!doctype"] && body.ownerDocument && body.ownerDocument.doctype && body.ownerDocument.doctype.name && regExpTest(DOCTYPE_NAME, body.ownerDocument.doctype.name)) {
-      serializedHTML = "<!DOCTYPE " + body.ownerDocument.doctype.name + ">\n" + serializedHTML;
+    var serializedHTML = WHOLE_DOCUMENT ? body2.outerHTML : body2.innerHTML;
+    if (WHOLE_DOCUMENT && ALLOWED_TAGS["!doctype"] && body2.ownerDocument && body2.ownerDocument.doctype && body2.ownerDocument.doctype.name && regExpTest(DOCTYPE_NAME, body2.ownerDocument.doctype.name)) {
+      serializedHTML = "<!DOCTYPE " + body2.ownerDocument.doctype.name + ">\n" + serializedHTML;
     }
     if (SAFE_FOR_TEMPLATES) {
       serializedHTML = stringReplace(serializedHTML, MUSTACHE_EXPR$$1, " ");
@@ -6051,22 +6184,22 @@ const TextWithHighlights = ({
     })
   });
 };
-var designSystem_vanilla$1 = "";
-var attentionContainer = "v4d9mbb";
-var contentContainer = "v4d9mb2";
-var description = "v4d9mba";
-var dotSeparator = "v4d9mbd";
-var innerContainer = "v4d9mb1";
-var label = "v4d9mb7";
-var labelContainer = "v4d9mb6";
-var mediaSlot = "v4d9mb3";
-var outerContainer = "v4d9mb0";
-var reactionIcon = "v4d9mbc";
-var reactionsCommentsContainer = "v4d9mbe";
-var title = "v4d9mb9";
-var titleDescriptionContainer = "v4d9mb8";
-var titleLabelContainer = "v4d9mb4";
-var type = "v4d9mb5";
+var designSystem_vanilla$3 = "";
+var attentionContainer = "_1yg016tb";
+var contentContainer = "_1yg016t2";
+var description = "_1yg016ta";
+var dotSeparator = "_1yg016td";
+var innerContainer = "_1yg016t1";
+var label = "_1yg016t7";
+var labelContainer = "_1yg016t6";
+var mediaSlot = "_1yg016t3";
+var outerContainer = "_1yg016t0";
+var reactionIcon = "_1yg016tc";
+var reactionsCommentsContainer = "_1yg016te";
+var title = "_1yg016t9";
+var titleDescriptionContainer = "_1yg016t8";
+var titleLabelContainer = "_1yg016t4";
+var type = "_1yg016t5";
 var Breakpoint = { Mobile: "400px", Small: "600px", Tablet: "834px", Desktop: "1120px", Large: "1200px" };
 const makeCustomBreakpoint = (breakpoint) => (styles) => ({
   [`(max-width: ${breakpoint})`]: __spreadValues({}, styles)
@@ -6084,7 +6217,7 @@ const TimelineProjectCard = ({
   project: {
     type: type$1,
     label: label$12,
-    title: title$1,
+    title: title$12,
     description: description$1
   },
   attention: {
@@ -6121,7 +6254,7 @@ const TimelineProjectCard = ({
           className: titleDescriptionContainer,
           children: [/* @__PURE__ */ jsx("div", {
             className: title,
-            children: title$1
+            children: title$12
           }), /* @__PURE__ */ jsx("div", {
             className: description,
             children: description$1
@@ -6156,8 +6289,8 @@ const TimelineProjectCard = ({
     })
   });
 };
-var designSystem_vanilla = "";
-var selectionCard = "_1fz6wtl0";
+var designSystem_vanilla$2 = "";
+var selectionCard = "_1umx9wy0";
 const SelectionCard = ({
   className,
   children
@@ -6283,6 +6416,8 @@ const ClickOuterWrapper = (props) => {
     children: props.children
   }));
 };
+var designSystem_vanilla$1 = "";
+var dropdown = "wmn8kr1";
 const useEventListener = ({
   type: type2,
   handler,
@@ -6322,6 +6457,37 @@ const useElementPosition = (element) => {
   useEventListener({ type: "resize", handler: updateRefPosition });
   useEventListener({ type: "scroll", handler: updateRefPosition, useCapture: true });
   return position;
+};
+const ThreeDotsHorizontalGray = ({
+  width = DEFAULT_ICON.WIDTH,
+  height: height2 = DEFAULT_ICON.HEIGHT
+}) => {
+  return /* @__PURE__ */ jsxs("svg", {
+    width,
+    height: height2,
+    viewBox: "0 0 14 12",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    children: [/* @__PURE__ */ jsx("circle", {
+      cx: 1.75,
+      cy: 6,
+      r: 1.5,
+      transform: "rotate(-90 1.75 6)",
+      fill: "#757575"
+    }), /* @__PURE__ */ jsx("circle", {
+      cx: 7,
+      cy: 6,
+      r: 1.5,
+      transform: "rotate(-90 7 6)",
+      fill: "#757575"
+    }), /* @__PURE__ */ jsx("circle", {
+      cx: 12.25,
+      cy: 6,
+      r: 1.5,
+      transform: "rotate(-90 12.25 6)",
+      fill: "#757575"
+    })]
+  });
 };
 const useIntersectionObserver = (onObservation, element, options) => {
   const { threshold, root, rootMargin } = options || {};
@@ -6394,4 +6560,292 @@ const useInfiniteScroll = (onVisible, isActive) => {
   }, []);
   return infiniteScrollRef;
 };
-export { ACCESSIBILITY_LABELS, AboutIcon, AnimatedSpinner, AtMentionsIcon, AttachFileIcon, BackIcon, BellNoNotificationIcon, BellNotificationIcon, BlurredBox, BoldIcon, BreadCrumbs, Breakpoint$1 as Breakpoint, BulletListIcon, Button, CameraIcon, CircleCheckIcon, ClapIcon, ClickOuterWrapper, ClickableContentWrapper, CloseIcon, CodeIcon, CollapseLessonIcon, CollapseListIcon, CompleteCheckIcon, DiamondIcon, DiscussionIcon, DownloadIcon, EmojiPickerIcon, ExpandCardIcon, ExpandIcon, ExpandLessonIcon, ExpandListIcon, EyeClosedIcon, EyeOpenIcon, FacebookIcon, FlagIcon, FlipCameraIcon, FontStyle, FontWeight, Footer, FullscreenExitIcon, FullscreenIcon, Header, HeartEmptyIcon, HeartFilledIcon, Hero, Image, ImageBanner, ImageBannerWithBlurredBox, ImageIcon, ImagesIcon, InputField, InputFieldSmall, InstagramIcon, ItalicsIcon, Label, LargeInput, LightBulbIcon, Link, LinkIcon, LockIcon, Logo, LoveIcon, MessagingIcon, MoreDropdownIcon, MoreIcon, OneHundredIcon, OrderedListIcon, PeersIcon, PitchTrainerIcon, PlusIcon, PostsIcon, QuestionIcon, RadioButton, RecordAudioIcon, RecordVideoIcon, ReplyIcon, RowLimitTags, SHOW_PASSWORD_ICON_LABEL, SaveIcon, SelectionCard, ShareIcon, SidebarIcon, SoundcloudIcon, StudioIcon, TEST_LABELS, Tag, TermsAndPrivacyDisclaimer, TextArea, TextWithHighlights, ThemeContext, ThemeProvider, ThemeType, ThemeWrapper, TimelineProjectCard, TwitterIcon, UnderlineIcon, UnstyledLink, UploadAudioIcon, UploadVideoIcon, WarningIcon, WowIcon, YoutubeIcon, atDesktopBreakpoint, atLargeBreakpoint, atMobileBreakpoint, atSmallBreakpoint, atTabletBreakpoint, darkThemeClass, darkThemeRawValues, lightThemeRawValues, makeCustomBreakpoint, pluralize, theme, themeClass, useClickOuter, useClickWhiteSpace, useElementPosition, useEventListener, useInfiniteScroll, useIsOnScreen, useOnScreenRatio, usePrefersReducedMotion, useTheme };
+var propTypes = { exports: {} };
+var ReactPropTypesSecret$1 = "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED";
+var ReactPropTypesSecret_1 = ReactPropTypesSecret$1;
+var ReactPropTypesSecret = ReactPropTypesSecret_1;
+function emptyFunction() {
+}
+function emptyFunctionWithReset() {
+}
+emptyFunctionWithReset.resetWarningCache = emptyFunction;
+var factoryWithThrowingShims = function() {
+  function shim(props, propName, componentName, location, propFullName, secret) {
+    if (secret === ReactPropTypesSecret) {
+      return;
+    }
+    var err = new Error("Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types");
+    err.name = "Invariant Violation";
+    throw err;
+  }
+  shim.isRequired = shim;
+  function getShim() {
+    return shim;
+  }
+  var ReactPropTypes = {
+    array: shim,
+    bigint: shim,
+    bool: shim,
+    func: shim,
+    number: shim,
+    object: shim,
+    string: shim,
+    symbol: shim,
+    any: shim,
+    arrayOf: getShim,
+    element: shim,
+    elementType: shim,
+    instanceOf: getShim,
+    node: shim,
+    objectOf: getShim,
+    oneOf: getShim,
+    oneOfType: getShim,
+    shape: getShim,
+    exact: getShim,
+    checkPropTypes: emptyFunctionWithReset,
+    resetWarningCache: emptyFunction
+  };
+  ReactPropTypes.PropTypes = ReactPropTypes;
+  return ReactPropTypes;
+};
+{
+  propTypes.exports = factoryWithThrowingShims();
+}
+var PropTypes = propTypes.exports;
+var canUseDOM = !!(typeof window !== "undefined" && window.document && window.document.createElement);
+var _createClass$1 = function() {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor)
+        descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+  return function(Constructor, protoProps, staticProps) {
+    if (protoProps)
+      defineProperties(Constructor.prototype, protoProps);
+    if (staticProps)
+      defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+function _classCallCheck$1(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+function _possibleConstructorReturn$1(self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+  return call && (typeof call === "object" || typeof call === "function") ? call : self;
+}
+function _inherits$1(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }
+  subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });
+  if (superClass)
+    Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
+var Portal$3 = function(_React$Component) {
+  _inherits$1(Portal2, _React$Component);
+  function Portal2() {
+    _classCallCheck$1(this, Portal2);
+    return _possibleConstructorReturn$1(this, (Portal2.__proto__ || Object.getPrototypeOf(Portal2)).apply(this, arguments));
+  }
+  _createClass$1(Portal2, [{
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      if (this.defaultNode) {
+        document.body.removeChild(this.defaultNode);
+      }
+      this.defaultNode = null;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (!canUseDOM) {
+        return null;
+      }
+      if (!this.props.node && !this.defaultNode) {
+        this.defaultNode = document.createElement("div");
+        document.body.appendChild(this.defaultNode);
+      }
+      return ReactDOM.createPortal(this.props.children, this.props.node || this.defaultNode);
+    }
+  }]);
+  return Portal2;
+}(React$2.Component);
+Portal$3.propTypes = {
+  children: PropTypes.node.isRequired,
+  node: PropTypes.any
+};
+var Portalv4 = Portal$3;
+var _createClass = function() {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor)
+        descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+  return function(Constructor, protoProps, staticProps) {
+    if (protoProps)
+      defineProperties(Constructor.prototype, protoProps);
+    if (staticProps)
+      defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+function _possibleConstructorReturn(self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+  return call && (typeof call === "object" || typeof call === "function") ? call : self;
+}
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }
+  subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });
+  if (superClass)
+    Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
+var Portal$2 = function(_React$Component) {
+  _inherits(Portal2, _React$Component);
+  function Portal2() {
+    _classCallCheck(this, Portal2);
+    return _possibleConstructorReturn(this, (Portal2.__proto__ || Object.getPrototypeOf(Portal2)).apply(this, arguments));
+  }
+  _createClass(Portal2, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.renderPortal();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(props) {
+      this.renderPortal();
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      ReactDOM.unmountComponentAtNode(this.defaultNode || this.props.node);
+      if (this.defaultNode) {
+        document.body.removeChild(this.defaultNode);
+      }
+      this.defaultNode = null;
+      this.portal = null;
+    }
+  }, {
+    key: "renderPortal",
+    value: function renderPortal(props) {
+      if (!this.props.node && !this.defaultNode) {
+        this.defaultNode = document.createElement("div");
+        document.body.appendChild(this.defaultNode);
+      }
+      var children = this.props.children;
+      if (typeof this.props.children.type === "function") {
+        children = React$2.cloneElement(this.props.children);
+      }
+      this.portal = ReactDOM.unstable_renderSubtreeIntoContainer(this, children, this.props.node || this.defaultNode);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return null;
+    }
+  }]);
+  return Portal2;
+}(React$2.Component);
+var LegacyPortal = Portal$2;
+Portal$2.propTypes = {
+  children: PropTypes.node.isRequired,
+  node: PropTypes.any
+};
+var Portal = void 0;
+if (ReactDOM.createPortal) {
+  Portal = Portalv4;
+} else {
+  Portal = LegacyPortal;
+}
+var Portal$1 = Portal;
+const ACTION_MENU_OPEN_MENU_ELEMENT_LABEL = "action-menu-open-menu-element-label";
+const ACTION_MENU_OPEN_LABEL = "action-menu-open-label";
+const ActionMenu = ({
+  children,
+  openMenuElement,
+  defaultOpen
+}) => {
+  var _a;
+  const openButtonRef = useRef(null);
+  const position = useElementPosition(openButtonRef);
+  const [isMenuOpen, setIsMenuOpen] = useState(defaultOpen);
+  const isOnScreen = useIsOnScreen({
+    element: openButtonRef.current
+  });
+  useEffect(() => {
+    if (!isOnScreen) {
+      setIsMenuOpen(false);
+    }
+  }, [isOnScreen]);
+  const openMenuDisplayElement = openMenuElement || /* @__PURE__ */ jsx(ThreeDotsHorizontalGray, {
+    width: 12,
+    height: 14
+  });
+  const refElementHeight = (_a = openButtonRef.current) == null ? void 0 : _a.getBoundingClientRect().height;
+  return /* @__PURE__ */ jsxs(Fragment, {
+    children: [/* @__PURE__ */ jsx(ClickableContentWrapper, {
+      onClick: () => setIsMenuOpen(!isMenuOpen),
+      dataTestId: ACTION_MENU_OPEN_MENU_ELEMENT_LABEL,
+      children: /* @__PURE__ */ jsx("span", {
+        ref: openButtonRef,
+        children: openMenuDisplayElement
+      })
+    }), isMenuOpen && /* @__PURE__ */ jsx(Portal$1, {
+      children: /* @__PURE__ */ jsx(ThemeProvider, {
+        children: /* @__PURE__ */ jsx(ClickOuterWrapper, {
+          isOpen: true,
+          onOutsideClick: () => setIsMenuOpen(false),
+          exceptions: [openButtonRef],
+          children: /* @__PURE__ */ jsx("div", {
+            className: dropdown,
+            style: {
+              position: "fixed",
+              top: position.y + (refElementHeight || 0),
+              left: position.x
+            },
+            onClick: () => setIsMenuOpen(false),
+            "data-testid": ACTION_MENU_OPEN_LABEL,
+            children
+          })
+        })
+      })
+    })]
+  });
+};
+var designSystem_vanilla = "";
+var option = "_1grki400";
+const Option = ({
+  children,
+  onClick,
+  dataTestId
+}) => /* @__PURE__ */ jsx(ClickableContentWrapper, {
+  className: option,
+  onClick,
+  dataTestId,
+  children
+});
+export { ACCESSIBILITY_LABELS, ACTION_MENU_OPEN_LABEL, ACTION_MENU_OPEN_MENU_ELEMENT_LABEL, AboutIcon, ActionMenu, AnimatedSpinner, AtMentionsIcon, AttachFileIcon, BackIcon, BellNoNotificationIcon, BellNotificationIcon, BlurredBox, BoldIcon, BreadCrumbs, Breakpoint$1 as Breakpoint, BulletListIcon, Button, CameraIcon, CircleCheckIcon, ClapIcon, ClickOuterWrapper, ClickableContentWrapper, CloseIcon, CodeIcon, CollapseLessonIcon, CollapseListIcon, CompleteCheckIcon, DiamondIcon, DiscussionIcon, DownloadIcon, EmojiPickerIcon, ExpandCardIcon, ExpandIcon, ExpandLessonIcon, ExpandListIcon, EyeClosedIcon, EyeOpenIcon, FacebookIcon, FlagIcon, FlipCameraIcon, FontStyle, FontWeight, Footer, FullscreenExitIcon, FullscreenIcon, Header, HeartEmptyIcon, HeartFilledIcon, Hero, Image, ImageBanner, ImageBannerWithBlurredBox, ImageIcon, ImagesIcon, InputField, InputFieldSmall, InstagramIcon, ItalicsIcon, LOG_CARD, LOG_CARD_LABEL, LOG_CARD_REFLECTIONS, LOG_CARD_TEXT, LOG_DROPDOWN, LOG_MEDIA, Label, LargeInput, LightBulbIcon, Link, LinkIcon, LockIcon, LogCard, Logo, LoveIcon, MessagingIcon, MoreDropdownIcon, MoreIcon, OneHundredIcon, Option, OrderedListIcon, PeersIcon, PitchTrainerIcon, PlusIcon, PostsIcon, QuestionIcon, RadioButton, RadioGroup, RadioItem, RecordAudioIcon, RecordVideoIcon, ReplyIcon, RowLimitTags, SHOW_PASSWORD_ICON_LABEL, SaveIcon, SelectionCard, ShareIcon, SidebarIcon, SoundcloudIcon, StudioIcon, TEST_LABELS, Tag, TermsAndPrivacyDisclaimer, TextArea, TextWithHighlights, ThemeContext, ThemeProvider, ThemeType, ThemeWrapper, TimelineProjectCard, TwitterIcon, UnderlineIcon, UnstyledLink, UploadAudioIcon, UploadVideoIcon, WarningIcon, WowIcon, YoutubeIcon, atDesktopBreakpoint, atLargeBreakpoint, atMobileBreakpoint, atSmallBreakpoint, atTabletBreakpoint, darkThemeClass, darkThemeRawValues, lightThemeRawValues, makeCustomBreakpoint, pluralize, theme, themeClass, useClickOuter, useClickWhiteSpace, useElementPosition, useEventListener, useInfiniteScroll, useIsOnScreen, useOnScreenRatio, usePrefersReducedMotion, useTheme };

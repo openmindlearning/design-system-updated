@@ -1,9 +1,11 @@
-import { ReactElement } from "react";
+import React, { ChangeEventHandler, ReactElement } from "react";
 interface Props {
+    children?: React.ReactNode;
     className?: string;
-    onClick?: () => void;
+    onClick?: () => void | ChangeEventHandler;
     isSelected: boolean;
-    variant?: "small" | "medium";
+    variant?: RadioButtonVariant;
 }
-export declare const RadioButton: ({ className, onClick, isSelected, variant, }: Props) => ReactElement;
+export declare const RadioButton: ({ children, className, onClick, isSelected, variant, }: Props) => ReactElement;
+export declare type RadioButtonVariant = "small" | "medium";
 export {};
