@@ -1,7 +1,6 @@
 {
-  "name": "@studio/design-system",
-  "private": true,
-  "version": "1.0.0",
+  "name": "@openmindlearning/design-system",
+  "version": "0.1.2",
   "files": [
     "dist/"
   ],
@@ -70,5 +69,8 @@
     "vite-plugin-dts": "^1.1.1",
     "vite-tsconfig-paths": "3.4.1",
     "vitest": "0.10.2"
+  },
+  "publishConfig": {
+    "@openmindlearning:registry": "https://npm.pkg.github.com"
   }
 }
