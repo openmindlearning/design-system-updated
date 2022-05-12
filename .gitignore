@@ -8,3 +8,12 @@ node_modules/
 coverage
 report.json
 test_results.txt
+
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+yarn-debug.log*
+yarn-error.log*
