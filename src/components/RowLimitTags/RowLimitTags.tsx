@@ -177,7 +177,7 @@ type PaddedTagProps = {
 };
 
 const PaddedTag = React.forwardRef<HTMLDivElement, PaddedTagProps>(
-  ({ children }: Props2, ref): ReactElement => (
+  ({ children }: PaddedTagProps, ref): ReactElement => (
     <Tag className={styles.tag} {...{ ref }}>
       {children}
     </Tag>
