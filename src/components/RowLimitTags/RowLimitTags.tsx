@@ -1,6 +1,13 @@
 import * as styles from "./RowLimitTags.css";
 
-import React, { ReactElement, useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  ReactElement,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { Tag } from "../Tag";
 
 type Props = {
@@ -32,7 +39,7 @@ export const RowLimitTags = ({ tags, rowLimit }: Props): ReactElement => {
       rowLimit: number,
       boundingContainer: HTMLDivElement,
       hiddenTag: HTMLDivElement,
-      tagsCut: string[],
+      tagsCut: string[]
     ): string[] => {
       const rows: string[][] = [];
       let currentRow: string[] = [];
@@ -40,7 +47,10 @@ export const RowLimitTags = ({ tags, rowLimit }: Props): ReactElement => {
 
       const iterTags =
         tagsCut.length > 0
-          ? [...tags.slice(0, tags.length - tagsCut.length), `+ ${tagsCut.length}`]
+          ? [
+              ...tags.slice(0, tags.length - tagsCut.length),
+              `+ ${tagsCut.length}`,
+            ]
           : tags;
 
       for (const [idx, t] of iterTags.entries()) {
@@ -57,7 +67,10 @@ export const RowLimitTags = ({ tags, rowLimit }: Props): ReactElement => {
           (parseInt(computedStyle?.borderLeft || "", 10) || 0) +
           (parseInt(computedStyle?.borderRight || "", 10) || 0);
 
-        if (currentSumWidth + currentTagWidth < boundingContainer.getBoundingClientRect().width) {
+        if (
+          currentSumWidth + currentTagWidth <
+          boundingContainer.getBoundingClientRect().width
+        ) {
           // the current tag can fit on this row
           currentRow.push(t);
           currentSumWidth += currentTagWidth;
@@ -86,7 +99,13 @@ export const RowLimitTags = ({ tags, rowLimit }: Props): ReactElement => {
               excessTags = iterTags.slice(idx);
             }
 
-            return calculateTagDisplay(tags, rowLimit, boundingContainer, hiddenTag, excessTags);
+            return calculateTagDisplay(
+              tags,
+              rowLimit,
+              boundingContainer,
+              hiddenTag,
+              excessTags
+            );
           }
 
           // initialize the current row with the current tag that could not fit
@@ -100,7 +119,7 @@ export const RowLimitTags = ({ tags, rowLimit }: Props): ReactElement => {
       // calculation complete, return the finalized rows
       return rows.flat();
     },
-    [],
+    []
   );
 
   const initCalculation = useCallback(() => {
@@ -112,7 +131,7 @@ export const RowLimitTags = ({ tags, rowLimit }: Props): ReactElement => {
         rowLimit,
         boundingContainerRef.current,
         hiddenTagRef.current,
-        [],
+        []
       );
       setDisplayedTags(finalizedTags);
     }
@@ -133,17 +152,36 @@ export const RowLimitTags = ({ tags, rowLimit }: Props): ReactElement => {
         calculateTagDisplay function to determine how much space a tag, given
         the supplied text and all of its global styles, will take up on the
         screen. By having a concrete (though hidden) tag to render to, our
-        calculateTagDisplay function doesn't have to perform any guesswork. */}
+        calculateTagDisplay function doesn't have to perform any guesswork.
+        */}
       <div className={styles.hiddenRender}>
-        <Tag ref={hiddenTagRef} />
+        <PaddedTag ref={hiddenTagRef} />
       </div>
       <div ref={boundingContainerRef} className={styles.boundingContainer}>
         {displayedTags?.map((tag, idx) => (
-          <Tag className={styles.tag} key={idx}>
-            {tag}
-          </Tag>
+          <PaddedTag key={idx}>{tag}</PaddedTag>
         ))}
       </div>
     </>
   );
 };
+
+/**
+ * The main reason for adding a PaddedTag component here is so that
+ * the two instances of PaddedTag above share the exact same styling.
+ * If they don't, this component will be unable to accurately calculate
+ * the rowLimit.
+ */
+type Props2 = {
+  children?: ReactNode;
+};
+
+const PaddedTag = React.forwardRef<HTMLDivElement, Props2>(
+  ({ children }: Props2, ref): ReactElement => (
+    <Tag className={styles.tag} {...{ ref }}>
+      {children}
+    </Tag>
+  )
+);
+
+PaddedTag.displayName = "PaddedTag";
