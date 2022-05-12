@@ -16,6 +16,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
   buttonSize?: "small" | "medium" | "large";
   onClick?: () => void;
+  className?: string;
   /**
    * Apply a loading state to the button
    * applies a spinner to indicate that
@@ -36,11 +37,11 @@ export const Button = React.forwardRef<HTMLButtonElement, Props>(
       disabled = false,
       children,
       onClick = () => ({}),
-      className,
+      className = "",
       accessibilityLabel,
       ...htmlButtonProps
     }: Props,
-    ref: React.LegacyRef<HTMLButtonElement>,
+    ref: React.LegacyRef<HTMLButtonElement>
   ): ReactElement => {
     return (
       <button
@@ -68,7 +69,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Props>(
         )}
       </button>
     );
-  },
+  }
 );
 
 Button.displayName = "Button";
