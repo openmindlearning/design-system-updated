@@ -21,11 +21,7 @@ export const Popover = ({
 Props<any>): ReactElement => {
   const popperRef = useRef<HTMLDivElement>(null);
 
-  const { styles, attributes } = usePopper(
-    referenceRef.current,
-    popperRef.current,
-    popperOptions
-  );
+  const { styles, attributes } = usePopper(referenceRef.current, popperRef.current, popperOptions);
 
   return (
     <div ref={popperRef} style={styles.popper} {...attributes.popper}>
