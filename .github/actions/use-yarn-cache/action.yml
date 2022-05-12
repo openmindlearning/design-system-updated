@@ -1,7 +1,4 @@
 name: Use Yarn Cache
-inputs:
-  npmAuthToken:
-    required: true
 
 runs:
   using: composite

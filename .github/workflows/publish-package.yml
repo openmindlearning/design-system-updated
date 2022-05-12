@@ -1,0 +1,34 @@
+name: Publish Package
+
+on:
+  workflow_dispatch:
+    inputs:
+      versionIncrement:
+        description: "Version Increment"
+        required: true
+        default: "patch"
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  Build-And-Publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/use-yarn-cache
+      - run: yarn typescript
+      - run: yarn build
+      - name: "Automated Version Bump"
+        uses: "phips28/gh-action-bump-version@master"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          default: ${{ github.event.inputs.versionIncrement }}
+          bump-policy: "ignore"
+      - name: Publish NPM Package
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
