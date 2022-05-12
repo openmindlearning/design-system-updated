@@ -17,4 +17,4 @@ export const Default = () => (
   >
     Stop scrolling. Start making.
   </ImageBannerWithBlurredBox>
-)
+);
