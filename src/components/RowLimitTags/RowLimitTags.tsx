@@ -172,11 +172,11 @@ export const RowLimitTags = ({ tags, rowLimit }: Props): ReactElement => {
  * If they don't, this component will be unable to accurately calculate
  * the rowLimit.
  */
-type Props2 = {
+type PaddedTagProps = {
   children?: ReactNode;
 };
 
-const PaddedTag = React.forwardRef<HTMLDivElement, Props2>(
+const PaddedTag = React.forwardRef<HTMLDivElement, PaddedTagProps>(
   ({ children }: Props2, ref): ReactElement => (
     <Tag className={styles.tag} {...{ ref }}>
       {children}
