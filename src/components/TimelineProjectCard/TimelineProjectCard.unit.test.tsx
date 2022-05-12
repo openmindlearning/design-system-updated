@@ -18,9 +18,9 @@ describe("TimelineProjectCard", () => {
           description:
             "Ran out of air a lot today. Any feedback? I've been working on centering my self before I start singing.",
         }}
-        attention={{
-          numReactions: 2,
-          numComments: 1,
+        reactionCounts={{
+          clap: 1,
+          genius: 1,
         }}
         onClick={onClickFn}
         mediaSlot={<div>mediaSlot</div>}
@@ -31,7 +31,6 @@ describe("TimelineProjectCard", () => {
     expect(screen.getByText(/love song/i)).toBeInTheDocument();
     expect(screen.getByText(/any feedback\?/i)).toBeInTheDocument();
     expect(screen.getByText(/2 reactions/i)).toBeInTheDocument();
-    expect(screen.getByText(/1 comment/i)).toBeInTheDocument();
     expect(screen.getByText(/mediaSlot/i)).toBeInTheDocument();
 
     userEvent.click(screen.getByTestId(TEST_LABELS.TIMELINE_PROJECT_CARD));

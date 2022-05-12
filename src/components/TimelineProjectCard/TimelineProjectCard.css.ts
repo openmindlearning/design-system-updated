@@ -3,23 +3,27 @@ import { FontWeight } from "../../tokens";
 import { theme } from "../../themes";
 import { atTabletBreakpoint } from "../../util";
 
+const { colors } = theme;
+
 export const outerContainer = style({
   borderRadius: "8px",
-  boxShadow: theme.boxShadows.depth[2],
+  border: `1px solid ${colors.border.opaque}`,
   cursor: "pointer",
   padding: "24px",
-  maxWidth: "max-content",
+  margin: "8px 0",
 
   "@media": {
     ...atTabletBreakpoint({
       padding: "16px",
     }),
   },
+  ":hover": {
+    boxShadow: theme.boxShadows.depth[2],
+  },
 });
 
 export const innerContainer = style({
   display: "flex",
-  alignItems: "center",
 });
 
 export const contentContainer = style({
@@ -32,22 +36,14 @@ export const contentContainer = style({
 });
 
 export const mediaSlot = style({
-  margin: "30px 24px",
-
-  "@media": {
-    ...atTabletBreakpoint({
-      margin: "16px",
-    }),
-  },
+  marginLeft: 28,
 });
 
 export const titleLabelContainer = style({
-  overflow: "hidden",
-  whiteSpace: "nowrap",
-  textOverflow: "ellipsis",
   display: "flex",
   alignItems: "center",
-  marginBottom: "16px",
+  marginBottom: 8,
+  flexWrap: "wrap",
   "@media": {
     ...atTabletBreakpoint({
       marginBottom: "12px",
@@ -58,6 +54,8 @@ export const titleLabelContainer = style({
 export const type = style([
   theme.text.body.small,
   {
+    marginRight: 8,
+    marginBottom: 8,
     color: theme.colors.content.tertiary,
     fontWeight: FontWeight.semibold,
   },
@@ -68,7 +66,7 @@ export const labelContainer = style([
     background: theme.colors.grey[100],
     fontWeight: FontWeight.semibold,
     borderRadius: "8px",
-    marginLeft: "8px",
+    marginBottom: 8,
     padding: "0 8px",
     overflow: "hidden",
   },
