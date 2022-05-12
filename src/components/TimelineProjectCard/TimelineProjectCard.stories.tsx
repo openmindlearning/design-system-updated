@@ -22,9 +22,9 @@ Default.args = {
     description:
       "Ran out of air a lot today. Any feedback? I've been working on centering my self before I start singing.",
   },
-  attention: {
-    numReactions: 2,
-    numComments: 1,
+  reactionCounts: {
+    clap: 1,
+    genius: 1,
   },
   mediaSlot: (
     <img
