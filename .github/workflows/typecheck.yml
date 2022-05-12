@@ -1,0 +1,16 @@
+name: Type Check
+on: pull_request
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/use-yarn-cache
+
+      - name: Check types
+        run: |
+          yarn typescript
