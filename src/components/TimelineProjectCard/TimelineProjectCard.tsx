@@ -81,31 +81,31 @@ export const TimelineProjectCard = ({
 					</div>
 
 					<div className={styles.attentionContainer}>
-						{reactionCounts?.wow && reactionCounts.wow > 0 && (
+						{reactionCounts?.wow && (
 							<WowIcon width={16} height={16} className={styles.reactionIcon} />
 						)}
-						{reactionCounts?.like && reactionCounts.like > 0 && (
+						{reactionCounts?.like && (
 							<LoveIcon
 								width={16}
 								height={16}
 								className={styles.reactionIcon}
 							/>
 						)}
-						{reactionCounts?.clap && reactionCounts.clap > 0 && (
+						{reactionCounts?.clap && (
 							<ClapIcon
 								width={16}
 								height={16}
 								className={styles.reactionIcon}
 							/>
 						)}
-						{reactionCounts?.genius && reactionCounts.genius > 0 && (
+						{reactionCounts?.genius && (
 							<LightBulbIcon
 								width={16}
 								height={16}
 								className={styles.reactionIcon}
 							/>
 						)}
-						{reactionCounts?.one_hundred && reactionCounts.one_hundred > 0 && (
+						{reactionCounts?.one_hundred && (
 							<OneHundredIcon
 								width={16}
 								height={16}
