@@ -18,17 +18,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.REPO_ADMIN_TOKEN }}
       - uses: ./.github/actions/use-yarn-cache
       - run: yarn typescript
       - run: yarn build
       - name: "Automated Version Bump"
         uses: "phips28/gh-action-bump-version@master"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.REPO_ADMIN_TOKEN }}
         with:
           default: ${{ github.event.inputs.versionIncrement }}
           bump-policy: "ignore"
       - name: Publish NPM Package
         run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
