@@ -5,16 +5,18 @@ type Props = {
   width?: number;
   height?: number;
   className?: string;
+  fill?: string;
 };
 export const DiamondIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
   className,
+  fill = "none",
 }: Props): ReactElement => {
   return (
     <svg
       {...{ width, height }}
-      fill="none"
+      fill={fill}
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       className={className}
