@@ -1,9 +1,9 @@
 import * as styles from "./TruncatedTags.css";
 
 import React, { ReactElement, ReactNode, useCallback, useEffect, useRef, useState } from "react";
-import { Tag, Popover, ClickOuterWrapper } from "..";
+import { Tag, Popover, PopperOptions, ClickOuterWrapper } from "../../components";
 
-interface Props {
+interface Props<T> {
   /**
    * The working list of tags
    */
@@ -16,13 +16,41 @@ interface Props {
    * The maximum number of tags that should ever be displayed
    */
   maxTags?: number;
+  /**
+   * popperOptions passed to PopperJS library
+   */
+  popperOptions?: PopperOptions<T>;
+  /**
+   * The zIndex used for the popover. Defaults to "auto"
+   */
+  popoverZIndex?: string | number;
 }
 
 export const TruncatedTags = ({
   tags,
   maxRows = Infinity,
   maxTags = Infinity,
-}: Props): ReactElement => {
+  popperOptions = {
+    placement: "right-start",
+    modifiers: [
+      {
+        name: "offset",
+        enabled: true,
+        options: {
+          offset: [0, 16],
+        },
+      },
+      {
+        name: "flip",
+        options: {
+          fallbackPlacements: ["bottom"],
+        },
+      },
+    ],
+  },
+  popoverZIndex = "auto",
+}: // any is the type used in react-popper
+Props<any>): ReactElement => {
   const [displayedTags, setDisplayedTags] = useState<string[]>([]);
 
   const boundingContainerRef = useRef<HTMLDivElement>(null);
@@ -183,24 +211,8 @@ export const TruncatedTags = ({
             <Popover
               referenceRef={numberOfTagsHiddenTagRef}
               visible={fullTagsPopover}
-              popperOptions={{
-                placement: "right-start",
-                modifiers: [
-                  {
-                    name: "offset",
-                    enabled: true,
-                    options: {
-                      offset: [0, 16],
-                    },
-                  },
-                  {
-                    name: "flip",
-                    options: {
-                      fallbackPlacements: ["bottom"],
-                    },
-                  },
-                ],
-              }}
+              zIndex={popoverZIndex}
+              {...{ popperOptions }}
             >
               <ClickOuterWrapper
                 className={styles.popover}
