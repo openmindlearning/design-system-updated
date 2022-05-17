@@ -31,6 +31,7 @@ export const radioItem = style([
 ]);
 
 export const label = style({
+  display: "flex",
   marginLeft: theme.spacing["3x"],
   cursor: "pointer",
 });

@@ -1,4 +1,6 @@
 import React from "react";
+import classnames from "classnames";
+
 import { RadioButton, RadioButtonVariant } from "../RadioButton";
 import * as styles from "./RadioItem.css";
 
@@ -21,6 +23,7 @@ interface Props {
    * Function that controls on change behaviour of the radio item. Default function passed in by Radio Group.
    */
   onChange: React.ChangeEventHandler;
+  className?: string;
   sizeVariant?: RadioButtonVariant;
 }
 
@@ -30,12 +33,13 @@ export function RadioItem({
   isSelected,
   onChange,
   sizeVariant = "medium",
+  className,
 }: Props): React.ReactElement {
   function handleChange(currentTarget: React.ChangeEvent) {
     onChange && onChange(currentTarget);
   }
   return (
-    <label className={styles.radioItem} htmlFor={value}>
+    <label className={classnames(className, styles.radioItem)} htmlFor={value}>
       <RadioButton isSelected={isSelected} variant={sizeVariant}>
         <input
           type="radio"
