@@ -39,4 +39,23 @@ Default.args = {
     "Slacklining",
     "Hiking",
   ],
+  popperOptions: {
+    placement: "right-start",
+    modifiers: [
+      {
+        name: "offset",
+        enabled: true,
+        options: {
+          offset: [0, 16],
+        },
+      },
+      {
+        name: "flip",
+        options: {
+          fallbackPlacements: ["bottom"],
+        },
+      },
+    ],
+  },
+  popoverZIndex: "auto",
 };

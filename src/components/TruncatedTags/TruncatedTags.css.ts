@@ -24,6 +24,5 @@ export const popover = style({
   background: theme.colors.content.light,
   border: `1px solid ${theme.colors.border.opaque}`,
   borderRadius: "8px",
-  zIndex: 100,
   padding: "16px",
 });
