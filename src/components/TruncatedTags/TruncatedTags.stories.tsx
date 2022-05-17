@@ -1,18 +1,19 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { RowLimitTags } from "./RowLimitTags";
+import { TruncatedTags } from "./TruncatedTags";
 
 export default {
-  title: "Design System / RowLimitTags",
-  component: RowLimitTags,
-} as ComponentMeta<typeof RowLimitTags>;
+  title: "Design System / TruncatedTags",
+  component: TruncatedTags,
+} as ComponentMeta<typeof TruncatedTags>;
 
-const Template: ComponentStory<typeof RowLimitTags> = (args) => <RowLimitTags {...args} />;
+const Template: ComponentStory<typeof TruncatedTags> = (args) => <TruncatedTags {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  rowLimit: 3,
+  maxRows: 2,
+  maxTags: Infinity,
   tags: [
     "Singing",
     "Music Production",

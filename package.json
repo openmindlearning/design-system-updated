@@ -1,6 +1,6 @@
 {
   "name": "@openmindlearning/design-system",
-  "version": "0.1.13",
+  "version": "0.2.0",
   "files": [
     "dist/"
   ],
@@ -54,7 +54,7 @@
     "@types/react-portal": "^4.0.4",
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.23.0",
-    "@typescript-eslint/parser": "^5.23.0",
+    "@typescript-eslint/parser": "5.23.0",
     "@vanilla-extract/css": "1.7.0",
     "@vanilla-extract/dynamic": "^2.0.2",
     "@vanilla-extract/vite-plugin": "3.1.4",
@@ -62,8 +62,10 @@
     "@vitest/ui": "0.10.0",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jsx-a11y": "6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "4.5.0",
     "eslint-plugin-vitest": "0.0.8",
     "happy-dom": "2.55.0",
     "jsdom": "^19.0.0",
@@ -71,7 +73,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "storybook-builder-vite": "^0.1.17",
-    "typescript": "^4.6.4",
+    "typescript": "4.6.4",
     "vite": "2.9.5",
     "vite-plugin-dts": "^1.1.1",
     "vite-tsconfig-paths": "3.4.1",

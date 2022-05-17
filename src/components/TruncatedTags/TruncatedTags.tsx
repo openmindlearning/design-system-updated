@@ -1,32 +1,43 @@
-import * as styles from "./RowLimitTags.css";
+import * as styles from "./TruncatedTags.css";
 
-import React, {
-  ReactElement,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { Tag } from "../Tag";
+import React, { ReactElement, ReactNode, useCallback, useEffect, useRef, useState } from "react";
+import { Tag, Popover, ClickOuterWrapper } from "..";
 
-type Props = {
+interface Props {
+  /**
+   * The working list of tags
+   */
   tags: string[];
-  rowLimit: number;
-};
+  /**
+   * The maximum number of rows the tags should be displayed on
+   */
+  maxRows?: number;
+  /**
+   * The maximum number of tags that should ever be displayed
+   */
+  maxTags?: number;
+}
 
-export const RowLimitTags = ({ tags, rowLimit }: Props): ReactElement => {
+export const TruncatedTags = ({
+  tags,
+  maxRows = Infinity,
+  maxTags = Infinity,
+}: Props): ReactElement => {
   const [displayedTags, setDisplayedTags] = useState<string[]>([]);
 
   const boundingContainerRef = useRef<HTMLDivElement>(null);
   const hiddenTagRef = useRef<HTMLDivElement>(null);
 
+  const numberOfTagsHiddenTagRef = useRef(null);
+
+  const [fullTagsPopover, setFullTagsPopover] = useState(false);
+
   /**
    * Calculates how many tags can fit inside of a boundingContainer given the
-   * tags provided and the rowLimit those tags have to display on.
+   * tags provided and the maxRows those tags have to display on.
    *
    * @param tags - Tags to start with.
-   * @param rowLimit - Maximum number of rows the tags can be displayed on.
+   * @param maxRows - Maximum number of rows the tags can be displayed on.
    * @param boundingContainer - HTMLDivElement the tags are housed inside.
    * @param hiddenTag - Hidden HTMLDivElement used for performing width
    * calculations.
@@ -36,10 +47,10 @@ export const RowLimitTags = ({ tags, rowLimit }: Props): ReactElement => {
   const calculateTagDisplay = useCallback(
     (
       tags: string[],
-      rowLimit: number,
+      maxRows: number,
       boundingContainer: HTMLDivElement,
       hiddenTag: HTMLDivElement,
-      tagsCut: string[]
+      tagsCut: string[],
     ): string[] => {
       const rows: string[][] = [];
       let currentRow: string[] = [];
@@ -47,10 +58,7 @@ export const RowLimitTags = ({ tags, rowLimit }: Props): ReactElement => {
 
       const iterTags =
         tagsCut.length > 0
-          ? [
-              ...tags.slice(0, tags.length - tagsCut.length),
-              `+ ${tagsCut.length}`,
-            ]
+          ? [...tags.slice(0, tags.length - tagsCut.length), `+ ${tagsCut.length}`]
           : tags;
 
       for (const [idx, t] of iterTags.entries()) {
@@ -67,10 +75,7 @@ export const RowLimitTags = ({ tags, rowLimit }: Props): ReactElement => {
           (parseInt(computedStyle?.borderLeft || "", 10) || 0) +
           (parseInt(computedStyle?.borderRight || "", 10) || 0);
 
-        if (
-          currentSumWidth + currentTagWidth <
-          boundingContainer.getBoundingClientRect().width
-        ) {
+        if (currentSumWidth + currentTagWidth < boundingContainer.getBoundingClientRect().width) {
           // the current tag can fit on this row
           currentRow.push(t);
           currentSumWidth += currentTagWidth;
@@ -79,7 +84,7 @@ export const RowLimitTags = ({ tags, rowLimit }: Props): ReactElement => {
           // for the current tag
           rows.push(currentRow);
 
-          if (rows.length == rowLimit) {
+          if (rows.length == maxRows) {
             // we prematurely filled all our rows, recalculation is necessary
             let excessTags: string[];
             if (tagsCut.length > 0) {
@@ -99,13 +104,7 @@ export const RowLimitTags = ({ tags, rowLimit }: Props): ReactElement => {
               excessTags = iterTags.slice(idx);
             }
 
-            return calculateTagDisplay(
-              tags,
-              rowLimit,
-              boundingContainer,
-              hiddenTag,
-              excessTags
-            );
+            return calculateTagDisplay(tags, maxRows, boundingContainer, hiddenTag, excessTags);
           }
 
           // initialize the current row with the current tag that could not fit
@@ -119,7 +118,7 @@ export const RowLimitTags = ({ tags, rowLimit }: Props): ReactElement => {
       // calculation complete, return the finalized rows
       return rows.flat();
     },
-    []
+    [],
   );
 
   const initCalculation = useCallback(() => {
@@ -128,14 +127,20 @@ export const RowLimitTags = ({ tags, rowLimit }: Props): ReactElement => {
       // safe
       const finalizedTags = calculateTagDisplay(
         tags,
-        rowLimit,
+        maxRows,
         boundingContainerRef.current,
         hiddenTagRef.current,
-        []
+        maxTags ? tags.slice(maxTags) : [],
       );
       setDisplayedTags(finalizedTags);
     }
-  }, [calculateTagDisplay, rowLimit, tags]);
+  }, [calculateTagDisplay, maxRows, maxTags, tags]);
+
+  useEffect(() => {
+    if (displayedTags.length == tags.length) {
+      setFullTagsPopover(false);
+    }
+  }, [tags, displayedTags]);
 
   useEffect(() => {
     initCalculation();
@@ -158,9 +163,69 @@ export const RowLimitTags = ({ tags, rowLimit }: Props): ReactElement => {
         <PaddedTag ref={hiddenTagRef} />
       </div>
       <div ref={boundingContainerRef} className={styles.boundingContainer}>
-        {displayedTags?.map((tag, idx) => (
-          <PaddedTag key={idx}>{tag}</PaddedTag>
-        ))}
+        {/* If the number of displayed tags is less than the number of tags
+        passed into the component, then there are hidden tags, and a popover
+        should be displayed */}
+
+        {displayedTags.length < tags.length ? (
+          <>
+            {displayedTags?.slice(0, -1).map((tag, idx) => (
+              <PaddedTag key={idx}>{tag}</PaddedTag>
+            ))}
+            {/* This is the +n tag */}
+            <PaddedTag
+              ref={numberOfTagsHiddenTagRef}
+              onClick={() => setFullTagsPopover(!fullTagsPopover)}
+            >
+              {displayedTags[displayedTags.length - 1]}
+            </PaddedTag>
+
+            <Popover
+              referenceRef={numberOfTagsHiddenTagRef}
+              visible={fullTagsPopover}
+              popperOptions={{
+                placement: "right-start",
+                modifiers: [
+                  {
+                    name: "offset",
+                    enabled: true,
+                    options: {
+                      offset: [0, 16],
+                    },
+                  },
+                  {
+                    name: "flip",
+                    options: {
+                      fallbackPlacements: ["bottom"],
+                    },
+                  },
+                ],
+              }}
+            >
+              <ClickOuterWrapper
+                className={styles.popover}
+                isOpen
+                onOutsideClick={() => setFullTagsPopover(false)}
+                exceptions={[numberOfTagsHiddenTagRef]}
+              >
+                <>
+                  {tags.slice(displayedTags.length - 1).map((t) => (
+                    <div
+                      key={t}
+                      style={{
+                        margin: "5px",
+                      }}
+                    >
+                      <Tag>{t}</Tag>
+                    </div>
+                  ))}
+                </>
+              </ClickOuterWrapper>
+            </Popover>
+          </>
+        ) : (
+          displayedTags?.map((tag, idx) => <PaddedTag key={idx}>{tag}</PaddedTag>)
+        )}
       </div>
     </>
   );
@@ -170,18 +235,18 @@ export const RowLimitTags = ({ tags, rowLimit }: Props): ReactElement => {
  * The main reason for adding a PaddedTag component here is so that
  * the two instances of PaddedTag above share the exact same styling.
  * If they don't, this component will be unable to accurately calculate
- * the rowLimit.
+ * the maxRows.
  */
-type PaddedTagProps = {
+interface PaddedTagProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
-};
+}
 
 const PaddedTag = React.forwardRef<HTMLDivElement, PaddedTagProps>(
-  ({ children }: PaddedTagProps, ref): ReactElement => (
-    <Tag className={styles.tag} {...{ ref }}>
+  ({ children, ...divAttributes }: PaddedTagProps, ref): ReactElement => (
+    <Tag className={styles.tag} {...{ ref }} {...divAttributes}>
       {children}
     </Tag>
-  )
+  ),
 );
 
 PaddedTag.displayName = "PaddedTag";

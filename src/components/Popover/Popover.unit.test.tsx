@@ -30,8 +30,8 @@ describe("Popover", () => {
     render(<SimplePopover />);
     const toggleButton = screen.getByLabelText(/toggle-popover/i);
 
-    expect(screen.queryByText(/hello, world/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/hello, world/i)).not.toBeVisible();
     userEvent.click(toggleButton);
-    expect(screen.queryByText(/hello, world/i)).toBeInTheDocument();
+    expect(screen.queryByText(/hello, world/i)).toBeVisible();
   });
 });
