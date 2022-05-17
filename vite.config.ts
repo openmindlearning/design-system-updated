@@ -28,7 +28,7 @@ export default defineConfig(() => ({
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
       name: "designsystem",
-      formats: ["es"],
+      formats: ["es", "cjs"],
       fileName: (format) => `design-system.${format}.js`,
     },
     rollupOptions: {
