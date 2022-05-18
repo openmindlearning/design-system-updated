@@ -13,16 +13,6 @@ export const boundingContainer = style({
 });
 
 export const tag = style({
-  margin: "5px",
+  margin: theme.spacing["2x"],
   userSelect: "none",
-});
-
-export const popover = style({
-  maxWidth: "424px",
-  display: "flex",
-  flexWrap: "wrap",
-  background: theme.colors.content.light,
-  border: `1px solid ${theme.colors.border.opaque}`,
-  borderRadius: "8px",
-  padding: "16px",
 });

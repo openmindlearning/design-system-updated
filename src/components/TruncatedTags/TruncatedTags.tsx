@@ -1,9 +1,9 @@
 import * as styles from "./TruncatedTags.css";
 
 import React, { ReactElement, ReactNode, useCallback, useEffect, useRef, useState } from "react";
-import { Tag, Popover, PopperOptions, ClickOuterWrapper } from "../../components";
+import { Tag } from "../../components";
 
-interface Props<T> {
+interface Props {
   /**
    * The working list of tags
    */
@@ -17,40 +17,32 @@ interface Props<T> {
    */
   maxTags?: number;
   /**
-   * popperOptions passed to PopperJS library
+   * Optional fn to call if a tag is clicked
    */
-  popperOptions?: PopperOptions<T>;
+  onTagClicked?: (tag: string) => void;
   /**
-   * The zIndex used for the popover. Defaults to "auto"
+   * The slot in which a popover could optionally be rendered
    */
-  popoverZIndex?: string | number;
+  popoverSlot?: ({
+    visible,
+    close,
+    numberOfTagsHiddenTagRef,
+    displayedTags,
+  }: {
+    visible: boolean;
+    close: () => void;
+    numberOfTagsHiddenTagRef: React.MutableRefObject<null>;
+    displayedTags: string[];
+  }) => ReactNode;
 }
 
 export const TruncatedTags = ({
   tags,
   maxRows = Infinity,
   maxTags = Infinity,
-  popperOptions = {
-    placement: "right-start",
-    modifiers: [
-      {
-        name: "offset",
-        enabled: true,
-        options: {
-          offset: [0, 16],
-        },
-      },
-      {
-        name: "flip",
-        options: {
-          fallbackPlacements: ["bottom"],
-        },
-      },
-    ],
-  },
-  popoverZIndex = "auto",
-}: // any is the type used in react-popper
-Props<any>): ReactElement => {
+  onTagClicked,
+  popoverSlot,
+}: Props): ReactElement => {
   const [displayedTags, setDisplayedTags] = useState<string[]>([]);
 
   const boundingContainerRef = useRef<HTMLDivElement>(null);
@@ -188,7 +180,7 @@ Props<any>): ReactElement => {
         calculateTagDisplay function doesn't have to perform any guesswork.
         */}
       <div className={styles.hiddenRender}>
-        <PaddedTag ref={hiddenTagRef} />
+        <PaddedTag as="div" ref={hiddenTagRef} />
       </div>
       <div ref={boundingContainerRef} className={styles.boundingContainer}>
         {/* If the number of displayed tags is less than the number of tags
@@ -198,7 +190,9 @@ Props<any>): ReactElement => {
         {displayedTags.length < tags.length ? (
           <>
             {displayedTags?.slice(0, -1).map((tag, idx) => (
-              <PaddedTag key={idx}>{tag}</PaddedTag>
+              <PaddedTag onClick={() => onTagClicked?.(tag)} key={idx}>
+                {tag}
+              </PaddedTag>
             ))}
             {/* This is the +n tag */}
             <PaddedTag
@@ -208,35 +202,19 @@ Props<any>): ReactElement => {
               {displayedTags[displayedTags.length - 1]}
             </PaddedTag>
 
-            <Popover
-              referenceRef={numberOfTagsHiddenTagRef}
-              visible={fullTagsPopover}
-              zIndex={popoverZIndex}
-              {...{ popperOptions }}
-            >
-              <ClickOuterWrapper
-                className={styles.popover}
-                isOpen
-                onOutsideClick={() => setFullTagsPopover(false)}
-                exceptions={[numberOfTagsHiddenTagRef]}
-              >
-                <>
-                  {tags.slice(displayedTags.length - 1).map((t) => (
-                    <div
-                      key={t}
-                      style={{
-                        margin: "5px",
-                      }}
-                    >
-                      <Tag>{t}</Tag>
-                    </div>
-                  ))}
-                </>
-              </ClickOuterWrapper>
-            </Popover>
+            {popoverSlot?.({
+              numberOfTagsHiddenTagRef,
+              visible: fullTagsPopover,
+              close: () => setFullTagsPopover(false),
+              displayedTags,
+            })}
           </>
         ) : (
-          displayedTags?.map((tag, idx) => <PaddedTag key={idx}>{tag}</PaddedTag>)
+          displayedTags?.map((tag, idx) => (
+            <PaddedTag key={idx} onClick={() => onTagClicked?.(tag)}>
+              {tag}
+            </PaddedTag>
+          ))
         )}
       </div>
     </>
@@ -249,13 +227,14 @@ Props<any>): ReactElement => {
  * If they don't, this component will be unable to accurately calculate
  * the maxRows.
  */
-interface PaddedTagProps extends React.HTMLAttributes<HTMLDivElement> {
+interface PaddedTagProps extends React.HTMLAttributes<HTMLElement> {
+  as?: React.ElementType;
   children?: ReactNode;
 }
 
-const PaddedTag = React.forwardRef<HTMLDivElement, PaddedTagProps>(
-  ({ children, ...divAttributes }: PaddedTagProps, ref): ReactElement => (
-    <Tag className={styles.tag} {...{ ref }} {...divAttributes}>
+const PaddedTag = React.forwardRef<HTMLElement, PaddedTagProps>(
+  ({ as = "button", children, ...elementAttributes }: PaddedTagProps, ref): ReactElement => (
+    <Tag className={styles.tag} {...{ as, ref }} {...elementAttributes}>
       {children}
     </Tag>
   ),
