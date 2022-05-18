@@ -1,5 +1,4 @@
 import { style } from "@vanilla-extract/css";
-import { theme } from "../../themes";
 
 export const hiddenRender = style({
   visibility: "hidden",
@@ -13,16 +12,6 @@ export const boundingContainer = style({
 });
 
 export const tag = style({
-  margin: "5px",
+  margin: "8px",
   userSelect: "none",
-});
-
-export const popover = style({
-  maxWidth: "424px",
-  display: "flex",
-  flexWrap: "wrap",
-  background: theme.colors.content.light,
-  border: `1px solid ${theme.colors.border.opaque}`,
-  borderRadius: "8px",
-  padding: "16px",
 });

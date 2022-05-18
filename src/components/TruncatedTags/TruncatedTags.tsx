@@ -1,9 +1,9 @@
 import * as styles from "./TruncatedTags.css";
 
 import React, { ReactElement, ReactNode, useCallback, useEffect, useRef, useState } from "react";
-import { Tag, Popover, PopperOptions, ClickOuterWrapper } from "../../components";
+import { Tag } from "../../components";
 
-interface Props<T> {
+interface Props {
   /**
    * The working list of tags
    */
@@ -17,40 +17,27 @@ interface Props<T> {
    */
   maxTags?: number;
   /**
-   * popperOptions passed to PopperJS library
+   * The slot in which a popover could optionally be rendered
    */
-  popperOptions?: PopperOptions<T>;
-  /**
-   * The zIndex used for the popover. Defaults to "auto"
-   */
-  popoverZIndex?: string | number;
+  popoverSlot?: ({
+    visible,
+    close,
+    numberOfTagsHiddenTagRef,
+    displayedTags,
+  }: {
+    visible: boolean;
+    close: () => void;
+    numberOfTagsHiddenTagRef: React.MutableRefObject<null>;
+    displayedTags: string[];
+  }) => ReactNode;
 }
 
 export const TruncatedTags = ({
   tags,
   maxRows = Infinity,
   maxTags = Infinity,
-  popperOptions = {
-    placement: "right-start",
-    modifiers: [
-      {
-        name: "offset",
-        enabled: true,
-        options: {
-          offset: [0, 16],
-        },
-      },
-      {
-        name: "flip",
-        options: {
-          fallbackPlacements: ["bottom"],
-        },
-      },
-    ],
-  },
-  popoverZIndex = "auto",
-}: // any is the type used in react-popper
-Props<any>): ReactElement => {
+  popoverSlot,
+}: Props): ReactElement => {
   const [displayedTags, setDisplayedTags] = useState<string[]>([]);
 
   const boundingContainerRef = useRef<HTMLDivElement>(null);
@@ -208,32 +195,12 @@ Props<any>): ReactElement => {
               {displayedTags[displayedTags.length - 1]}
             </PaddedTag>
 
-            <Popover
-              referenceRef={numberOfTagsHiddenTagRef}
-              visible={fullTagsPopover}
-              zIndex={popoverZIndex}
-              {...{ popperOptions }}
-            >
-              <ClickOuterWrapper
-                className={styles.popover}
-                isOpen
-                onOutsideClick={() => setFullTagsPopover(false)}
-                exceptions={[numberOfTagsHiddenTagRef]}
-              >
-                <>
-                  {tags.slice(displayedTags.length - 1).map((t) => (
-                    <div
-                      key={t}
-                      style={{
-                        margin: "5px",
-                      }}
-                    >
-                      <Tag>{t}</Tag>
-                    </div>
-                  ))}
-                </>
-              </ClickOuterWrapper>
-            </Popover>
+            {popoverSlot?.({
+              numberOfTagsHiddenTagRef,
+              visible: fullTagsPopover,
+              close: () => setFullTagsPopover(false),
+              displayedTags,
+            })}
           </>
         ) : (
           displayedTags?.map((tag, idx) => <PaddedTag key={idx}>{tag}</PaddedTag>)
