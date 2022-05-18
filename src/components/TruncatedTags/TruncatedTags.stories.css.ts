@@ -13,5 +13,5 @@ export const popover = style({
 });
 
 export const tagContainer = style({
-  padding: "8px",
+  padding: theme.spacing["2x"],
 });

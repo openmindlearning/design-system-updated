@@ -1,4 +1,5 @@
 import { style } from "@vanilla-extract/css";
+import { theme } from "themes";
 
 export const hiddenRender = style({
   visibility: "hidden",
@@ -12,6 +13,6 @@ export const boundingContainer = style({
 });
 
 export const tag = style({
-  margin: "8px",
+  margin: theme.spacing["2x"],
   userSelect: "none",
 });
