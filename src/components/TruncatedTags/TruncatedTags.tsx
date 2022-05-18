@@ -17,6 +17,10 @@ interface Props {
    */
   maxTags?: number;
   /**
+   * Optional fn to call if a tag is clicked
+   */
+  onTagClicked?: (tag: string) => void;
+  /**
    * The slot in which a popover could optionally be rendered
    */
   popoverSlot?: ({
@@ -36,6 +40,7 @@ export const TruncatedTags = ({
   tags,
   maxRows = Infinity,
   maxTags = Infinity,
+  onTagClicked,
   popoverSlot,
 }: Props): ReactElement => {
   const [displayedTags, setDisplayedTags] = useState<string[]>([]);
@@ -175,7 +180,7 @@ export const TruncatedTags = ({
         calculateTagDisplay function doesn't have to perform any guesswork.
         */}
       <div className={styles.hiddenRender}>
-        <PaddedTag ref={hiddenTagRef} />
+        <PaddedTag as="div" ref={hiddenTagRef} />
       </div>
       <div ref={boundingContainerRef} className={styles.boundingContainer}>
         {/* If the number of displayed tags is less than the number of tags
@@ -185,7 +190,9 @@ export const TruncatedTags = ({
         {displayedTags.length < tags.length ? (
           <>
             {displayedTags?.slice(0, -1).map((tag, idx) => (
-              <PaddedTag key={idx}>{tag}</PaddedTag>
+              <PaddedTag onClick={() => onTagClicked?.(tag)} key={idx}>
+                {tag}
+              </PaddedTag>
             ))}
             {/* This is the +n tag */}
             <PaddedTag
@@ -203,7 +210,11 @@ export const TruncatedTags = ({
             })}
           </>
         ) : (
-          displayedTags?.map((tag, idx) => <PaddedTag key={idx}>{tag}</PaddedTag>)
+          displayedTags?.map((tag, idx) => (
+            <PaddedTag key={idx} onClick={() => onTagClicked?.(tag)}>
+              {tag}
+            </PaddedTag>
+          ))
         )}
       </div>
     </>
@@ -216,13 +227,14 @@ export const TruncatedTags = ({
  * If they don't, this component will be unable to accurately calculate
  * the maxRows.
  */
-interface PaddedTagProps extends React.HTMLAttributes<HTMLDivElement> {
+interface PaddedTagProps extends React.HTMLAttributes<HTMLElement> {
+  as?: React.ElementType;
   children?: ReactNode;
 }
 
-const PaddedTag = React.forwardRef<HTMLDivElement, PaddedTagProps>(
-  ({ children, ...divAttributes }: PaddedTagProps, ref): ReactElement => (
-    <Tag className={styles.tag} {...{ ref }} {...divAttributes}>
+const PaddedTag = React.forwardRef<HTMLElement, PaddedTagProps>(
+  ({ as = "button", children, ...elementAttributes }: PaddedTagProps, ref): ReactElement => (
+    <Tag className={styles.tag} {...{ as, ref }} {...elementAttributes}>
       {children}
     </Tag>
   ),

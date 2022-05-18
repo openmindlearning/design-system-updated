@@ -11,6 +11,7 @@ const Template: ComponentStory<typeof Tag> = (args) => <Tag {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+  as: "button",
   children: "Music Production",
 };
 
