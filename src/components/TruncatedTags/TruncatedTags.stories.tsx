@@ -44,7 +44,7 @@ Default.args = {
   maxTags: Infinity,
   tags: tags,
   onTagClicked: (tag) => console.log(tag),
-  popoverSlot: ({ visible, close, displayedTags, numberOfTagsHiddenTagRef }) => (
+  popoverSlot: ({ numberOfTagsHiddenTagRef, overflowedTags, visible, close }) => (
     <Popover
       referenceRef={numberOfTagsHiddenTagRef}
       visible={visible}
@@ -75,7 +75,7 @@ Default.args = {
         exceptions={[numberOfTagsHiddenTagRef]}
       >
         <>
-          {tags.slice(displayedTags.length - 1).map((tag) => (
+          {overflowedTags.map((tag) => (
             <div key={tag} className={styles.tagContainer}>
               <Tag onClick={() => console.log(tag)}>{tag}</Tag>
             </div>
