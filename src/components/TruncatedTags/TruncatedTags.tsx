@@ -24,15 +24,15 @@ interface Props {
    * The slot in which a popover could optionally be rendered
    */
   popoverSlot?: ({
+    numberOfTagsHiddenTagRef,
+    overflowedTags,
     visible,
     close,
-    numberOfTagsHiddenTagRef,
-    displayedTags,
   }: {
+    numberOfTagsHiddenTagRef: React.MutableRefObject<null>;
+    overflowedTags: string[];
     visible: boolean;
     close: () => void;
-    numberOfTagsHiddenTagRef: React.MutableRefObject<null>;
-    displayedTags: string[];
   }) => ReactNode;
 }
 
@@ -44,6 +44,7 @@ export const TruncatedTags = ({
   popoverSlot,
 }: Props): ReactElement => {
   const [displayedTags, setDisplayedTags] = useState<string[]>([]);
+  const [overflowedTags, setOverflowedTags] = useState<string[]>([]);
 
   const boundingContainerRef = useRef<HTMLDivElement>(null);
   const hiddenTagRef = useRef<HTMLDivElement>(null);
@@ -61,7 +62,7 @@ export const TruncatedTags = ({
    * @param boundingContainer - HTMLDivElement the tags are housed inside.
    * @param hiddenTag - Hidden HTMLDivElement used for performing width
    * calculations.
-   * @param tagsCut - Tags (if any) that have already been ruled out of the
+   * @param overflowTags - Tags (if any) that have already been ruled out of the
    * final display. Used when the function recurses.
    */
   const calculateTagDisplay = useCallback(
@@ -70,15 +71,15 @@ export const TruncatedTags = ({
       maxRows: number,
       boundingContainer: HTMLDivElement,
       hiddenTag: HTMLDivElement,
-      tagsCut: string[],
-    ): string[] => {
+      overflowedTags: string[],
+    ): void => {
       const rows: string[][] = [];
       let currentRow: string[] = [];
       let currentSumWidth = 0;
 
       const iterTags =
-        tagsCut.length > 0
-          ? [...tags.slice(0, tags.length - tagsCut.length), `+ ${tagsCut.length}`]
+        overflowedTags.length > 0
+          ? [...tags.slice(0, tags.length - overflowedTags.length), `+ ${overflowedTags.length}`]
           : tags;
 
       for (const [idx, t] of iterTags.entries()) {
@@ -107,7 +108,7 @@ export const TruncatedTags = ({
           if (rows.length == maxRows) {
             // we prematurely filled all our rows, recalculation is necessary
             let excessTags: string[];
-            if (tagsCut.length > 0) {
+            if (overflowedTags.length > 0) {
               // we've already cut tags before
 
               // pop the ending +n tag since we have now established n to be
@@ -116,7 +117,7 @@ export const TruncatedTags = ({
 
               // ... and pop one more tag (the actual tag to cut) and prepend it
               // to the excessTags array to have another calculation run
-              excessTags = [iterTags.pop() as string, ...tagsCut];
+              excessTags = [iterTags.pop() as string, ...overflowedTags];
             } else {
               // tagsCut is empty, so create the excessTags array with
               // everything that couldn't make it onto this final row and
@@ -136,7 +137,9 @@ export const TruncatedTags = ({
       rows.push(currentRow);
 
       // calculation complete, return the finalized rows
-      return rows.flat();
+      console.log(overflowedTags);
+      setOverflowedTags(overflowedTags);
+      setDisplayedTags(rows.flat());
     },
     [],
   );
@@ -145,22 +148,21 @@ export const TruncatedTags = ({
     if (boundingContainerRef?.current && hiddenTagRef?.current) {
       // a bounding container and hidden tag have been set -- calcuation is now
       // safe
-      const finalizedTags = calculateTagDisplay(
+      calculateTagDisplay(
         tags,
         maxRows,
         boundingContainerRef.current,
         hiddenTagRef.current,
         maxTags ? tags.slice(maxTags) : [],
       );
-      setDisplayedTags(finalizedTags);
     }
   }, [calculateTagDisplay, maxRows, maxTags, tags]);
 
   useEffect(() => {
-    if (displayedTags.length == tags.length) {
+    if (overflowedTags.length === 0) {
       setFullTagsPopover(false);
     }
-  }, [tags, displayedTags]);
+  }, [overflowedTags]);
 
   useEffect(() => {
     initCalculation();
@@ -187,7 +189,7 @@ export const TruncatedTags = ({
         passed into the component, then there are hidden tags, and a popover
         should be displayed */}
 
-        {displayedTags.length < tags.length ? (
+        {overflowedTags.length > 0 ? (
           <>
             {displayedTags?.slice(0, -1).map((tag, idx) => (
               <PaddedTag onClick={() => onTagClicked?.(tag)} key={idx}>
@@ -204,9 +206,9 @@ export const TruncatedTags = ({
 
             {popoverSlot?.({
               numberOfTagsHiddenTagRef,
+              overflowedTags,
               visible: fullTagsPopover,
               close: () => setFullTagsPopover(false),
-              displayedTags,
             })}
           </>
         ) : (
