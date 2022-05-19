@@ -137,7 +137,6 @@ export const TruncatedTags = ({
       rows.push(currentRow);
 
       // calculation complete, return the finalized rows
-      console.log(overflowedTags);
       setOverflowedTags(overflowedTags);
       setDisplayedTags(rows.flat());
     },
