@@ -69,8 +69,18 @@ export const buttonVariant = styleVariants({
     },
   },
   destructive: {
-    backgroundColor: theme.colors.primary.red,
-    border: `1px solid ${theme.colors.border.default}`,
+    backgroundColor: theme.colors.background.danger,
+    border: `1px solid ${theme.colors.border.danger}`,
+    color: theme.colors.red[600],
+    ":hover": {
+      backgroundColor: theme.colors.red[300],
+      border: `1px solid ${theme.colors.red[500]}`,
+    },
+    ":disabled": {
+      backgroundColor: theme.colors.red[100],
+      color: theme.colors.red[300],
+      border: `1px solid ${theme.colors.red[200]}`,
+    },
   },
   transparent: {
     backgroundColor: "transparent",
