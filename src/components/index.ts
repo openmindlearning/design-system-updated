@@ -29,5 +29,4 @@ export * from "./Tag";
 export * from "./TermsAndPrivacyDisclaimer";
 export * from "./TextArea";
 export * from "./TextWithHighlights";
-export * from "./TimelineProjectCard";
 export * from "./UnstyledLink";
