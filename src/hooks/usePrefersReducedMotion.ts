@@ -1,34 +1,24 @@
 import React from "react";
 
-/*
-  usePrefersReducedMotion
-
-  Use this hook to determine if the user has set a prefers-reduced-motion preference at JS runtime.
-
-  Note: SSR may break this so if we ever use Next.js we'll need to update.
-  The SSR version of this hook has to make an initial assumption about prefers-reduced-motion
-  on first render, since we wouldn't know the user's preference on server-side. 
-  So this current implementation is better to use while we _arent_ using SSR.  
-  See https://www.joshwcomeau.com/react/prefers-reduced-motion/
-*/
+// from https://www.joshwcomeau.com/react/prefers-reduced-motion/
 
 const QUERY = "(prefers-reduced-motion: no-preference)";
-
-const getInitialState = () => !window.matchMedia?.(QUERY)?.matches;
-
-export const usePrefersReducedMotion = () => {
-  const [prefersReducedMotion, setPrefersReducedMotion] = React.useState(getInitialState);
+export function usePrefersReducedMotion() {
+  // Default to no-animations, since we don't know what the
+  // user's preference is on the server.
+  const [prefersReducedMotion, setPrefersReducedMotion] = React.useState(true);
   React.useEffect(() => {
-    const mediaQueryList = window.matchMedia?.(QUERY);
+    const mediaQueryList = window.matchMedia(QUERY);
+    // Set the true initial value, now that we're on the client:
+    setPrefersReducedMotion(!window.matchMedia(QUERY).matches);
+    // Register our event listener
     const listener = (event: MediaQueryListEvent) => {
       setPrefersReducedMotion(!event.matches);
     };
-    if (mediaQueryList && typeof mediaQueryList.addEventListener === "function") {
-      mediaQueryList?.addEventListener("change", listener);
-      return () => {
-        mediaQueryList?.removeEventListener("change", listener);
-      };
-    }
+    mediaQueryList.addEventListener("change", listener);
+    return () => {
+      mediaQueryList.removeEventListener("change", listener);
+    };
   }, []);
   return prefersReducedMotion;
-};
+}

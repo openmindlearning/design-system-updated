@@ -2,7 +2,6 @@ import * as styles from "./TextWithHighlights.css";
 
 import React, { Children } from "react";
 import classNames from "classnames";
-import DOMPurify from "dompurify";
 
 interface Props {
   /**
@@ -39,7 +38,8 @@ interface Props {
  * Will show "multiple parts" and "highlighted" with a highlighted background color,
  * and the '==' will be removed.
  *
- * Note: TextWithHighlights does not traverse nested children. Only direct string children will be processed.
+ * Note: TextWithHighlights uses `dangerouslySetInnerHTML` and should not be used to render user-generated content.
+ * Also Note: TextWithHighlights does not traverse nested children. Only direct string children will be processed.
  *
  */
 export const TextWithHighlights = ({
@@ -67,15 +67,13 @@ export const TextWithHighlights = ({
             `<mark class="${styles.inheritedText} ${highlightClasses}">$1</mark>`,
           );
 
-          const sanitized = DOMPurify.sanitize(html);
-
           // because we're using regex to create html elements within a string,
           // we're bypassing the React's JSX and must use dangerouslySetInnerHTML
           return (
             <div
               key={index}
               className={styles.inheritedText}
-              dangerouslySetInnerHTML={{ __html: sanitized }}
+              dangerouslySetInnerHTML={{ __html: html }}
             />
           );
         } else {
