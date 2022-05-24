@@ -101,7 +101,7 @@ export const buttonVariant = styleVariants({
   },
 });
 
-export const buttonTextSize = styleVariants({
+const buttonTextSize = styleVariants({
   large: [
     theme.text.body.large,
     {
@@ -120,6 +120,24 @@ export const buttonTextSize = styleVariants({
       fontWeight: FontWeight.semibold,
     },
   ],
+});
+
+const buttonPaddingSize = styleVariants({
+  large: {
+    padding: "8px 24px",
+  },
+  medium: {
+    padding: "6px 16px",
+  },
+  small: {
+    padding: "4px 12px",
+  },
+});
+
+export const buttonSizeVariants = styleVariants({
+  large: [buttonPaddingSize.large, buttonTextSize.large],
+  medium: [buttonPaddingSize.medium, buttonTextSize.medium],
+  small: [buttonPaddingSize.small, buttonTextSize.small],
 });
 
 export const loadingState = style({

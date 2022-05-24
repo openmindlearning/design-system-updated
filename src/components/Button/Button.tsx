@@ -41,14 +41,14 @@ export const Button = React.forwardRef<HTMLButtonElement, Props>(
       accessibilityLabel,
       ...htmlButtonProps
     }: Props,
-    ref: React.LegacyRef<HTMLButtonElement>
+    ref: React.LegacyRef<HTMLButtonElement>,
   ): ReactElement => {
     return (
       <button
         type="button"
         className={classnames([
           styles.baseButton,
-          styles.buttonTextSize[buttonSize],
+          styles.buttonSizeVariants[buttonSize],
           styles.buttonVariant[variant],
           styles.label,
           className,
@@ -69,7 +69,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Props>(
         )}
       </button>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";
