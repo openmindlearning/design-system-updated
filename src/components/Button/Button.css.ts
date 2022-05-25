@@ -10,7 +10,6 @@ export const baseButton = style([
     border: 0,
     borderRadius: "8px",
     transition: "background-color 0.2s, border 0.2s ease-in-out",
-    padding: "9px 20px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -124,13 +123,13 @@ const buttonTextSize = styleVariants({
 
 const buttonPaddingSize = styleVariants({
   large: {
-    padding: "8px 24px",
+    padding: `${theme.spacing["2x"]} ${theme.spacing["5x"]}`,
   },
   medium: {
-    padding: "6px 16px",
+    padding: `6px ${theme.spacing["4x"]}`,
   },
   small: {
-    padding: "4px 12px",
+    padding: `${theme.spacing["1x"]} ${theme.spacing["3x"]}`,
   },
 });
 
