@@ -54,7 +54,7 @@ const display = {
 
 const headerStyleBase = {
   fontFamily: `${fontFamily}, Sans-Serif`,
-  fontWeight: FontWeight.normal,
+  fontWeight: FontWeight.bold,
   fontStyle: FontStyle.normal,
 };
 
