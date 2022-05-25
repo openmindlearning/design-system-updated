@@ -13,6 +13,6 @@ export const boundingContainer = style({
 });
 
 export const tag = style({
-  margin: theme.spacing["2x"],
+  margin: theme.spacing["1x"],
   userSelect: "none",
 });

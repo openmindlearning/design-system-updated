@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { theme, FontWeight } from "../../themes";
-import { atSmallBreakpoint } from "../../util/breakpoint-utils";
+import { atMobileBreakpoint, atSmallBreakpoint } from "../../util/breakpoint-utils";
 
 const { text, colors } = theme;
 
@@ -44,12 +44,23 @@ export const title = style([
     fontWeight: FontWeight.semibold,
     color: colors.content.tertiary,
     marginRight: theme.spacing["2x"],
+    "@media": {
+      ...atMobileBreakpoint({
+        marginBottom: theme.spacing["2x"],
+      }),
+    },
   },
 ]);
 
 export const titleAndLabelRow = style({
   display: "flex",
   alignItems: "center",
+  "@media": {
+    ...atMobileBreakpoint({
+      flexDirection: "column",
+      alignItems: "flex-start",
+    }),
+  },
 });
 
 export const body = style([
