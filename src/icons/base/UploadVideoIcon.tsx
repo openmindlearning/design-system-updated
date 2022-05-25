@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { theme } from "themes";
+import { theme } from "../../themes";
 import { DEFAULT_ICON } from "../../util/constants";
 
 type Props = {
