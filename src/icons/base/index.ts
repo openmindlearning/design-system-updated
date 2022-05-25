@@ -29,6 +29,7 @@ export * from "./FullscreenExitIcon";
 export * from "./FullscreenIcon";
 export * from "./HeartEmptyIcon";
 export * from "./HeartFilledIcon";
+export * from "./HourglassIcon";
 export * from "./ImageIcon";
 export * from "./ImagesIcon";
 export * from "./ItalicsIcon";
