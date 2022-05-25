@@ -15,6 +15,10 @@ interface Props {
   children?: ReactNode;
   dataTestId?: string;
   icon?: Icon;
+  /**
+   * DEPRECATED: use icon="lock" to make a lock appear instead.
+   * @deprecated use icon="lock" instead.
+   */
   showLock?: boolean;
   variant?: LabelVariantColors;
   size?: LabelVariantSizes;
@@ -24,9 +28,6 @@ export function Label({
   children,
   dataTestId,
   icon,
-  /**
-   * @deprecated use icon="lock" instead.
-   */
   showLock = false,
   variant = "grey",
   size = "medium",
