@@ -1,3 +1,4 @@
 export * from "./base";
-export * from "./social";
+export * from "./logo";
 export * from "./reaction";
+export * from "./social";
