@@ -6,15 +6,17 @@ type Props = {
   width?: number;
   height?: number;
   fill?: string;
+  className?: string;
 };
 export const UploadVideoIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
   fill = theme.colors.grey[600],
+  className,
 }: Props): ReactElement => {
   return (
     <svg
-      {...{ width, height }}
+      {...{ width, height, className }}
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
