@@ -15,7 +15,6 @@ export const base = style([
     "@media": {
       ...atTabletBreakpoint({
         ...theme.text.body.xxsmall,
-        fontWeight: FontWeight.normal,
       }),
     },
   },
@@ -38,6 +37,12 @@ export const variant = styleVariants({
     background: theme.colors.background.danger,
     color: theme.colors.content.danger,
   },
+});
+
+export const sizeVariant = styleVariants({
+  small: [theme.text.body.xxsmall],
+  medium: [theme.text.body.xsmall],
+  large: [theme.text.body.small],
 });
 
 export const icon = style({ marginRight: "4px" });
