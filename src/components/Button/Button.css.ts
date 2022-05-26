@@ -147,6 +147,21 @@ export const buttonSpinner = style({
   position: "absolute",
 });
 
+export const buttonSpinnerVariants = styleVariants({
+  primary: {
+    color: theme.colors.primary.white,
+  },
+  secondary: {
+    color: theme.colors.primary.black,
+  },
+  destructive: {
+    color: theme.colors.red[600],
+  },
+  transparent: {
+    color: theme.colors.content.secondary,
+  },
+});
+
 // TODO: Currently the global font-family is taking precedence over the design system class
 // Remove this class once the global font-family (*: { font-family: Larsseit }) is removed from index.css
 export const label = style({

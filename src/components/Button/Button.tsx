@@ -61,7 +61,9 @@ export const Button = React.forwardRef<HTMLButtonElement, Props>(
       >
         {isLoading ? (
           <>
-            <AnimatedSpinner className={styles.buttonSpinner}></AnimatedSpinner>
+            <AnimatedSpinner
+              className={classnames([styles.buttonSpinner], styles.buttonSpinnerVariants[variant])}
+            ></AnimatedSpinner>
             <span className={styles.loadingState}>{children}</span>
           </>
         ) : (

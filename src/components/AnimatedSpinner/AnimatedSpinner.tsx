@@ -19,7 +19,7 @@ export function AnimatedSpinner({ className }: Props): React.ReactElement {
         cx={50}
         cy={50}
         fill="none"
-        stroke="#fff"
+        stroke="currentColor"
         strokeWidth={10}
         r={42}
         strokeDasharray="197.92033717615698 67.97344572538566"
