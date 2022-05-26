@@ -22,6 +22,7 @@ interface Props {
   showLock?: boolean;
   variant?: LabelVariantColors;
   size?: LabelVariantSizes;
+  classname?: string;
 }
 
 export function Label({
@@ -31,6 +32,7 @@ export function Label({
   showLock = false,
   variant = "grey",
   size = "medium",
+  classname,
 }: Props): React.ReactElement {
   const iconSizes = {
     small: 10,
@@ -40,7 +42,12 @@ export function Label({
 
   return (
     <span
-      className={classnames(styles.base, styles.variant[variant], styles.sizeVariant[size])}
+      className={classnames(
+        styles.base,
+        styles.variant[variant],
+        styles.sizeVariant[size],
+        classname,
+      )}
       data-testid={dataTestId}
     >
       {

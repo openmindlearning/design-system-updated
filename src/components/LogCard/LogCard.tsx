@@ -36,7 +36,7 @@ export function LogCard({
           <div className={styles.titleAndLabelRow}>
             <span className={styles.title}>{title}</span>
             {labelText && (
-              <Label variant={labelVariant} dataTestId={LOG_CARD_LABEL}>
+              <Label variant={labelVariant} dataTestId={LOG_CARD_LABEL} classname={styles.label}>
                 {labelText}
               </Label>
             )}
