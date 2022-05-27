@@ -64,6 +64,20 @@ Disabled.args = {
   disabled: true,
 };
 
+export const SecondaryDisabled = Template.bind({});
+SecondaryDisabled.args = {
+  children: "Secondary",
+  variant: "secondary",
+  disabled: true,
+};
+
+export const DestructiveDisabled = Template.bind({});
+DestructiveDisabled.args = {
+  children: "Delete",
+  variant: "destructive",
+  disabled: true,
+};
+
 export const Transparent = Template.bind({});
 Transparent.args = {
   buttonSize: "medium",
