@@ -29,20 +29,20 @@ export const buttonVariant = styleVariants({
     border: `1px solid ${theme.colors.primary.black}`,
 
     selectors: {
-      "&:hover": {
+      "&:hover:enabled": {
         backgroundColor: theme.colors.content.secondary,
         border: `1px solid ${theme.colors.content.secondary} !important`,
       },
 
       "&:focus": {
         backgroundColor: theme.colors.primary.black,
-        border: `1px solid ${theme.colors.primary.black}`,
+        borderColor: theme.colors.primary.black,
       },
 
       "&:disabled": {
         cursor: "auto",
         backgroundColor: theme.colors.content.muted,
-        border: `1px solid ${theme.colors.primary.black}`,
+        borderColor: theme.colors.content.muted,
       },
     },
   },
@@ -52,7 +52,7 @@ export const buttonVariant = styleVariants({
     border: `1px solid ${theme.colors.border.default}`,
 
     selectors: {
-      "&:hover": {
+      "&:hover:enabled": {
         backgroundColor: theme.colors.background.tertiary,
       },
 
@@ -63,8 +63,8 @@ export const buttonVariant = styleVariants({
       "&:disabled": {
         cursor: "auto",
         color: theme.colors.primary.white,
-        backgroundColor: theme.colors.background.secondary,
-        border: `1px solid ${theme.colors.border.default}`,
+        backgroundColor: theme.colors.content.muted,
+        borderColor: theme.colors.content.muted,
       },
     },
   },
@@ -74,12 +74,13 @@ export const buttonVariant = styleVariants({
     color: theme.colors.red[600],
     ":hover": {
       backgroundColor: theme.colors.red[300],
-      border: `1px solid ${theme.colors.red[500]}`,
+      borderColor: theme.colors.red[500],
     },
     ":disabled": {
+      cursor: "auto",
       backgroundColor: theme.colors.red[100],
       color: theme.colors.red[300],
-      border: `1px solid ${theme.colors.red[200]}`,
+      borderColor: theme.colors.red[200],
     },
   },
   transparent: {
