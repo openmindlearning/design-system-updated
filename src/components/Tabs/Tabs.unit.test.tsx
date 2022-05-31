@@ -1,9 +1,10 @@
 import React from "react";
 import "@testing-library/jest-dom";
 import { screen, render } from "@testing-library/react";
-import { Tabs } from "./Tabs";
-import { describe, it, expect, vi } from "vitest";
 import userEvent from "@testing-library/user-event";
+import { describe, it, expect, vi } from "vitest";
+
+import { Tabs } from "./Tabs";
 
 describe("Tabs", () => {
   const tabs = [
