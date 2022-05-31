@@ -16,9 +16,6 @@ const baseTabStyles = style({
   padding: `${theme.spacing["2x"]} ${theme.spacing["4x"]}`,
   borderBottom: `${theme.spacing["1x"]} solid unset`,
   transition: "150ms ease opacity",
-  ":hover": {
-    opacity: 0.6,
-  },
 });
 
 export const tab = styleVariants({
@@ -37,6 +34,10 @@ export const tab = styleVariants({
     {
       fontWeight: FontWeight.normal,
       color: theme.colors.content.tertiary,
+      ":hover": {
+        backgroundColor: theme.colors.background.tertiary,
+        borderBottom: `${theme.spacing["1x"]} solid ${theme.colors.background.tertiary}`,
+      },
     },
   ],
 });
