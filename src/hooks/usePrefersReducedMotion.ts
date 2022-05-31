@@ -8,16 +8,21 @@ export function usePrefersReducedMotion() {
   // user's preference is on the server.
   const [prefersReducedMotion, setPrefersReducedMotion] = React.useState(true);
   React.useEffect(() => {
-    const mediaQueryList = window.matchMedia(QUERY);
-    // Set the true initial value, now that we're on the client:
-    setPrefersReducedMotion(!window.matchMedia(QUERY).matches);
+    const mediaQueryList = window.matchMedia?.(QUERY);
+    if (mediaQueryList) {
+      // Set the true initial value, now that we're on the client:
+      setPrefersReducedMotion(mediaQueryList.matches);
+    }
+
     // Register our event listener
     const listener = (event: MediaQueryListEvent) => {
       setPrefersReducedMotion(!event.matches);
     };
-    mediaQueryList.addEventListener("change", listener);
+    if (mediaQueryList && typeof mediaQueryList.addEventListener === "function") {
+      mediaQueryList.addEventListener("change", listener);
+    }
     return () => {
-      mediaQueryList.removeEventListener("change", listener);
+      mediaQueryList?.removeEventListener("change", listener);
     };
   }, []);
   return prefersReducedMotion;
