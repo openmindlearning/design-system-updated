@@ -22,7 +22,9 @@ export function usePrefersReducedMotion() {
       mediaQueryList.addEventListener("change", listener);
     }
     return () => {
-      mediaQueryList?.removeEventListener("change", listener);
+      if (mediaQueryList && typeof mediaQueryList.removeEventListener === "function") {
+        mediaQueryList.removeEventListener("change", listener);
+      }
     };
   }, []);
   return prefersReducedMotion;
