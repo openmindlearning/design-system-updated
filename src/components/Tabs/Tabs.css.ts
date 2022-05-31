@@ -16,12 +16,12 @@ const baseTabStyles = style({
   padding: `${theme.spacing["2x"]} ${theme.spacing["4x"]}`,
   borderBottom: `${theme.spacing["1x"]} solid unset`,
   transition: "150ms ease opacity",
+  ...theme.text.body.medium,
 });
 
 export const tab = styleVariants({
   selected: [
     baseTabStyles,
-    theme.text.body.medium,
     {
       fontWeight: FontWeight.semibold,
       color: theme.colors.content.primary,
@@ -30,7 +30,6 @@ export const tab = styleVariants({
   ],
   unselected: [
     baseTabStyles,
-    theme.text.body.medium,
     {
       fontWeight: FontWeight.normal,
       color: theme.colors.content.tertiary,
