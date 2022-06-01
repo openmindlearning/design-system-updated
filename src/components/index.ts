@@ -30,3 +30,4 @@ export * from "./TermsAndPrivacyDisclaimer";
 export * from "./TextArea";
 export * from "./TextWithHighlights";
 export * from "./UnstyledLink";
+export * from "./Tabs";
