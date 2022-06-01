@@ -10,12 +10,13 @@ export const menu = style({
 
 export const li = style({
   listStyle: "none",
+  overflow: "hidden",
 });
 
 const baseTabStyles = style({
   padding: `${theme.spacing["2x"]} ${theme.spacing["4x"]}`,
   borderBottom: `${theme.spacing["1x"]} solid unset`,
-  transition: "150ms ease opacity",
+  transition: "150ms ease background-color",
   ...theme.text.body.medium,
 });
 
@@ -33,9 +34,25 @@ export const tab = styleVariants({
     {
       fontWeight: FontWeight.normal,
       color: theme.colors.content.tertiary,
+      position: "relative",
+      ":after": {
+        content: "",
+        position: "absolute",
+        bottom: `calc(${theme.spacing["1x"]} * -1)`,
+        left: 0,
+        width: "100%",
+        height: theme.spacing["1x"],
+        backgroundColor: theme.colors.border.default,
+        transform: `translateY(${theme.spacing["1x"]})`,
+        transition: "150ms ease transform",
+      },
       ":hover": {
         backgroundColor: theme.colors.background.tertiary,
-        borderBottom: `${theme.spacing["1x"]} solid ${theme.colors.background.tertiary}`,
+      },
+      selectors: {
+        "&:hover::after": {
+          transform: "translateY(0px)",
+        },
       },
     },
   ],
