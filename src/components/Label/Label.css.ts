@@ -8,13 +8,13 @@ export const base = style([
     alignItems: "center",
     display: "flex",
     borderRadius: "8px",
-    fontWeight: FontWeight.semibold,
     justifyContent: "center",
     padding: "2px 8px",
     width: "max-content",
     "@media": {
       ...atTabletBreakpoint({
         ...theme.text.body.xxsmall,
+        fontWeight: FontWeight.semibold,
       }),
     },
   },
@@ -40,9 +40,9 @@ export const variant = styleVariants({
 });
 
 export const sizeVariant = styleVariants({
-  small: [theme.text.body.xxsmall],
-  medium: [theme.text.body.xsmall],
-  large: [theme.text.body.small],
+  small: [theme.text.body.xxsmall, { fontWeight: FontWeight.semibold }],
+  medium: [theme.text.body.xsmall, { fontWeight: FontWeight.semibold }],
+  large: [theme.text.body.small, { fontWeight: FontWeight.semibold }],
 });
 
 export const icon = style({ marginRight: "4px" });
