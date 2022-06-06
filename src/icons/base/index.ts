@@ -1,4 +1,6 @@
 export * from "./AboutIcon";
+export * from "./ArrowLeftIcon";
+export * from "./ArrowRightIcon";
 export * from "./AtMentionsIcon";
 export * from "./AttachFileIcon";
 export * from "./BackIcon";
