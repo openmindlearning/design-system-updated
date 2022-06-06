@@ -60,3 +60,4 @@ export * from "./UnderlineIcon";
 export * from "./UploadAudioIcon";
 export * from "./UploadVideoIcon";
 export * from "./WarningIcon";
+export * from "./RightChevronIcon";
