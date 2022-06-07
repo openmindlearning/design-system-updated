@@ -5,7 +5,7 @@ import * as styles from "./Label.css";
 
 import { LockIcon, HourglassIcon } from "../../icons";
 
-export type LabelVariantColors = "grey" | "green" | "yellow" | "red";
+export type LabelVariantColors = "grey" | "green" | "yellow" | "red" | "black";
 
 export type LabelVariantSizes = "small" | "medium" | "large";
 

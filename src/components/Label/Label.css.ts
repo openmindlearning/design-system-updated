@@ -37,6 +37,10 @@ export const variant = styleVariants({
     background: theme.colors.background.danger,
     color: theme.colors.content.danger,
   },
+  black: {
+    background: theme.colors.content.primary,
+    color: theme.colors.content.light,
+  },
 });
 
 export const sizeVariant = styleVariants({
