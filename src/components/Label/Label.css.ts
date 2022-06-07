@@ -38,7 +38,7 @@ export const variant = styleVariants({
     color: theme.colors.content.danger,
   },
   black: {
-    background: theme.colors.content.primary,
+    background: theme.colors.primary.black,
     color: theme.colors.content.light,
   },
 });
