@@ -40,3 +40,9 @@ Red.args = {
   children: "This is text",
   variant: "red",
 };
+
+export const Black = Template.bind({});
+Black.args = {
+  children: "This is text",
+  variant: "black",
+};
