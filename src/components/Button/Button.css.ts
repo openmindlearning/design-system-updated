@@ -28,16 +28,14 @@ export const buttonVariant = styleVariants({
     border: `1px solid ${theme.colors.primary.black}`,
 
     selectors: {
-      "&:hover:enabled": {
+      "&:hover": {
         backgroundColor: theme.colors.content.secondary,
-        border: `1px solid ${theme.colors.content.secondary} !important`,
+        borderColor: theme.colors.content.secondary,
       },
-
-      "&:focus": {
+      "&:active": {
         backgroundColor: theme.colors.primary.black,
         borderColor: theme.colors.primary.black,
       },
-
       "&:disabled": {
         cursor: "auto",
         backgroundColor: theme.colors.content.muted,
@@ -51,14 +49,12 @@ export const buttonVariant = styleVariants({
     border: `1px solid ${theme.colors.border.default}`,
 
     selectors: {
-      "&:hover:enabled": {
+      "&:hover": {
         backgroundColor: theme.colors.background.tertiary,
       },
-
-      "&:focus": {
-        backgroundColor: theme.colors.background.tertiary,
+      "&:active": {
+        backgroundColor: theme.colors.primary.white,
       },
-
       "&:disabled": {
         cursor: "auto",
         color: theme.colors.primary.white,
@@ -75,6 +71,10 @@ export const buttonVariant = styleVariants({
       backgroundColor: theme.colors.red[300],
       borderColor: theme.colors.red[500],
     },
+    ":active": {
+      backgroundColor: theme.colors.background.danger,
+      borderColor: theme.colors.background.danger,
+    },
     ":disabled": {
       cursor: "auto",
       backgroundColor: theme.colors.red[100],
@@ -89,8 +89,8 @@ export const buttonVariant = styleVariants({
       "&:hover": {
         backgroundColor: theme.colors.background.tertiary,
       },
-      "&:focus": {
-        backgroundColor: theme.colors.background.tertiary,
+      "&:active": {
+        backgroundColor: "transparent",
       },
       "&:disabled": {
         cursor: "auto",
