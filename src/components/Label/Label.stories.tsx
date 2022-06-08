@@ -46,3 +46,15 @@ Black.args = {
   children: "This is text",
   variant: "black",
 };
+
+export const PrimaryYellow = Template.bind({});
+PrimaryYellow.args = {
+  children: "This is text",
+  variant: "primaryYellow",
+};
+
+export const Platinum = Template.bind({});
+Platinum.args = {
+  children: "This is text",
+  variant: "platinum",
+};

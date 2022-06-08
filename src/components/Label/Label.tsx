@@ -3,13 +3,20 @@ import React, { ReactNode } from "react";
 import classnames from "classnames";
 import * as styles from "./Label.css";
 
-import { LockIcon, HourglassIcon } from "../../icons";
+import { LockIcon, HourglassIcon, SparkIcon, StudioIcon } from "../../icons";
 
-export type LabelVariantColors = "grey" | "green" | "yellow" | "red" | "black";
+export type LabelVariantColors =
+  | "grey"
+  | "green"
+  | "yellow"
+  | "red"
+  | "black"
+  | "primaryYellow"
+  | "platinum";
 
 export type LabelVariantSizes = "small" | "medium" | "large";
 
-export type Icon = "lock" | "hourglass";
+export type Icon = "lock" | "hourglass" | "studio" | "spark";
 
 interface Props {
   children?: ReactNode;
@@ -40,6 +47,41 @@ export function Label({
     large: 12,
   };
 
+  const iconTypeToComponent: { [key in Icon]: React.ReactElement } = {
+    lock: (
+      <LockIcon
+        height={iconSizes[size]}
+        width={iconSizes[size]}
+        className={styles.icon}
+        fill="currentColor"
+      />
+    ),
+    hourglass: (
+      <HourglassIcon
+        height={iconSizes[size]}
+        width={iconSizes[size]}
+        className={styles.icon}
+        fill="currentColor"
+      />
+    ),
+    spark: (
+      <SparkIcon
+        height={iconSizes[size]}
+        width={iconSizes[size]}
+        className={styles.icon}
+        fill="currentColor"
+      />
+    ),
+    studio: (
+      <StudioIcon
+        height={iconSizes[size]}
+        width={iconSizes[size]}
+        className={styles.icon}
+        fill="currentColor"
+      />
+    ),
+  };
+
   return (
     <span
       className={classnames(
@@ -61,14 +103,7 @@ export function Label({
           />
         )
       }
-      {icon === "hourglass" && !showLock && (
-        <HourglassIcon
-          height={iconSizes[size]}
-          width={iconSizes[size]}
-          className={styles.icon}
-          fill="currentColor"
-        />
-      )}
+      {icon && icon !== "lock" && iconTypeToComponent[icon]}
       {children}
     </span>
   );

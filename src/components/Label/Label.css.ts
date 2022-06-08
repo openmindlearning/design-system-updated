@@ -41,6 +41,14 @@ export const variant = styleVariants({
     background: theme.colors.primary.black,
     color: theme.colors.content.light,
   },
+  primaryYellow: {
+    background: theme.colors.primary.yellow,
+    color: theme.colors.content.primary,
+  },
+  platinum: {
+    background: theme.colors.platinum[150],
+    color: theme.colors.content.light,
+  },
 });
 
 export const sizeVariant = styleVariants({
