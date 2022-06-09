@@ -46,3 +46,29 @@ Black.args = {
   children: "This is text",
   variant: "black",
 };
+
+export const PrimaryYellow = Template.bind({});
+PrimaryYellow.args = {
+  children: "This is text",
+  variant: "primaryYellow",
+};
+
+export const Platinum = Template.bind({});
+Platinum.args = {
+  children: "This is text",
+  variant: "platinum",
+};
+
+export const StudioIcon = Template.bind({});
+StudioIcon.args = {
+  children: "This is text",
+  variant: "grey",
+  icon: "studio",
+};
+
+export const SparkIcon = Template.bind({});
+SparkIcon.args = {
+  children: "This is text",
+  variant: "primaryYellow",
+  icon: "spark",
+};
