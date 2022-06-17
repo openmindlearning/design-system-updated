@@ -22,6 +22,7 @@ export const Popover = ({
   children,
   zIndex = "auto",
 }: // any is the type used in react-popper
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 Props<any>): ReactElement => {
   const popperRef = useRef<HTMLDivElement>(null);
 

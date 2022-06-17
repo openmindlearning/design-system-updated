@@ -1,4 +1,4 @@
-import { useEffect, useRef, useMemo, MutableRefObject } from "react";
+import { useEffect, useRef, useMemo, MutableRefObject, useCallback } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 /**
@@ -42,35 +42,44 @@ const useSavedHandler = (handler: (e?: Event) => void) => {
 export const useClickOuter = (
   isActive: boolean,
   onOutsideClick: () => void,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ...exceptions: MutableRefObject<any>[]
-): MutableRefObject<any> => {
+): // eslint-disable-next-line @typescript-eslint/no-explicit-any
+MutableRefObject<any> => {
   const savedHandler = useSavedHandler(onOutsideClick);
   const element = useRef<HTMLElement>();
   // elements to ignore: at least the attached ref, and any given exceptions
-  const ignoredElements = [element, ...exceptions];
 
   // check if any element including exceptions contains click
-  const isInWrapper = (target: HTMLElement) => {
-    // Used to stop React Portal's from causing the onOutsideClick to be triggered
-    if (isExcludedFromClickOutside(target)) {
-      return true;
-    }
+  const isInWrapper = useCallback(
+    (target: HTMLElement) => {
+      const ignoredElements = [element, ...exceptions];
 
-    for (const ref of ignoredElements) {
-      if (ref?.current?.contains(target)) {
+      // Used to stop React Portal's from causing the onOutsideClick to be triggered
+      if (isExcludedFromClickOutside(target)) {
         return true;
       }
-    }
-    return false;
-  };
 
-  const handleClick = (e: Event) => {
-    // perform outside click func if active and click is outside exceptions
-    const { target } = e;
-    if (isActive && !isInWrapper(target as HTMLElement) && savedHandler.current) {
-      savedHandler.current(e);
-    }
-  };
+      for (const ref of ignoredElements) {
+        if (ref?.current?.contains(target)) {
+          return true;
+        }
+      }
+      return false;
+    },
+    [exceptions],
+  );
+
+  const handleClick = useCallback(
+    (e: Event) => {
+      // perform outside click func if active and click is outside exceptions
+      const { target } = e;
+      if (isActive && !isInWrapper(target as HTMLElement) && savedHandler.current) {
+        savedHandler.current(e);
+      }
+    },
+    [isActive, isInWrapper, savedHandler],
+  );
 
   useEffect(() => {
     // add event listener
@@ -78,7 +87,7 @@ export const useClickOuter = (
 
     // remove listener on dismount or isActive change
     return () => document.removeEventListener("mousedown", handleClick);
-  }, [isActive]);
+  }, [handleClick]);
 
   // return the created ref so component can attach where desired in props
   return element;
@@ -97,8 +106,10 @@ export const useClickWhiteSpace = (
   isActive: boolean,
   onWhiteSpaceClick: () => void,
   customDetector: (target: HTMLElement) => boolean,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ...exceptions: MutableRefObject<any>[]
-): { ref: MutableRefObject<any>; onClick: (e: Event) => void; id: string } => {
+): // eslint-disable-next-line @typescript-eslint/no-explicit-any
+{ ref: MutableRefObject<any>; onClick: (e: Event) => void; id: string } => {
   const ref = useClickOuter(isActive, onWhiteSpaceClick, ...exceptions);
   const savedHandler = useSavedHandler(onWhiteSpaceClick);
 

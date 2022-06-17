@@ -1,5 +1,6 @@
 import * as styles from "./SpacingPreview.css";
 
+import React from "react";
 import { spacing, spacingPx } from "../../tokens";
 
 type SpacingToken = keyof typeof spacing;

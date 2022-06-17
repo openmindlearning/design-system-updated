@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { theme, FontWeight } from "../../themes";
-import { atMobileBreakpoint, atSmallBreakpoint } from "../../util/breakpoint-utils";
+import { atSmallBreakpoint } from "../../util/breakpoint-utils";
 
 const { text, colors } = theme;
 

@@ -6,8 +6,9 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:prettier/recommended" // Make sure this is always the last element in the array.
+    "plugin:prettier/recommended" // keep this one last
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {

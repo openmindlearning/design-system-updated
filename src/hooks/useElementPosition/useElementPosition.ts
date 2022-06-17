@@ -9,7 +9,7 @@ export const useElementPosition = (element: RefObject<HTMLElement>): { x: number
       const { x, y } = element.current.getBoundingClientRect();
       setPosition({ x, y });
     }
-  }, [element.current]);
+  }, [element]);
   if (!loaded && element.current) {
     updateRefPosition();
     setLoaded(true);

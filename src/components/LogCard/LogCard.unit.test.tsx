@@ -1,7 +1,6 @@
 import React from "react";
 import "@testing-library/jest-dom";
 import { screen, render } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import { LogCard, LOG_DROPDOWN, LOG_MEDIA } from "./LogCard";
 import { describe, it, expect } from "vitest";
 
@@ -24,6 +23,7 @@ describe("LogCard", () => {
     const anyMedia = (
       <img
         style={{ width: "100px", height: "100px", borderRadius: "8px" }}
+        alt="kitten"
         src="https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&h=100&w=100"
       />
     );

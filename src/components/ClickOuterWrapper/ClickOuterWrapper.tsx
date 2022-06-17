@@ -4,6 +4,7 @@ import { useClickOuter } from "../../hooks/useClickOuter";
 interface Props {
   isOpen: boolean; //whether the wrapper is open and should be listening to clicks
   onOutsideClick: () => void; //function to perform on click outside wrapper
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   exceptions: MutableRefObject<any>[];
   children: React.ReactNode;
   className?: string;

@@ -63,7 +63,7 @@ export const TextWithHighlights = ({
 
           // use regex to replace all ==x== with <mark class="myclass">x</mark>
           const html = child.replace(
-            /\=\=(.*?)\=\=/gm,
+            /==(.*?)==/gm,
             `<mark class="${styles.inheritedText} ${highlightClasses}">$1</mark>`,
           );
 

@@ -21,7 +21,7 @@ export const ColorsPreview = (): React.ReactElement => {
   const flatColors = flattenObject({ ...baseColors, ...primaryColors });
   return (
     <>
-      {Object.keys(flatColors).map((colorKey, index) => {
+      {Object.keys(flatColors).map((colorKey) => {
         const colorValue = flatColors[colorKey];
         return (
           <div key={`color-${colorKey}`}>
@@ -38,21 +38,22 @@ export const ColorsPreview = (): React.ReactElement => {
   );
 };
 
-const flattenObject = (obj: any) => {
-  const result: any = {};
+const flattenObject = (obj: { [x: string]: string | object }) => {
+  console.log({ obj });
+  const result: { [x: string]: string } = {};
 
   for (const i in obj) {
-    if (!obj.hasOwnProperty(i)) continue;
+    if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
 
     if (typeof obj[i] == "object" && obj[i] !== null) {
-      const flatObject = flattenObject(obj[i]);
+      const flatObject = flattenObject(obj[i] as { [x: string]: object });
       for (const x in flatObject) {
-        if (!flatObject.hasOwnProperty(x)) continue;
+        if (!Object.prototype.hasOwnProperty.call(flatObject, x)) continue;
         const flatKey = i + "." + x;
         result[flatKey] = flatObject[x];
       }
     } else {
-      result[i] = obj[i];
+      result[i] = obj[i] as string;
     }
   }
   return result;

@@ -7,7 +7,7 @@ import { describe, it, expect } from "vitest";
 describe("TermsAndPrivacyDisclaimer", () => {
   it("should render without issues", () => {
     render(<TermsAndPrivacyDisclaimer />);
-    expect(screen.getByText(/by continuing, you agree to studio\'s/i)).toBeInTheDocument();
+    expect(screen.getByText(/by continuing, you agree to studio's/i)).toBeInTheDocument();
   });
 
   it("should have proper hrefs", () => {
