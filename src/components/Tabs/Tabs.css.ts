@@ -5,11 +5,20 @@ export const menu = style({
   padding: 0,
   margin: 0,
   display: "flex",
+  overflowX: "auto",
+  overflowY: "hidden",
+
+  // Hide horizontal scrollbar on Chrome, Safari, Opera
+  "::-webkit-scrollbar": {
+    display: "none",
+  },
+  scrollbarWidth: "none", // Hide scrollbar on Firefox
+  msOverflowStyle: "none", // Hide scrollbar on IE and Edge
 });
 
 export const li = style({
+  whiteSpace: "nowrap",
   listStyle: "none",
-  overflow: "hidden",
   // Make sure list items have no unintentional margin around them
   marginBlockStart: 0,
   marginBlockEnd: 0,

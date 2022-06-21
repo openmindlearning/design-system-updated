@@ -17,3 +17,15 @@ export const Default = (): ReactElement => {
 
   return <Tabs tabs={tabs} selection={selectedTab} setSelection={setSelectedTab} />;
 };
+
+export const MobileOverflow = (): ReactElement => {
+  const tabs = [
+    { title: "In Progress", value: "foo" },
+    { title: "Previous", value: "bar" },
+    { title: "My Journey", value: "bar" },
+    { title: "My Submissions", value: "bar" },
+  ];
+  const [selectedTab, setSelectedTab] = useState<Tab>(tabs[0]);
+
+  return <Tabs tabs={tabs} selection={selectedTab} setSelection={setSelectedTab} />;
+};
