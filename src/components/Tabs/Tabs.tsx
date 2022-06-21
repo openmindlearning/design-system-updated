@@ -17,6 +17,8 @@ interface Props {
   setSelection: React.Dispatch<React.SetStateAction<Tab>>;
 }
 
+export const TABS_TEST_ID_PREFIX = "design-system-tabs-";
+
 export const Tabs = ({ tabs, selection, setSelection }: Props): React.ReactElement => {
   return (
     <menu className={styles.menu}>
@@ -27,7 +29,7 @@ export const Tabs = ({ tabs, selection, setSelection }: Props): React.ReactEleme
             <ClickableContentWrapper
               onClick={() => setSelection(tab)}
               className={styles.tab[tabStyle]}
-              dataTestId={tab.title}
+              dataTestId={`${TABS_TEST_ID_PREFIX}${tab.title}`}
             >
               {tab.title}
             </ClickableContentWrapper>

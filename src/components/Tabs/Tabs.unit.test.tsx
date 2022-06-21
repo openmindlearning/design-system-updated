@@ -4,7 +4,7 @@ import { screen, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
 
-import { Tabs } from "./Tabs";
+import { Tabs, TABS_TEST_ID_PREFIX } from "./Tabs";
 
 describe("Tabs", () => {
   const tabs = [
@@ -32,7 +32,7 @@ describe("Tabs", () => {
   it("Fires onClick function when clicked", () => {
     render(<Tabs tabs={tabs} selection={tabs[0]} setSelection={setSelection} />);
 
-    userEvent.click(screen.getByTestId(tabs[0].title));
+    userEvent.click(screen.getByTestId(`${TABS_TEST_ID_PREFIX}${tabs[0].title}`));
     expect(setSelection).toHaveBeenCalled();
   });
 });
