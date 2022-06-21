@@ -5,12 +5,14 @@ export const menu = style({
   padding: 0,
   margin: 0,
   display: "flex",
-  borderBottom: `1px solid ${theme.colors.border.default}`,
 });
 
 export const li = style({
   listStyle: "none",
   overflow: "hidden",
+  // Make sure list items have no unintentional margin around them
+  marginBlockStart: 0,
+  marginBlockEnd: 0,
 });
 
 const baseTabStyles = style({
