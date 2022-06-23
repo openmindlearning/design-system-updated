@@ -43,6 +43,7 @@ export * from "./MoreDropdownIcon";
 export * from "./MoreIcon";
 export * from "./OrderedListIcon";
 export * from "./PeersIcon";
+export * from "./PencilIcon";
 export * from "./PersonOutlineIcon";
 export * from "./PitchTrainerIcon";
 export * from "./PlusIcon";
