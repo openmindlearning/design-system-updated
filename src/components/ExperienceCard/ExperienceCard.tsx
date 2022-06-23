@@ -34,7 +34,7 @@ export const ExperienceCard = ({
   return (
     <ClickableContentWrapper className={styles.container} onClick={onClick}>
       <div className={styles.card}>
-        <img src={thumbnailURL} className={styles.thumbnail} />
+        <img src={thumbnailURL} alt={`Thumbnail for ${title}`} className={styles.thumbnail} />
         <div className={styles.metadata}>
           <div className={styles.labelContainer}>
             <h1 className={styles.title}>{title}</h1>
