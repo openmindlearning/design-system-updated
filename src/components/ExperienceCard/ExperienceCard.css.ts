@@ -59,12 +59,12 @@ export const thumbnail = style({
   borderRadius: "8px",
   marginRight: spacing["4x"],
 
-  width: "56px",
-  height: "56px",
+  width: "64px",
+  height: "64px",
   "@media": {
     ...atSmallBreakpoint({
-      width: "88px",
-      height: "88px",
+      width: "92px",
+      height: "92px",
     }),
   },
 });
@@ -87,12 +87,12 @@ export const instructorAndSubtitle = style({
   flexDirection: "row",
   alignItems: "center",
   flexWrap: "wrap",
-  paddingTop: spacing["1x"],
 });
 
 export const subtitle = style({
   ...text.label.xsmall,
   margin: 0,
+  marginTop: spacing["1x"],
 });
 
 export const instructorLabel = style({
@@ -100,6 +100,7 @@ export const instructorLabel = style({
   flexDirection: "row",
   alignItems: "center",
   marginRight: spacing["4x"],
+  marginTop: spacing["1x"],
 });
 
 export const instructorText = style({
