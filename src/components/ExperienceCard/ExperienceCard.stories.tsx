@@ -16,7 +16,7 @@ const DemoUpcomingLabel = ({ text }: { text: string }): React.ReactElement => {
 // When using the ExperienceCard component, we'd want to pass in a responsive ProgressBar.
 // This is a demo one for Storybook preview purposes, and does not resize on mobile.
 const DemoProgressBar = (): React.ReactElement => {
-  return <ProgressBar displayPercentageText percentage={45} barWidth={"264px"} />;
+  return <ProgressBar displayPercentageText percentage={45} width={"264px"} />;
 };
 const Template: ComponentStory<typeof ExperienceCard> = (args) => <ExperienceCard {...args} />;
 

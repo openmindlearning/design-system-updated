@@ -20,4 +20,5 @@ export const FixedWidth = Template.bind({});
 FixedWidth.args = {
   displayPercentageText: true,
   percentage: 45,
+  width: "200px",
 };

@@ -5,17 +5,17 @@ import * as styles from "./ProgressBar.css";
 export const ProgressBar = ({
   displayPercentageText,
   percentage,
-  barWidth,
+  width,
 }: {
   displayPercentageText: boolean;
   // Number between 0 and 100
   percentage: number;
-  barWidth?: string;
+  width?: string;
 }): React.ReactElement => {
   const percentageString = `${percentage}%`;
 
   return (
-    <div className={styles.container} style={{ width: barWidth }}>
+    <div className={styles.container} style={{ width }}>
       <div className={styles.barToFill}>
         <div className={styles.barFill} style={{ width: percentageString }}></div>
       </div>
