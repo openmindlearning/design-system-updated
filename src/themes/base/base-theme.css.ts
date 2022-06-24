@@ -25,6 +25,7 @@ export const defaultColors = {
     success: baseColors.green[100],
     danger: baseColors.red[50],
     warning: baseColors.yellow[50],
+    warm: baseColors.yellow[50],
   },
 
   border: {
