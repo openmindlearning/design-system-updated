@@ -63,8 +63,8 @@ export const thumbnail = style({
   height: "64px",
   "@media": {
     ...atSmallBreakpoint({
-      width: "92px",
-      height: "92px",
+      width: "88px",
+      height: "88px",
     }),
   },
 });
@@ -87,6 +87,7 @@ export const instructorAndSubtitle = style({
   flexDirection: "row",
   alignItems: "center",
   flexWrap: "wrap",
+  paddingBottom: spacing["1x"],
 });
 
 export const subtitle = style({
@@ -113,14 +114,12 @@ export const instructorText = style({
 
 export const progress = style({
   display: "flex",
-  justifyContent: "flex-end",
-  width: "132px",
   color: theme.colors.grey[600],
 
   "@media": {
     ...atSmallBreakpoint({
       marginTop: spacing["1x"],
-      justifyContent: "flex-start",
+      width: "100%",
     }),
   },
 });
