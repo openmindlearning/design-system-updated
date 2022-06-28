@@ -67,9 +67,9 @@ UpcomingLongTitle.args = {
   progressIndicator: <DemoUpcomingLabel text="Starts in 10 days" />,
 };
 
-export const CompletedLongTitle = Template.bind({});
-CompletedLongTitle.args = {
-  title: "I'm a little teapot short and stout",
+export const LongTitleOverflow = Template.bind({});
+LongTitleOverflow.args = {
+  title: "Design and Make Custom Sneakers with The Shoe Surgeon Woohoo",
   thumbnailURL:
     "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&h=100&w=100",
   instructorName: "The Teapot",
