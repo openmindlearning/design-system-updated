@@ -46,6 +46,8 @@ export const metadata = style({
   justifyContent: "space-between",
   flexWrap: "wrap",
 
+  overflow: "hidden",
+
   "@media": {
     ...atSmallBreakpoint({
       flexDirection: "column",
@@ -73,13 +75,28 @@ export const labelContainer = style({
   display: "flex",
   flexDirection: "column",
   flexWrap: "wrap",
-  marginRight: spacing["4x"],
+  minWidth: 0,
 });
 
 export const title = style({
   ...text.body.medium,
   fontWeight: FontWeight.semibold,
   margin: 0,
+  width: "100%",
+  // Truncate titles at 1 line on desktop
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+
+  "@media": {
+    ...atSmallBreakpoint({
+      // Wrap long titles on smaller screens
+      width: "100%",
+      whiteSpace: "unset",
+      overflow: "auto",
+      textOverflow: "unset",
+    }),
+  },
 });
 
 export const instructorAndSubtitle = style({
