@@ -1,16 +1,12 @@
 import React, { ReactElement } from "react";
 import { DEFAULT_ICON } from "../../util/constants";
+import { IconProps } from "./constants";
 
-type Props = {
-  width?: number;
-  height?: number;
-  className?: string;
-};
 export const MoreDropdownIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
   className,
-}: Props): ReactElement => {
+}: IconProps): ReactElement => {
   return (
     <svg
       {...{ width, height, className }}

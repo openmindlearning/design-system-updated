@@ -1,20 +1,14 @@
 import React, { ReactElement } from "react";
 import { DEFAULT_ICON } from "../../util/constants";
 import { theme } from "../../themes";
-
-type Props = {
-  width?: number;
-  height?: number;
-  fill?: string;
-  className?: string;
-};
+import { IconProps } from "./constants";
 
 export const ArrowLeftIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
   fill = theme.colors.grey[500],
   className,
-}: Props): ReactElement => {
+}: IconProps): ReactElement => {
   return (
     <svg
       {...{ width, height, className }}

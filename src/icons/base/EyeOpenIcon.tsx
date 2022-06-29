@@ -1,14 +1,11 @@
 import React, { ReactElement } from "react";
 import { DEFAULT_ICON } from "../../util/constants";
+import { IconProps } from "./constants";
 
-type Props = {
-  width?: number;
-  height?: number;
-};
 export const EyeOpenIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
-}: Props): ReactElement => {
+}: IconProps): ReactElement => {
   return (
     <svg {...{ width, height }} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path

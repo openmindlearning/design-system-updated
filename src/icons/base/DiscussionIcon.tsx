@@ -1,14 +1,10 @@
 import React, { ReactElement } from "react";
 import { DEFAULT_ICON } from "../../util/constants";
-
-type Props = {
-  width?: number;
-  height?: number;
-};
+import { IconProps } from "./constants";
 export const DiscussionIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
-}: Props): ReactElement => {
+}: IconProps): ReactElement => {
   return (
     <svg
       {...{ width, height }}

@@ -1,19 +1,14 @@
 import React, { ReactElement } from "react";
 import { DEFAULT_ICON } from "../../util/constants";
 import { theme } from "../../themes";
+import { IconProps } from "./constants";
 
-type Props = {
-  width?: number;
-  height?: number;
-  fill?: string;
-  className?: string;
-};
 export const StudioIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
   fill = theme.colors.grey[600],
   className,
-}: Props): ReactElement => {
+}: IconProps): ReactElement => {
   return (
     <svg
       {...{ width, height }}

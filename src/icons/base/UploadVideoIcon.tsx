@@ -1,19 +1,14 @@
 import React, { ReactElement } from "react";
 import { theme } from "../../themes";
 import { DEFAULT_ICON } from "../../util/constants";
+import { IconProps } from "./constants";
 
-type Props = {
-  width?: number;
-  height?: number;
-  fill?: string;
-  className?: string;
-};
 export const UploadVideoIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
   fill = theme.colors.grey[600],
   className,
-}: Props): ReactElement => {
+}: IconProps): ReactElement => {
   return (
     <svg
       {...{ width, height, className }}
