@@ -8,6 +8,7 @@ export const RightChevronIcon = ({
   height = DEFAULT_ICON.HEIGHT,
   fill = theme.colors.grey[600],
   className,
+  testId,
 }: IconProps): ReactElement => {
   return (
     <svg
@@ -17,6 +18,7 @@ export const RightChevronIcon = ({
       viewBox="0 0 17 17"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      data-testid={testId}
     >
       <rect
         x="15.5559"

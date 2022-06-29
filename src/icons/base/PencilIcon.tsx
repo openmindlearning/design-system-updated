@@ -5,8 +5,15 @@ import { IconProps } from "./constants";
 export const PencilIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
+  testId,
 }: IconProps) => (
-  <svg width={width} height={height} fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    width={width}
+    height={height}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    data-testid={testId}
+  >
     <path
       fillRule="evenodd"
       clipRule="evenodd"

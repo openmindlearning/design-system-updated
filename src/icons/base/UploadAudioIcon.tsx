@@ -5,6 +5,7 @@ import { IconProps } from "./constants";
 export const UploadAudioIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
+  testId,
 }: IconProps): ReactElement => {
   return (
     <svg
@@ -12,6 +13,7 @@ export const UploadAudioIcon = ({
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      data-testid={testId}
     >
       <path
         d="M19.5 2H4.5C3.125 2 2 3.125 2 4.5V19.5C2 20.875 3.125 22 4.5 22H19.5C20.875 22 22 20.875 22 19.5V4.5C22 3.125 20.875 2 19.5 2Z"

@@ -8,6 +8,7 @@ export const UploadVideoIcon = ({
   height = DEFAULT_ICON.HEIGHT,
   fill = theme.colors.grey[600],
   className,
+  testId,
 }: IconProps): ReactElement => {
   return (
     <svg
@@ -15,6 +16,7 @@ export const UploadVideoIcon = ({
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      data-testid={testId}
     >
       <path
         fillRule="evenodd"

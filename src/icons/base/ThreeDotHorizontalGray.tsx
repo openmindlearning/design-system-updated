@@ -5,6 +5,7 @@ import { IconProps } from "./constants";
 export const ThreeDotsHorizontalGray = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
+  testId,
 }: IconProps): ReactElement => {
   return (
     <svg
@@ -13,6 +14,7 @@ export const ThreeDotsHorizontalGray = ({
       viewBox="0 0 14 12"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      data-testid={testId}
     >
       <circle cx={1.75} cy={6} r={1.5} transform="rotate(-90 1.75 6)" fill="#757575" />
       <circle cx={7} cy={6} r={1.5} transform="rotate(-90 7 6)" fill="#757575" />

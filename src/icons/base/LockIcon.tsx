@@ -7,6 +7,7 @@ export const LockIcon = ({
   height = DEFAULT_ICON.HEIGHT,
   className,
   fill = "#545454",
+  testId,
 }: IconProps): ReactElement => {
   return (
     <svg
@@ -14,6 +15,7 @@ export const LockIcon = ({
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      data-testid={testId}
     >
       <path
         fillRule="evenodd"

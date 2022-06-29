@@ -8,6 +8,7 @@ export const BulletListIcon = ({
   height = DEFAULT_ICON.HEIGHT,
   fill = theme.colors.grey[600],
   className,
+  testId,
 }: IconProps): ReactElement => {
   return (
     <svg
@@ -16,6 +17,7 @@ export const BulletListIcon = ({
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       className={className}
+      data-testid={testId}
     >
       <path
         fillRule="evenodd"

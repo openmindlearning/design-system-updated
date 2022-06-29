@@ -5,6 +5,7 @@ import { IconProps } from "./constants";
 export const ExpandIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
+  testId,
 }: IconProps): ReactElement => {
   return (
     <svg
@@ -12,6 +13,7 @@ export const ExpandIcon = ({
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      data-testid={testId}
     >
       <rect
         width="14.0765"

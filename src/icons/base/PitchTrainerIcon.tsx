@@ -5,6 +5,7 @@ import { IconProps } from "./constants";
 export const PitchTrainerIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
+  testId,
 }: IconProps): ReactElement => {
   return (
     <svg
@@ -12,6 +13,7 @@ export const PitchTrainerIcon = ({
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      data-testid={testId}
     >
       <path
         d="M12 22C13.375 22 14.5 20.875 14.5 19.5V4.5C14.5 3.125 13.375 2 12 2C10.625 2 9.5 3.125 9.5 4.5V19.5C9.5 20.875 10.625 22 12 22Z"

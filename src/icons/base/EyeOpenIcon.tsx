@@ -5,9 +5,16 @@ import { IconProps } from "./constants";
 export const EyeOpenIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
+  testId,
 }: IconProps): ReactElement => {
   return (
-    <svg {...{ width, height }} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      {...{ width, height }}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      data-testid={testId}
+    >
       <path
         fillRule="evenodd"
         clipRule="evenodd"

@@ -6,6 +6,7 @@ export const PersonOutlineIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
   fill = DEFAULT_ICON.FILL,
+  testId,
 }: IconProps): ReactElement => {
   return (
     <svg
@@ -13,6 +14,7 @@ export const PersonOutlineIcon = ({
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      data-testid={testId}
     >
       <path
         fillRule="evenodd"

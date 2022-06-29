@@ -5,6 +5,7 @@ import { IconProps } from "./constants";
 export const BellNotificationIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
+  testId,
 }: IconProps): ReactElement => {
   return (
     <svg
@@ -12,6 +13,7 @@ export const BellNotificationIcon = ({
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      data-testid={testId}
     >
       <circle cx="20.5" cy="3.5" r="2" fill="#FAE26A" stroke="#545454" />
       <path

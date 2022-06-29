@@ -5,6 +5,7 @@ import { IconProps } from "./constants";
 export const WarningIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
+  testId,
 }: IconProps): ReactElement => {
   return (
     <svg
@@ -12,6 +13,7 @@ export const WarningIcon = ({
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      data-testid={testId}
     >
       <path
         d="M11.261 3.87908C11.5861 3.30436 12.4139 3.30436 12.739 3.87908L21.2835 18.9867C21.6035 19.5526 21.1947 20.2536 20.5445 20.2536H3.45554C2.80533 20.2536 2.39646 19.5526 2.71655 18.9867L11.261 3.87908Z"

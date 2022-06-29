@@ -5,6 +5,7 @@ import { IconProps } from "./constants";
 export const RecordAudioIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
+  testId,
 }: IconProps): ReactElement => {
   return (
     <svg
@@ -12,6 +13,7 @@ export const RecordAudioIcon = ({
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      data-testid={testId}
     >
       <path
         d="M11.9991 14.6316C13.7465 14.6316 15.157 13.221 15.157 11.4737V5.15789C15.157 3.41053 13.7465 2 11.9991 2C10.2518 2 8.84123 3.41053 8.84123 5.15789V11.4737C8.84123 13.221 10.2518 14.6316 11.9991 14.6316Z"
