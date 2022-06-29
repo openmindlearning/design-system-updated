@@ -1,13 +1,14 @@
 import React, { ReactElement } from "react";
 import { DEFAULT_ICON } from "../../util/constants";
 import { IconProps } from "./constants";
+import { theme } from "../../themes";
 
 export const HourglassIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
   className,
   testId,
-  fill = "#545454",
+  fill = theme.colors.grey[600],
 }: IconProps): ReactElement => {
   return (
     <svg

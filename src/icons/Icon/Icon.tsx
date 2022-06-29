@@ -18,7 +18,7 @@ export const Icon = ({
   variant,
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
-  fill = theme.colors.grey[500],
+  fill,
   className,
 }: Props): ReactElement => {
   const RenderedIcon: ({ width, height, className, fill }: IconProps) => ReactElement =

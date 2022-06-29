@@ -1,11 +1,13 @@
 import React, { ReactElement } from "react";
 import { DEFAULT_ICON } from "../../util/constants";
 import { IconProps } from "./constants";
+import { theme } from "../../themes";
 
 export const ExpandLessonIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
   testId,
+  fill = theme.colors.grey[600],
 }: IconProps): ReactElement => {
   return (
     <svg
@@ -15,10 +17,10 @@ export const ExpandLessonIcon = ({
       xmlnsXlink="http://www.w3.org/1999/xlink"
       data-testid={testId}
     >
-      <path d="M21.7143 12L2.00238 12" stroke="#545454" strokeWidth="2" strokeLinecap="square" />
+      <path d="M21.7143 12L2.00238 12" stroke={fill} strokeWidth="2" strokeLinecap="square" />
       <path
         d="M11.9999 21.7143L11.9999 2.00238"
-        stroke="#545454"
+        stroke={fill}
         strokeWidth="2"
         strokeLinecap="square"
       />

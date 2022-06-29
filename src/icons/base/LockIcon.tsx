@@ -1,12 +1,13 @@
 import React, { ReactElement } from "react";
 import { DEFAULT_ICON } from "../../util/constants";
 import { IconProps } from "./constants";
+import { theme } from "../../themes";
 
 export const LockIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
   className,
-  fill = "#545454",
+  fill = theme.colors.grey[600],
   testId,
 }: IconProps): ReactElement => {
   return (
