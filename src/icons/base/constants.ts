@@ -5,3 +5,9 @@ export type IconProps = {
   width?: number;
   testId?: string;
 };
+
+export const DEFAULT_ICON = {
+  WIDTH: 24,
+  HEIGHT: 24,
+  FILL: "currentColor",
+};

@@ -1,6 +1,5 @@
 import React, { ReactElement } from "react";
-import { DEFAULT_ICON } from "../../util/constants";
-import { IconProps } from "./constants";
+import { IconProps, DEFAULT_ICON } from "./constants";
 import { theme } from "../../themes";
 
 export const MoreDropdownIcon = ({
@@ -8,7 +7,7 @@ export const MoreDropdownIcon = ({
   height = DEFAULT_ICON.HEIGHT,
   className,
   testId,
-  fill = theme.colors.grey[600],
+  fill = theme.colors.grey[500],
 }: IconProps): ReactElement => {
   return (
     <svg

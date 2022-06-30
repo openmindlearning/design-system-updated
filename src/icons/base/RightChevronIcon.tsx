@@ -1,12 +1,11 @@
 import React, { ReactElement } from "react";
-import { DEFAULT_ICON } from "../../util/constants";
 import { theme } from "../../themes";
-import { IconProps } from "./constants";
+import { IconProps, DEFAULT_ICON } from "./constants";
 
 export const RightChevronIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
-  fill = theme.colors.grey[600],
+  fill = theme.colors.grey[500],
   className,
   testId,
 }: IconProps): ReactElement => {

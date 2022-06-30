@@ -1,20 +1,18 @@
 import React, { ReactElement } from "react";
-import { DEFAULT_ICON } from "../../util/constants";
-import { IconProps } from "./constants";
+import { IconProps, DEFAULT_ICON } from "./constants";
 import { theme } from "../../themes";
 
 export const ThreeDotsHorizontalGray = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
   testId,
-  fill = theme.colors.grey[600],
+  className,
+  fill = theme.colors.grey[500],
 }: IconProps): ReactElement => {
   return (
     <svg
-      width={width}
-      height={height}
+      {...{ width, height, className, fill }}
       viewBox="0 0 14 12"
-      fill={fill}
       xmlns="http://www.w3.org/2000/svg"
       data-testid={testId}
     >

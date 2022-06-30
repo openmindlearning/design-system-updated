@@ -1,7 +1,6 @@
 import React, { ReactElement } from "react";
-import { DEFAULT_ICON } from "../../util/constants";
 import { theme } from "../../themes";
-import { IconProps } from "./constants";
+import { IconProps, DEFAULT_ICON } from "./constants";
 
 type Props = {
   arrowColor?: string;
@@ -12,10 +11,11 @@ export const CircleCheckIcon = ({
   fill = theme.colors.content.accentPrimary,
   arrowColor = theme.colors.content.primary,
   testId,
+  className,
 }: Props & IconProps): ReactElement => {
   return (
     <svg
-      {...{ width, height }}
+      {...{ width, height, className }}
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"

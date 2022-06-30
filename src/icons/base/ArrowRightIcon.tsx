@@ -1,7 +1,6 @@
 import React, { ReactElement } from "react";
-import { DEFAULT_ICON } from "../../util/constants";
 import { theme } from "../../themes";
-import { IconProps } from "./constants";
+import { IconProps, DEFAULT_ICON } from "./constants";
 
 export const ArrowRightIcon = ({
   width = DEFAULT_ICON.WIDTH,

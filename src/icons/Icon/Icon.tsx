@@ -1,8 +1,6 @@
 import React, { ReactElement } from "react";
-import { DEFAULT_ICON } from "../../util/constants";
-import { theme } from "../../themes";
 import { Variant, VariantIcons } from "./constants";
-import { IconProps } from "icons/base/constants";
+import { IconProps, DEFAULT_ICON } from "../../icons/base/constants";
 
 type Props = {
   variant: Variant;

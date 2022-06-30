@@ -1,22 +1,20 @@
 import React, { ReactElement } from "react";
-import { DEFAULT_ICON } from "../../util/constants";
 import { theme } from "../../themes";
-import { IconProps } from "./constants";
+import { IconProps, DEFAULT_ICON } from "./constants";
 
 export const BulletListIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
-  fill = theme.colors.grey[600],
+  fill = theme.colors.grey[500],
   className,
   testId,
 }: IconProps): ReactElement => {
   return (
     <svg
-      {...{ width, height, fill }}
+      {...{ width, height, className, fill }}
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      className={className}
       data-testid={testId}
     >
       <path
