@@ -2,6 +2,40 @@
 
 Studio's Design System, built to help us work together in creating an excellent user experience. The design system is our toolkit and building blocks for building the platform where everyone can connect with their creativity.
 
+## Usage
+
+1. Import package
+
+```
+yarn add @openmindlearning/design-system
+```
+
+2. Use `ThemeProvider` or `ThemeWrapper` as a container component
+
+```
+<ThemeProvider>
+  <MyApp/>
+</ThemeProvider>
+```
+
+```
+<ThemeWrapper theme={ThemeType.light}>
+  <MyApp/>
+</ThemeWrapper>
+```
+
+3. Import the prebuilt Vanilla Extract CSS file in your top level app
+
+```
+import "@openmindlearning/design-system/dist/style.css";
+```
+
+or in a `global.css` file:
+
+```
+@import "@openmindlearning/design-system/dist/style.css";
+```
+
 ## About this package
 
 `@studio/design-system` is developed to be agnostic to our platform and is intended for creating components that act as building blocks for both our applications, but also any other application or feature we could imagine.
