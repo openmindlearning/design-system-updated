@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import { DEFAULT_ICON } from "../base/constants";
 type Props = {
   width?: number;
   height?: number;
