@@ -3,7 +3,7 @@ import * as styles from "./ActionMenu.css";
 import { useElementPosition } from "../../hooks/useElementPosition";
 import { ClickableContentWrapper } from "../ClickableContentWrapper";
 import { ClickOuterWrapper } from "../ClickOuterWrapper";
-import { ThreeDotsHorizontalGray } from "../../icons/base/ThreeDotHorizontalGray";
+import { ThreeDotsHorizontalGray } from "../../icons/base";
 import { useIsOnScreen } from "../../hooks/useIntersectionObserver";
 import { ThemeProvider } from "../../themes";
 import { Portal } from "react-portal";

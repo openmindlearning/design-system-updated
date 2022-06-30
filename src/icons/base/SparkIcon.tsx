@@ -1,19 +1,14 @@
 import React, { ReactElement } from "react";
-import { DEFAULT_ICON } from "../../util/constants";
 import { theme } from "../../themes";
+import { IconProps, DEFAULT_ICON } from "./constants";
 
-type Props = {
-  width?: number;
-  height?: number;
-  fill?: string;
-  className?: string;
-};
 export const SparkIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
-  fill = theme.colors.grey[600],
+  fill = theme.colors.grey[500],
   className,
-}: Props): ReactElement => {
+  testId,
+}: IconProps): ReactElement => {
   return (
     <svg
       width={width}
@@ -22,6 +17,7 @@ export const SparkIcon = ({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
+      data-testid={testId}
     >
       <path
         d="M10.7188 7.43747L6.30006 12.3922C5.98288 12.7422 5.39225 12.4468 5.50163 11.9875L6.25631 8.88122C6.33288 8.58591 6.10319 8.31247 5.80788 8.31247H3.62038C3.2485 8.31247 3.02975 7.88591 3.2485 7.56872L7.66725 1.62966C7.96256 1.23591 8.57506 1.52028 8.47663 2.00153L7.66725 6.12497C7.61256 6.39841 7.83131 6.68278 8.11569 6.68278H10.3579C10.7516 6.66091 10.9813 7.14216 10.7188 7.43747Z"

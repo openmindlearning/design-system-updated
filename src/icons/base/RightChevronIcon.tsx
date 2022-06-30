@@ -1,20 +1,14 @@
 import React, { ReactElement } from "react";
-import { DEFAULT_ICON } from "../../util/constants";
 import { theme } from "../../themes";
-
-type Props = {
-  width?: number;
-  height?: number;
-  fill?: string;
-  className?: string;
-};
+import { IconProps, DEFAULT_ICON } from "./constants";
 
 export const RightChevronIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
-  fill = theme.colors.grey[600],
+  fill = theme.colors.grey[500],
   className,
-}: Props): ReactElement => {
+  testId,
+}: IconProps): ReactElement => {
   return (
     <svg
       className={className}
@@ -23,6 +17,7 @@ export const RightChevronIcon = ({
       viewBox="0 0 17 17"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      data-testid={testId}
     >
       <rect
         x="15.5559"

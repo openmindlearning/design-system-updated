@@ -1,26 +1,26 @@
 import React, { ReactElement } from "react";
-import { DEFAULT_ICON } from "../../util/constants";
+import { IconProps, DEFAULT_ICON } from "./constants";
+import { theme } from "../../themes";
 
-type Props = {
-  width?: number;
-  height?: number;
-};
 export const PeersIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
-}: Props): ReactElement => {
+  testId,
+  fill = theme.colors.grey[500],
+  className,
+}: IconProps): ReactElement => {
   return (
     <svg
-      {...{ width, height }}
+      {...{ width, height, className, fill }}
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      data-testid={testId}
     >
       <path
         fillRule="evenodd"
         clipRule="evenodd"
         d="M11.0818 8.72734C11.0818 10.2365 9.87263 11.4547 8.3635 11.4547C6.85437 11.4547 5.63616 10.2365 5.63616 8.72734C5.63616 7.21821 6.85437 6 8.3635 6C9.87263 6 11.0818 7.21821 11.0818 8.72734ZM18.3546 8.72734C18.3546 10.2365 17.1455 11.4547 15.6364 11.4547C14.1273 11.4547 12.909 10.2365 12.909 8.72734C12.909 7.21821 14.1273 6 15.6364 6C17.1455 6 18.3546 7.21821 18.3546 8.72734ZM8.3638 13.2729C6.24557 13.2729 2 14.3365 2 16.4548V17.8184C2 18.3185 2.4091 18.7276 2.90911 18.7276H13.8185C14.3185 18.7276 14.7276 18.3185 14.7276 17.8184V16.4548C14.7276 14.3365 10.482 13.2729 8.3638 13.2729ZM14.7548 13.3183C15.073 13.291 15.373 13.2729 15.6366 13.2729C17.7549 13.2729 22.0004 14.3365 22.0004 16.4548V17.8184C22.0004 18.3185 21.5913 18.7276 21.0913 18.7276H16.3821C16.4821 18.4457 16.5458 18.1366 16.5458 17.8184V16.4548C16.5458 15.1184 15.8276 14.1093 14.7912 13.3547C14.7884 13.3519 14.7857 13.3483 14.7827 13.3444C14.7757 13.3354 14.7675 13.3247 14.7548 13.3183Z"
-        fill="#545454"
       />
     </svg>
   );
