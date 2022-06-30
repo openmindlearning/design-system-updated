@@ -10,6 +10,7 @@ interface Props {
   thumbnailURL: string;
   progressIndicator: React.ReactNode;
   instructorName?: string;
+  dataTestId?: string;
   subtitle?: string;
   onClick?: () => void;
 }
@@ -30,9 +31,10 @@ export const ExperienceCard = ({
   instructorName,
   subtitle,
   onClick,
+  dataTestId,
 }: Props): React.ReactElement => {
   return (
-    <ClickableContentWrapper className={styles.container} onClick={onClick}>
+    <ClickableContentWrapper className={styles.container} onClick={onClick} dataTestId={dataTestId}>
       <div className={styles.card}>
         <img src={thumbnailURL} alt={`Thumbnail for ${title}`} className={styles.thumbnail} />
         <div className={styles.metadata}>
