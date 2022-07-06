@@ -16,12 +16,12 @@ export type LabelVariantColors =
 
 export type LabelVariantSizes = "small" | "medium" | "large";
 
-export type Icon = "lock" | "hourglass" | "studio" | "spark";
+export type LabelIcon = "lock" | "hourglass" | "studio" | "spark";
 
 interface Props {
   children?: ReactNode;
   dataTestId?: string;
-  icon?: Icon;
+  icon?: LabelIcon;
   /**
    * DEPRECATED: use icon="lock" to make a lock appear instead.
    * @deprecated use icon="lock" instead.
@@ -47,7 +47,7 @@ export function Label({
     large: 12,
   };
 
-  const iconTypeToComponent: { [key in Icon]: React.ReactElement } = {
+  const iconTypeToComponent: { [key in LabelIcon]: React.ReactElement } = {
     lock: (
       <LockIcon
         height={iconSizes[size]}
