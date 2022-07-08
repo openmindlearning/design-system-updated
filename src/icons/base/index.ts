@@ -10,6 +10,7 @@ export * from "./BoldIcon";
 export * from "./BulletListIcon";
 export * from "./CameraIcon";
 export * from "./CheckmarkIcon";
+export * from "./CircledPlusIcon";
 export * from "./CircleCheckIcon";
 export * from "./CloseIcon";
 export * from "./CodeIcon";
