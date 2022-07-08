@@ -6,7 +6,6 @@ export * from "./BreadCrumbs";
 export * from "./Button";
 export * from "./ClickableContentWrapper";
 export * from "./ClickOuterWrapper";
-export * from "./ExperienceCard";
 export * from "./Footer";
 export * from "./Header";
 export * from "./Hero";
