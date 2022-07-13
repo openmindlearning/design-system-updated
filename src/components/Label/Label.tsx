@@ -2,8 +2,8 @@ import React, { ReactNode } from "react";
 
 import classnames from "classnames";
 import * as styles from "./Label.css";
-
-import { LockIcon, HourglassIcon, SparkIcon, StudioIcon } from "../../icons";
+import { IconVariant } from "../../icons/Icon/constants";
+import { Icon } from "../../icons/Icon";
 
 export type LabelVariantColors =
   | "grey"
@@ -16,12 +16,10 @@ export type LabelVariantColors =
 
 export type LabelVariantSizes = "small" | "medium" | "large";
 
-export type LabelIcon = "lock" | "hourglass" | "studio" | "spark";
-
 interface Props {
   children?: ReactNode;
   dataTestId?: string;
-  icon?: LabelIcon;
+  icon?: IconVariant;
   /**
    * DEPRECATED: use icon="lock" to make a lock appear instead.
    * @deprecated use icon="lock" instead.
@@ -47,41 +45,6 @@ export function Label({
     large: 12,
   };
 
-  const iconTypeToComponent: { [key in LabelIcon]: React.ReactElement } = {
-    lock: (
-      <LockIcon
-        height={iconSizes[size]}
-        width={iconSizes[size]}
-        className={styles.icon}
-        fill="currentColor"
-      />
-    ),
-    hourglass: (
-      <HourglassIcon
-        height={iconSizes[size]}
-        width={iconSizes[size]}
-        className={styles.icon}
-        fill="currentColor"
-      />
-    ),
-    spark: (
-      <SparkIcon
-        height={iconSizes[size]}
-        width={iconSizes[size]}
-        className={styles.icon}
-        fill="currentColor"
-      />
-    ),
-    studio: (
-      <StudioIcon
-        height={iconSizes[size]}
-        width={iconSizes[size]}
-        className={styles.icon}
-        fill="currentColor"
-      />
-    ),
-  };
-
   return (
     <span
       className={classnames(
@@ -95,7 +58,8 @@ export function Label({
       {
         // showLock is deprecated: this condition is for backwards compatibility.
         (icon === "lock" || showLock) && (
-          <LockIcon
+          <Icon
+            variant={IconVariant.Lock}
             height={iconSizes[size]}
             width={iconSizes[size]}
             className={styles.icon}
@@ -103,7 +67,15 @@ export function Label({
           />
         )
       }
-      {icon && icon !== "lock" && iconTypeToComponent[icon]}
+      {icon && icon !== "lock" && (
+        <Icon
+          variant={icon}
+          height={iconSizes[size]}
+          width={iconSizes[size]}
+          className={styles.icon}
+          fill="currentColor"
+        />
+      )}
       {children}
     </span>
   );
