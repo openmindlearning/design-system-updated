@@ -8,4 +8,15 @@ import { IconsPreview } from "./icons-preview";
 Hover over an icon to display its name or click it to see its name logged to the
 console.
 
+**IMPORTANT: Importing icons directly for use is deprecated.**
+
+Instead, to add and use a new icon, do the following:
+
+1. Add the icon as a component in `src/icons/base`
+2. Add the icon to both the `IconVariants` and `VariantIcons` reference objects in `src/icons/Icon/constants.ts`
+3. Add a story for the icon to `src/icons/Icon/Icon.stories.tsx`
+4. Use the icon by importing the `Icon` component with the applicable variant prop.
+
+This may seem like more work, but it actually allows us to get new icons in components like `Label` for free, without having to modify those components directly!
+
 <IconsPreview />
