@@ -272,6 +272,10 @@ export const Underline = Template.bind({});
 Underline.args = {
   variant: IconVariant.Underline,
 };
+export const UpDown = Template.bind({});
+UpDown.args = {
+  variant: IconVariant.UpDown,
+};
 export const UploadAudio = Template.bind({});
 UploadAudio.args = {
   variant: IconVariant.UploadAudio,

@@ -64,6 +64,7 @@ export * from "./SparkIcon";
 export * from "./StudioIcon";
 export * from "./ThreeDotHorizontalGray";
 export * from "./UnderlineIcon";
+export * from "./UpDownIcon";
 export * from "./UploadAudioIcon";
 export * from "./UploadVideoIcon";
 export * from "./WarningIcon";
