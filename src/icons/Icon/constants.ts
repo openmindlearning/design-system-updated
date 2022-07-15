@@ -70,6 +70,7 @@ export enum IconVariant {
   UploadAudio = "upload-audio",
   UploadVideo = "upload-video",
   Warning = "warning",
+  Delete = "delete",
 }
 
 export const VariantIcons = {
@@ -142,4 +143,5 @@ export const VariantIcons = {
   [IconVariant.UploadAudio]: icons.UploadAudioIcon,
   [IconVariant.UploadVideo]: icons.UploadVideoIcon,
   [IconVariant.Warning]: icons.WarningIcon,
+  [IconVariant.Delete]: icons.DeleteIcon,
 };
