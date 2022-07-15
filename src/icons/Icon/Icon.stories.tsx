@@ -288,3 +288,8 @@ export const Warning = Template.bind({});
 Warning.args = {
   variant: IconVariant.Warning,
 };
+
+export const Delete = Template.bind({});
+Delete.args = {
+  variant: IconVariant.Delete,
+};
