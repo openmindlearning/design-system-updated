@@ -9,7 +9,7 @@ type Props = {
   dataTestId?: string;
   disabled?: boolean;
   id?: string;
-  onClick?: () => void;
+  onClick?: (e: MouseEvent) => void;
   onMouseDown?: (e: MouseEvent) => void;
   onMouseEnter?: (e: MouseEvent) => void;
   onMouseLeave?: (e: MouseEvent) => void;
@@ -57,7 +57,7 @@ export const ClickableContentWrapper = React.forwardRef<HTMLButtonElement, Props
         e.currentTarget.blur();
       }
       if (onClick) {
-        onClick();
+        onClick(e);
       }
     };
 
