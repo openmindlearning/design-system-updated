@@ -6,6 +6,7 @@ export * from "./AttachFileIcon";
 export * from "./BackIcon";
 export * from "./BellNoNotificationIcon";
 export * from "./BellNotificationIcon";
+export * from "./BellUniversalNotification";
 export * from "./BoldIcon";
 export * from "./BulletListIcon";
 export * from "./CameraIcon";

@@ -52,6 +52,12 @@ BellNotification.args = {
   variant: IconVariant.BellNotification,
 };
 
+export const BellUniversalNotification = Template.bind({});
+BellUniversalNotification.args = {
+  variant: IconVariant.BellUniversalNotification,
+};
+
+
 export const Bold = Template.bind({});
 Bold.args = {
   variant: IconVariant.Bold,
