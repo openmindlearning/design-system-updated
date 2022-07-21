@@ -85,10 +85,6 @@ export const Code = Template.bind({});
 Code.args = {
   variant: IconVariant.Code,
 };
-export const Minus = Template.bind({});
-Minus.args = {
-  variant: IconVariant.Minus,
-};
 export const CollapseList = Template.bind({});
 CollapseList.args = {
   variant: IconVariant.CollapseList,
@@ -184,6 +180,10 @@ Lock.args = {
 export const Messaging = Template.bind({});
 Messaging.args = {
   variant: IconVariant.Messaging,
+};
+export const Minus = Template.bind({});
+Minus.args = {
+  variant: IconVariant.Minus,
 };
 export const MoreDropdown = Template.bind({});
 MoreDropdown.args = {
