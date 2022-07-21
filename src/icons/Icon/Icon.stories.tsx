@@ -57,7 +57,6 @@ BellUniversalNotification.args = {
   variant: IconVariant.BellUniversalNotification,
 };
 
-
 export const Bold = Template.bind({});
 Bold.args = {
   variant: IconVariant.Bold,
@@ -86,9 +85,9 @@ export const Code = Template.bind({});
 Code.args = {
   variant: IconVariant.Code,
 };
-export const CollapseLesson = Template.bind({});
-CollapseLesson.args = {
-  variant: IconVariant.CollapseLesson,
+export const Minus = Template.bind({});
+Minus.args = {
+  variant: IconVariant.Minus,
 };
 export const CollapseList = Template.bind({});
 CollapseList.args = {
@@ -117,10 +116,6 @@ ExpandCard.args = {
 export const Expand = Template.bind({});
 Expand.args = {
   variant: IconVariant.Expand,
-};
-export const ExpandLesson = Template.bind({});
-ExpandLesson.args = {
-  variant: IconVariant.ExpandLesson,
 };
 export const ExpandList = Template.bind({});
 ExpandList.args = {
