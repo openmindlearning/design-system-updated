@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import { IconProps, DEFAULT_ICON } from "./constants";
 import { theme } from "../../themes";
 
-export const CollapseLessonIcon = ({
+export const MinusIcon = ({
   width = DEFAULT_ICON.WIDTH,
   height = DEFAULT_ICON.HEIGHT,
   testId,
