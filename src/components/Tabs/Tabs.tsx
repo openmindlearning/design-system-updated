@@ -14,7 +14,7 @@ export interface Tab {
 interface Props {
   tabs: Tab[];
   selection: Tab;
-  setSelection: React.Dispatch<React.SetStateAction<Tab>>;
+  setSelection: (tab: Tab) => void;
 }
 
 export const TABS_TEST_ID_PREFIX = "design-system-tabs-";
