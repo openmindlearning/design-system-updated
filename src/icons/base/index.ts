@@ -26,6 +26,7 @@ export * from "./ExpandIcon";
 export * from "./ExpandListIcon";
 export * from "./EyeClosedIcon";
 export * from "./EyeOpenIcon";
+export * from "./FaceSmileIcon";
 export * from "./FlagIcon";
 export * from "./FlipCameraIcon";
 export * from "./FullscreenExitIcon";

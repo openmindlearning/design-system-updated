@@ -125,6 +125,10 @@ export const EyeOpen = Template.bind({});
 EyeOpen.args = {
   variant: IconVariant.EyeOpen,
 };
+export const FaceSmile = Template.bind({});
+FaceSmile.args = {
+  variant: IconVariant.FaceSmile,
+};
 export const Flag = Template.bind({});
 Flag.args = {
   variant: IconVariant.Flag,
