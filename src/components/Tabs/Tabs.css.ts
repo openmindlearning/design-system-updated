@@ -29,6 +29,8 @@ const baseTabStyles = style({
   borderBottom: `${theme.spacing["1x"]} solid unset`,
   transition: "150ms ease background-color",
   ...theme.text.body.medium,
+  // Remove extra margin on Safari
+  margin: 0,
 });
 
 export const tab = styleVariants({
@@ -52,7 +54,7 @@ export const tab = styleVariants({
         bottom: `calc(${theme.spacing["1x"]} * -1)`,
         left: 0,
         width: "100%",
-        height: theme.spacing["1x"],
+        height: 0,
         backgroundColor: theme.colors.border.default,
         transform: `translateY(${theme.spacing["1x"]})`,
         transition: "150ms ease transform",
@@ -63,6 +65,7 @@ export const tab = styleVariants({
       selectors: {
         "&:hover::after": {
           transform: "translateY(0px)",
+          height: theme.spacing["1x"],
         },
       },
     },
