@@ -11,18 +11,12 @@ export const base = style([
     justifyContent: "center",
     padding: "2px 8px",
     width: "max-content",
-    "@media": {
-      ...atTabletBreakpoint({
-        ...theme.text.body.xxsmall,
-        fontWeight: FontWeight.semibold,
-      }),
-    },
   },
 ]);
 
 export const variant = styleVariants({
   grey: {
-    background: theme.colors.background.tertiary,
+    background: theme.colors.grey[100],
     color: theme.colors.content.tertiary,
   },
   green: {
