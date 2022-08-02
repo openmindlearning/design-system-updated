@@ -2,8 +2,9 @@ import { style, styleVariants } from "@vanilla-extract/css";
 
 import { FontWeight, theme } from "../../themes";
 
-export const button = style({
-  cursor: "pointer",
+export const button = styleVariants({
+  clickable: [{ cursor: "pointer" }],
+  unclickable: [{ cursor: "default" }],
 });
 
 export const baseTag = style([
