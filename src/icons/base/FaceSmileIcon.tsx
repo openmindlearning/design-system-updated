@@ -13,7 +13,7 @@ export const FaceSmileIcon = ({
     <svg
       {...{ width, height, fill, className }}
       viewBox="0 0 12 12"
-      data-testId={testId}
+      data-testid={testId}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
