@@ -32,6 +32,9 @@ export const atDesktopBreakpoint = (styles: StyleRule): FeatureQueries<StyleWith
 export const atTabletBreakpoint = (styles: StyleRule): FeatureQueries<StyleWithSelectors> =>
   makeCustomBreakpoint(Breakpoint.Tablet)(styles);
 
+export const atMediumBreakpoint = (styles: StyleRule): FeatureQueries<StyleWithSelectors> =>
+  makeCustomBreakpoint(Breakpoint.Medium)(styles);
+
 export const atSmallBreakpoint = (styles: StyleRule): FeatureQueries<StyleWithSelectors> =>
   makeCustomBreakpoint(Breakpoint.Small)(styles);
 
