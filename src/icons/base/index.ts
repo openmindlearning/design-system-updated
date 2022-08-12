@@ -70,3 +70,4 @@ export * from "./UploadAudioIcon";
 export * from "./UploadVideoIcon";
 export * from "./WarningIcon";
 export * from "./DeleteIcon";
+export * from "./Archive";
