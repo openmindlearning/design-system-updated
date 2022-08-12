@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { style, styleVariants } from "@vanilla-extract/css";
 
 import { theme } from "../../themes";
 
@@ -17,10 +17,14 @@ export const barToFill = style({
   width: "100%",
 });
 
-export const barFill = style({
-  background: theme.colors.content.accentPrimary,
+const barFillBase = {
   borderRadius: "60px",
   height: "10px",
+};
+
+export const barFill = styleVariants({
+  full: { ...barFillBase, background: theme.colors.green["500"] },
+  notFull: { ...barFillBase, background: theme.colors.content.accentPrimary },
 });
 
 export const percentageText = style([

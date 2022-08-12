@@ -17,7 +17,10 @@ export const ProgressBar = ({
   return (
     <div className={styles.container} style={{ width }}>
       <div className={styles.barToFill}>
-        <div className={styles.barFill} style={{ width: percentageString }}></div>
+        <div
+          className={percentage === 100 ? styles.barFill.full : styles.barFill.notFull}
+          style={{ width: percentageString }}
+        ></div>
       </div>
       {displayPercentageText && <div className={styles.percentageText}>{percentageString}</div>}
     </div>
