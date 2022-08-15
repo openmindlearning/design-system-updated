@@ -38,3 +38,16 @@ export const WithElementOverride = (): ReactElement => {
     </ActionMenu>
   );
 };
+
+export const LeftExpandDirection = (): ReactElement => {
+  const onClick = () => {};
+  return (
+    <div style={{ display: "flex", justifyContent: "flex-end" }}>
+      <ActionMenu expandDirection="left">
+        <Option onClick={onClick}>
+          <span style={{ width: 100 }}>any child label</span>
+        </Option>
+      </ActionMenu>
+    </div>
+  );
+};
