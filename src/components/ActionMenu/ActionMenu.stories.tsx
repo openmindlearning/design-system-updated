@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import { ComponentMeta } from "@storybook/react";
 
 import { ActionMenu } from "./ActionMenu";
@@ -36,5 +36,42 @@ export const WithElementOverride = (): ReactElement => {
         <span>any second label</span>
       </Option>
     </ActionMenu>
+  );
+};
+
+export const LeftExpandDirection = (): ReactElement => {
+  const onClick = () => {};
+  return (
+    <div style={{ display: "flex", justifyContent: "flex-end" }}>
+      <ActionMenu expandDirection="left">
+        <Option onClick={onClick}>
+          <span style={{ width: 100 }}>any child label</span>
+        </Option>
+        <Option onClick={onClick}>
+          <span>any second label</span>
+        </Option>
+      </ActionMenu>
+    </div>
+  );
+};
+
+export const WithChangingPosition = (): ReactElement => {
+  const onClick = () => {};
+  const [isExpanded, setIsExpanded] = useState(false);
+  useEffect(() => {
+    setTimeout(() => setIsExpanded(true), 1000);
+  }, []);
+  return (
+    <>
+      <div style={{ width: "100%", height: isExpanded ? 100 : 0 }} />
+      <ActionMenu>
+        <Option onClick={onClick}>
+          <span style={{ width: 100 }}>any child label</span>
+        </Option>
+        <Option onClick={onClick}>
+          <span>any second label</span>
+        </Option>
+      </ActionMenu>
+    </>
   );
 };

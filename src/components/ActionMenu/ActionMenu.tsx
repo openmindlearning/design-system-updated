@@ -1,6 +1,7 @@
 import React, { ReactElement, useEffect, useRef, useState } from "react";
 import * as styles from "./ActionMenu.css";
 import { useElementPosition } from "../../hooks/useElementPosition";
+
 import { ClickableContentWrapper } from "../ClickableContentWrapper";
 import { ClickOuterWrapper } from "../ClickOuterWrapper";
 import { ThreeDotsHorizontalGray } from "../../icons/base";
@@ -12,6 +13,7 @@ interface Props {
   children: React.ReactNode;
   openMenuElement?: React.ReactElement;
   defaultOpen?: boolean;
+  expandDirection?: "left" | "right";
 }
 
 export const ACTION_MENU_OPEN_MENU_ELEMENT_LABEL = "action-menu-open-menu-element-label";
@@ -21,9 +23,10 @@ export const ActionMenu = ({
   children,
   openMenuElement,
   defaultOpen,
+  expandDirection = "right",
 }: Props): React.ReactElement => {
   const openButtonRef = useRef<HTMLElement>(null);
-  const position = useElementPosition(openButtonRef);
+  const { position, updateRefPosition } = useElementPosition(openButtonRef);
   const [isMenuOpen, setIsMenuOpen] = useState(defaultOpen);
   const isOnScreen = useIsOnScreen({ element: openButtonRef.current });
 
@@ -37,10 +40,15 @@ export const ActionMenu = ({
     <ThreeDotsHorizontalGray width={12} height={14} />
   );
   const refElementHeight = openButtonRef.current?.getBoundingClientRect().height;
+  const refElementRight = openButtonRef.current?.getBoundingClientRect().right;
+
   return (
     <>
       <ClickableContentWrapper
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        onClick={() => {
+          updateRefPosition();
+          setIsMenuOpen(!isMenuOpen);
+        }}
         dataTestId={ACTION_MENU_OPEN_MENU_ELEMENT_LABEL}
       >
         <span ref={openButtonRef}>{openMenuDisplayElement}</span>
@@ -58,7 +66,9 @@ export const ActionMenu = ({
                 style={{
                   position: "fixed",
                   top: position.y + (refElementHeight || 0),
-                  left: position.x,
+                  ...(expandDirection === "right"
+                    ? { left: position.x }
+                    : { right: `calc(100vw - ${refElementRight}px)` }),
                 }}
                 onClick={() => setIsMenuOpen(false)}
                 data-testid={ACTION_MENU_OPEN_LABEL}
