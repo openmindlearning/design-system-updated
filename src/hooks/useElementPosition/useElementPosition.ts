@@ -1,7 +1,14 @@
 import { useCallback, useState, RefObject } from "react";
 import { useEventListener } from "../useEventListener";
 
-export const useElementPosition = (element: RefObject<HTMLElement>): { x: number; y: number } => {
+interface Position {
+  x: number;
+  y: number;
+}
+
+export const useElementPosition = (
+  element: RefObject<HTMLElement>,
+): { position: Position; updateRefPosition: () => void } => {
   const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const [loaded, setLoaded] = useState(false);
   const updateRefPosition = useCallback(() => {
@@ -16,5 +23,5 @@ export const useElementPosition = (element: RefObject<HTMLElement>): { x: number
   }
   useEventListener({ type: "resize", handler: updateRefPosition });
   useEventListener({ type: "scroll", handler: updateRefPosition, useCapture: true });
-  return position;
+  return { position, updateRefPosition };
 };

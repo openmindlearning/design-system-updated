@@ -26,7 +26,7 @@ export const ActionMenu = ({
   expandDirection = "right",
 }: Props): React.ReactElement => {
   const openButtonRef = useRef<HTMLElement>(null);
-  const position = useElementPosition(openButtonRef);
+  const { position, updateRefPosition } = useElementPosition(openButtonRef);
   const [isMenuOpen, setIsMenuOpen] = useState(defaultOpen);
   const isOnScreen = useIsOnScreen({ element: openButtonRef.current });
 
@@ -45,7 +45,10 @@ export const ActionMenu = ({
   return (
     <>
       <ClickableContentWrapper
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        onClick={() => {
+          updateRefPosition();
+          setIsMenuOpen(!isMenuOpen);
+        }}
         dataTestId={ACTION_MENU_OPEN_MENU_ELEMENT_LABEL}
       >
         <span ref={openButtonRef}>{openMenuDisplayElement}</span>
