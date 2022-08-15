@@ -26,10 +26,10 @@ export const ActionMenu = ({
   expandDirection = "right",
 }: Props): React.ReactElement => {
   const openButtonRef = useRef<HTMLElement>(null);
-  const dropdownRef = useRef<HTMLElement>(null);
   const position = useElementPosition(openButtonRef);
   const [isMenuOpen, setIsMenuOpen] = useState(defaultOpen);
   const isOnScreen = useIsOnScreen({ element: openButtonRef.current });
+
   useEffect(() => {
     if (!isOnScreen) {
       setIsMenuOpen(false);
@@ -39,8 +39,8 @@ export const ActionMenu = ({
   const openMenuDisplayElement: ReactElement = openMenuElement || (
     <ThreeDotsHorizontalGray width={12} height={14} />
   );
-  const openButtonElementHeight = openButtonRef.current?.getBoundingClientRect().height;
-  const openButtonElementRight = openButtonRef.current?.getBoundingClientRect().right;
+  const refElementHeight = openButtonRef.current?.getBoundingClientRect().height;
+  const refElementRight = openButtonRef.current?.getBoundingClientRect().right;
 
   return (
     <>
@@ -59,14 +59,13 @@ export const ActionMenu = ({
               exceptions={[openButtonRef]}
             >
               <div
-                ref={dropdownRef}
                 className={styles.dropdown}
                 style={{
                   position: "fixed",
-                  top: position.y + (openButtonElementHeight || 0),
+                  top: position.y + (refElementHeight || 0),
                   ...(expandDirection === "right"
                     ? { left: position.x }
-                    : { right: `calc(100vw - ${openButtonElementRight}px)` }),
+                    : { right: `calc(100vw - ${refElementRight}px)` }),
                 }}
                 onClick={() => setIsMenuOpen(false)}
                 data-testid={ACTION_MENU_OPEN_LABEL}
