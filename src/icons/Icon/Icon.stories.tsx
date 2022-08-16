@@ -298,3 +298,8 @@ export const Delete = Template.bind({});
 Delete.args = {
   variant: IconVariant.Delete,
 };
+
+export const Info = Template.bind({});
+Info.args = {
+  variant: IconVariant.Info,
+};
