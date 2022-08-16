@@ -73,6 +73,7 @@ export enum IconVariant {
   Warning = "warning",
   Delete = "delete",
   Archive = "archive",
+  Info = "info",
 }
 
 export const VariantIcons = {
@@ -148,4 +149,5 @@ export const VariantIcons = {
   [IconVariant.Warning]: icons.WarningIcon,
   [IconVariant.Delete]: icons.DeleteIcon,
   [IconVariant.Archive]: icons.ArchiveIcon,
+  [IconVariant.Info]: icons.InfoIcon,
 };
