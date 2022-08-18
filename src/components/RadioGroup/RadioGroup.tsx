@@ -6,13 +6,26 @@ interface Props {
    */
   items: { label: RadioItemLabel; value: RadioItemValue }[];
   className?: string;
+  initialValue?: RadioItemValue;
+  onChange?: (value: RadioItemValue) => void;
 }
 
-export function RadioGroup({ items, className }: Props): React.ReactElement {
-  const [value, setValue] = useState<string | undefined>();
-  const handleChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
-  }, []);
+export function RadioGroup({
+  items,
+  className,
+  initialValue,
+  onChange,
+}: Props): React.ReactElement {
+  const [value, setValue] = useState<string | undefined>(initialValue);
+
+  const handleChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValue(event.target.value);
+      onChange?.(event.target.value);
+    },
+    [onChange],
+  );
+
   return (
     <div className={className} data-testid="design-system-radio-group">
       {items.map((item, i) => {
