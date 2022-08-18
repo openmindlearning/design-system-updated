@@ -25,7 +25,8 @@ export const Tag = forwardRef<HTMLElement, Props>(
       ref={ref}
       className={classnames(
         className,
-        Component === "button" && styles.button,
+        Component === "button" &&
+          styles.button[htmlElementAttributes.onClick ? "clickable" : "unclickable"],
         styles.tag[variant],
       )}
       {...htmlElementAttributes}

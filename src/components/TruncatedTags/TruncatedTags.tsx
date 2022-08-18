@@ -191,7 +191,7 @@ export const TruncatedTags = ({
         {overflowedTags.length > 0 ? (
           <>
             {displayedTags?.slice(0, -1).map((tag, idx) => (
-              <PaddedTag onClick={() => onTagClicked?.(tag)} key={idx}>
+              <PaddedTag onClick={onTagClicked ? () => onTagClicked(tag) : undefined} key={idx}>
                 {tag}
               </PaddedTag>
             ))}
@@ -212,7 +212,7 @@ export const TruncatedTags = ({
           </>
         ) : (
           displayedTags?.map((tag, idx) => (
-            <PaddedTag key={idx} onClick={() => onTagClicked?.(tag)}>
+            <PaddedTag key={idx} onClick={onTagClicked ? () => onTagClicked(tag) : undefined}>
               {tag}
             </PaddedTag>
           ))

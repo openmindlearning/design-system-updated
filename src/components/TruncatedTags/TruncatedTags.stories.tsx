@@ -85,3 +85,50 @@ Default.args = {
     </Popover>
   ),
 };
+
+export const WithoutOnTabClick = Template.bind({});
+WithoutOnTabClick.args = {
+  maxRows: 2,
+  maxTags: Infinity,
+  tags: tags,
+  popoverSlot: ({ numberOfTagsHiddenTagRef, overflowedTags, visible, close }) => (
+    <Popover
+      referenceRef={numberOfTagsHiddenTagRef}
+      visible={visible}
+      zIndex="auto"
+      popperOptions={{
+        placement: "right-start",
+        modifiers: [
+          {
+            name: "offset",
+            enabled: true,
+            options: {
+              offset: [0, 16],
+            },
+          },
+          {
+            name: "flip",
+            options: {
+              fallbackPlacements: ["bottom"],
+            },
+          },
+        ],
+      }}
+    >
+      <ClickOuterWrapper
+        className={styles.popover}
+        isOpen
+        onOutsideClick={close}
+        exceptions={[numberOfTagsHiddenTagRef]}
+      >
+        <>
+          {overflowedTags.map((tag) => (
+            <div key={tag} className={styles.tagContainer}>
+              <Tag>{tag}</Tag>
+            </div>
+          ))}
+        </>
+      </ClickOuterWrapper>
+    </Popover>
+  ),
+};
