@@ -15,9 +15,6 @@ interface Props {
   openMenuElement?: React.ReactElement;
   defaultOpen?: boolean;
   expandDirection?: "left" | "right";
-  /**
-   * Value for the href
-   */
   top?: number;
   left?: number;
   right?: number;
