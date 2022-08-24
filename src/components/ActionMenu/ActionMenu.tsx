@@ -8,12 +8,20 @@ import { ThreeDotsHorizontalGray } from "../../icons/base";
 import { useIsOnScreen } from "../../hooks/useIntersectionObserver";
 import { ThemeProvider } from "../../themes";
 import { Portal } from "react-portal";
+import classnames from "classnames";
 
 interface Props {
   children: React.ReactNode;
   openMenuElement?: React.ReactElement;
   defaultOpen?: boolean;
   expandDirection?: "left" | "right";
+  /**
+   * Value for the href
+   */
+  top?: number;
+  left?: number;
+  right?: number;
+  className?: string;
 }
 
 export const ACTION_MENU_OPEN_MENU_ELEMENT_LABEL = "action-menu-open-menu-element-label";
@@ -24,6 +32,10 @@ export const ActionMenu = ({
   openMenuElement,
   defaultOpen,
   expandDirection = "right",
+  top = 0,
+  left = 0,
+  right = 0,
+  className = "",
 }: Props): React.ReactElement => {
   const openButtonRef = useRef<HTMLElement>(null);
   const { position, updateRefPosition } = useElementPosition(openButtonRef);
@@ -62,13 +74,13 @@ export const ActionMenu = ({
               exceptions={[openButtonRef]}
             >
               <div
-                className={styles.dropdown}
+                className={classnames([styles.dropdown, className])}
                 style={{
                   position: "fixed",
-                  top: position.y + (refElementHeight || 0),
+                  top: position.y + (refElementHeight || 0) + top,
                   ...(expandDirection === "right"
-                    ? { left: position.x }
-                    : { right: `calc(100vw - ${refElementRight}px)` }),
+                    ? { left: position.x + left }
+                    : { right: `calc(100vw - ${refElementRight || 0 + right}px)` }),
                 }}
                 onClick={() => setIsMenuOpen(false)}
                 data-testid={ACTION_MENU_OPEN_LABEL}

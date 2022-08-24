@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect, useState } from "react";
-import { ComponentMeta } from "@storybook/react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 
 import { ActionMenu } from "./ActionMenu";
 import { Option } from "./Option";
@@ -10,10 +10,10 @@ export default {
   component: ActionMenu,
 } as ComponentMeta<typeof ActionMenu>;
 
-export const Default = (): ReactElement => {
+const Template: ComponentStory<typeof ActionMenu> = (args) => {
   const onClick = () => {};
   return (
-    <ActionMenu>
+    <ActionMenu {...args}>
       <Option onClick={onClick}>
         <span>any child label</span>
       </Option>
@@ -22,6 +22,15 @@ export const Default = (): ReactElement => {
       </Option>
     </ActionMenu>
   );
+};
+
+export const Default = Template.bind({});
+Default.args = {
+  expandDirection: "right",
+  defaultOpen: true,
+  top: 0,
+  left: 0,
+  right: 0,
 };
 
 export const WithElementOverride = (): ReactElement => {
