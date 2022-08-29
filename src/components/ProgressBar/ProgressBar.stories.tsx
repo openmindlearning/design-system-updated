@@ -2,6 +2,7 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { ProgressBar } from "./ProgressBar";
+import { theme } from "../../themes";
 
 export default {
   title: "Design System / ProgressBar",
@@ -21,4 +22,18 @@ FixedWidth.args = {
   displayPercentageText: true,
   percentage: 45,
   width: "200px",
+};
+
+export const FullyCompleted = Template.bind({});
+FullyCompleted.args = {
+  displayPercentageText: true,
+  percentage: 100,
+};
+
+export const CustomColors = Template.bind({});
+CustomColors.args = {
+  displayPercentageText: true,
+  percentage: 60,
+  fillColor: theme.colors.content.success,
+  backgroundColor: theme.colors.grey[100],
 };
