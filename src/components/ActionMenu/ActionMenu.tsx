@@ -57,7 +57,7 @@ export const ActionMenu = ({
       return;
     }
     onOpenOrClose && onOpenOrClose(isMenuOpen);
-  }, [isMenuOpen]);
+  }, [isMenuOpen, onOpenOrClose]);
 
   const openMenuDisplayElement: ReactElement = openMenuElement || (
     <ThreeDotsHorizontalGray width={12} height={14} />
