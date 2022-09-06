@@ -14,6 +14,8 @@ interface Props {
   children: React.ReactNode;
   openMenuElement?: React.ReactElement;
   defaultOpen?: boolean;
+  // only called on state changes. init state is ignored.
+  onOpenOrClose?: (isOpen: boolean) => void;
   expandDirection?: "left" | "right";
   top?: number;
   left?: number;
@@ -28,6 +30,7 @@ export const ActionMenu = ({
   children,
   openMenuElement,
   defaultOpen,
+  onOpenOrClose,
   expandDirection = "right",
   top = 0,
   left = 0,
@@ -35,8 +38,9 @@ export const ActionMenu = ({
   className = "",
 }: Props): React.ReactElement => {
   const openButtonRef = useRef<HTMLElement>(null);
+  const isFirstRender = useRef(true);
   const { position, updateRefPosition } = useElementPosition(openButtonRef);
-  const [isMenuOpen, setIsMenuOpen] = useState(defaultOpen);
+  const [isMenuOpen, setIsMenuOpen] = useState(defaultOpen || false);
   const isOnScreen = useIsOnScreen({ element: openButtonRef.current });
 
   useEffect(() => {
@@ -44,6 +48,14 @@ export const ActionMenu = ({
       setIsMenuOpen(false);
     }
   }, [isOnScreen]);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    onOpenOrClose && onOpenOrClose(isMenuOpen);
+  }, [isMenuOpen]);
 
   const openMenuDisplayElement: ReactElement = openMenuElement || (
     <ThreeDotsHorizontalGray width={12} height={14} />

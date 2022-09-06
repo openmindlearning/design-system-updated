@@ -64,4 +64,52 @@ describe("ActionMenu", () => {
     userEvent.click(outsideElement);
     expect(screen.queryByTestId(ACTION_MENU_OPEN_LABEL)).toBeNull();
   });
+
+  it("triggers onOpenOrClose callback once with `false` if the menu is closed", () => {
+    const anyOutsideElementLabel = "But BANANABREAD at WORKDUUUUDE?!";
+    const anyCallback = vi.fn();
+    render(
+      <div>
+        <button data-testid={anyOutsideElementLabel}> outside </button>
+        <ActionMenu defaultOpen onOpenOrClose={anyCallback}>
+          <span>anyElement</span>
+        </ActionMenu>
+      </div>,
+    );
+    const outsideElement = screen.getByTestId(anyOutsideElementLabel);
+    expect(outsideElement).toBeVisible();
+
+    expect(screen.getByTestId(ACTION_MENU_OPEN_LABEL)).toBeVisible();
+    userEvent.click(outsideElement);
+    expect(screen.queryByTestId(ACTION_MENU_OPEN_LABEL)).toBeNull();
+
+    expect(anyCallback).toBeCalledTimes(1);
+    expect(anyCallback).toBeCalledWith(false);
+  });
+
+  it("triggers onOpenOrClose callback once with `true` if the menu is opened", () => {
+    const anyCallback = vi.fn();
+    render(
+      <ActionMenu onOpenOrClose={anyCallback}>
+        <span>anyElement</span>
+      </ActionMenu>,
+    );
+    const openButton = screen.getByTestId(ACTION_MENU_OPEN_MENU_ELEMENT_LABEL);
+    userEvent.click(openButton);
+
+    expect(screen.getByTestId(ACTION_MENU_OPEN_LABEL)).toBeVisible();
+    expect(anyCallback).toBeCalledTimes(1);
+    expect(anyCallback).toBeCalledWith(true);
+  });
+
+  it("does not trigger onOpenOrClose callback on mount", () => {
+    const anyCallback = vi.fn();
+    render(
+      <ActionMenu onOpenOrClose={anyCallback} defaultOpen={true}>
+        <span>anyElement</span>
+      </ActionMenu>,
+    );
+    expect(screen.getByTestId(ACTION_MENU_OPEN_LABEL)).toBeVisible();
+    expect(anyCallback).toBeCalledTimes(0);
+  });
 });
