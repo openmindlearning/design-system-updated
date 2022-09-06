@@ -14,7 +14,9 @@ interface Props {
   children: React.ReactNode;
   openMenuElement?: React.ReactElement;
   defaultOpen?: boolean;
-  // only called on state changes. init state is ignored.
+  /**
+   * Only called on value changes. The initial state is ignored.
+   */
   onOpenOrClose?: (isOpen: boolean) => void;
   expandDirection?: "left" | "right";
   top?: number;
