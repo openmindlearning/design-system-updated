@@ -209,6 +209,12 @@ export const Pencil = Template.bind({});
 Pencil.args = {
   variant: IconVariant.Pencil,
 };
+export const PencilResized = Template.bind({});
+PencilResized.args = {
+  variant: IconVariant.Pencil,
+  height: 16,
+  width: 16,
+};
 export const PersonOutline = Template.bind({});
 PersonOutline.args = {
   variant: IconVariant.PersonOutline,
