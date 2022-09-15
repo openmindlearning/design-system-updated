@@ -61,9 +61,17 @@ export const Bold = Template.bind({});
 Bold.args = {
   variant: IconVariant.Bold,
 };
+export const Books = Template.bind({});
+Books.args = {
+  variant: IconVariant.Books,
+};
 export const BulletList = Template.bind({});
 BulletList.args = {
   variant: IconVariant.BulletList,
+};
+export const Calendar = Template.bind({});
+Calendar.args = {
+  variant: IconVariant.Calendar,
 };
 export const Camera = Template.bind({});
 Camera.args = {
@@ -152,6 +160,10 @@ HeartEmpty.args = {
 export const HeartFilled = Template.bind({});
 HeartFilled.args = {
   variant: IconVariant.HeartFilled,
+};
+export const HomeEmpty = Template.bind({});
+HomeEmpty.args = {
+  variant: IconVariant.HomeEmpty,
 };
 export const Home = Template.bind({});
 Home.args = {
@@ -266,6 +278,10 @@ Share.args = {
 export const Sidebar = Template.bind({});
 Sidebar.args = {
   variant: IconVariant.Sidebar,
+};
+export const SparkEmpty = Template.bind({});
+SparkEmpty.args = {
+  variant: IconVariant.SparkEmpty,
 };
 export const Spark = Template.bind({});
 Spark.args = {
