@@ -325,3 +325,8 @@ export const Info = Template.bind({});
 Info.args = {
   variant: IconVariant.Info,
 };
+
+export const MinimalCalendar = Template.bind({});
+MinimalCalendar.args = {
+  variant: IconVariant.MinimalCalendar,
+};

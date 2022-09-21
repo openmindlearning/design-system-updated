@@ -58,3 +58,9 @@ Platinum.args = {
   children: "This is text",
   variant: "platinum",
 };
+
+export const Blue = Template.bind({});
+Blue.args = {
+  children: "This is text",
+  variant: "blue",
+};

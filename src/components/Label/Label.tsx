@@ -12,7 +12,8 @@ export type LabelVariantColors =
   | "red"
   | "black"
   | "primaryYellow"
-  | "platinum";
+  | "platinum"
+  | "blue";
 
 export type LabelVariantSizes = "small" | "medium" | "large";
 
