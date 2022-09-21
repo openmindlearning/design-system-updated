@@ -78,3 +78,4 @@ export * from "./WarningIcon";
 export * from "./DeleteIcon";
 export * from "./Archive";
 export * from "./InfoIcon";
+export * from "./MinimalCalendar";

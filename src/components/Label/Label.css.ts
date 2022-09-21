@@ -1,5 +1,4 @@
 import { style, styleVariants } from "@vanilla-extract/css";
-import { atTabletBreakpoint } from "../../util";
 import { theme, FontWeight } from "../../themes";
 
 export const base = style([
@@ -42,6 +41,10 @@ export const variant = styleVariants({
   platinum: {
     background: theme.colors.platinum[150],
     color: theme.colors.content.light,
+  },
+  blue: {
+    background: "#EBEDFC",
+    color: "#3A3E5A",
   },
 });
 

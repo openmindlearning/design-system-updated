@@ -14,6 +14,7 @@ export enum IconVariant {
   Books = "books",
   BulletList = "bulleted-list",
   Calendar = "calendar",
+  MinimalCalendar = "minimal-calendar",
   Camera = "camera",
   Checkmark = "checkmark",
   CircleCheck = "circle-check",
@@ -162,4 +163,5 @@ export const VariantIcons = {
   [IconVariant.Delete]: icons.DeleteIcon,
   [IconVariant.Archive]: icons.ArchiveIcon,
   [IconVariant.Info]: icons.InfoIcon,
+  [IconVariant.MinimalCalendar]: icons.MinimalCalendarIcon,
 };
