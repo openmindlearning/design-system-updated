@@ -56,3 +56,24 @@ globalFontFace(displayFontFamily, {
   fontStyle: FontStyle.normal,
   fontDisplay: "block",
 });
+
+globalFontFace(displayFontFamily, {
+  src: `url("https://d1b2grdnesao2u.cloudfront.net/fonts/TuskerGrotesk-7600Semibold.woff2") format("woff2"), url("https://d1b2grdnesao2u.cloudfront.net/fonts/TuskerGrotesk-7600Semibold.woff") format("woff")`,
+  fontWeight: FontWeight.normal,
+  fontStyle: FontStyle.normal,
+  fontDisplay: "block",
+});
+
+globalFontFace(displayFontFamily, {
+  src: `url("https://d1b2grdnesao2u.cloudfront.net/fonts/TuskerGrotesk-7600Semibold.woff2") format("woff2"), url("https://d1b2grdnesao2u.cloudfront.net/fonts/TuskerGrotesk-7600Semibold.woff") format("woff")`,
+  fontWeight: FontWeight.bold,
+  fontStyle: FontStyle.normal,
+  fontDisplay: "block",
+});
+
+globalFontFace(displayFontFamily, {
+  src: `url("https://d1b2grdnesao2u.cloudfront.net/fonts/TuskerGrotesk-7600Semibold.woff2") format("woff2"), url("https://d1b2grdnesao2u.cloudfront.net/fonts/TuskerGrotesk-7600Semibold.woff") format("woff")`,
+  fontWeight: FontWeight.normal,
+  fontStyle: FontStyle.italic,
+  fontDisplay: "block",
+});
