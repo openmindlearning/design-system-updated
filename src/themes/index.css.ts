@@ -3,11 +3,6 @@ import { defaultColors } from "./base/base-theme.css";
 import { darkColors } from "./dark-theme/dark-theme.css";
 import { boxShadows, textShadows, typography, screenSizes, spacing } from "../tokens";
 
-export enum ThemeType {
-  light = "light",
-  dark = "dark",
-}
-
 // default theme (light colors)
 export const lightThemeRawValues = {
   spacing,

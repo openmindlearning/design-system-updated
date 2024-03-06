@@ -1,5 +1,10 @@
 import React, { useState, useCallback, createContext } from "react";
-import { darkThemeClass, themeClass, ThemeType } from "./index.css";
+import { darkThemeClass, themeClass } from "./index.css";
+
+export enum ThemeType {
+  light = "light",
+  dark = "dark",
+}
 
 export type ThemeContextType = {
   theme: ThemeType;
